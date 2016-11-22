@@ -1,0 +1,65 @@
+<<<<<<< HEAD
+
+**** Build of configuration Debug for project Lab3 ****
+
+make all 
+Building file: ../src/main.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../hello_world_bsp_0/microblaze_0/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -MMD -MP -MF"src/main.d" -MT"src/main.d" -o"src/main.o" "../src/main.c"
+../src/main.c:33:66: error: xgpio.h: No such file or directory
+../src/main.c:57: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'gpLED'
+../src/main.c:58: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'gpPB'
+../src/main.c: In function 'pb_interrupt_handler':
+../src/main.c:239: warning: implicit declaration of function 'XGpio_InterruptGlobalDisable'
+../src/main.c:239: error: 'gpPB' undeclared (first use in this function)
+../src/main.c:239: error: (Each undeclared identifier is reported only once
+../src/main.c:239: error: for each function it appears in.)
+../src/main.c:240: warning: implicit declaration of function 'XGpio_DiscreteRead'
+../src/main.c:242: warning: implicit declaration of function 'XGpio_InterruptClear'
+../src/main.c:243: warning: implicit declaration of function 'XGpio_InterruptGlobalEnable'
+../src/main.c: In function 'interrupt_handler_dispatcher':
+../src/main.c:255: error: 'XPAR_FIT_TIMER_0_INTERRUPT_MASK' undeclared (first use in this function)
+../src/main.c:260: error: 'XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK' undeclared (first use in this function)
+../src/main.c: In function 'main':
+../src/main.c:357: warning: implicit declaration of function 'srand'
+../src/main.c:361: warning: implicit declaration of function 'XGpio_Initialize'
+../src/main.c:361: error: 'gpPB' undeclared (first use in this function)
+../src/main.c:361: error: 'XPAR_PUSH_BUTTONS_5BITS_DEVICE_ID' undeclared (first use in this function)
+../src/main.c:363: warning: implicit declaration of function 'XGpio_SetDataDirection'
+../src/main.c:367: warning: implicit declaration of function 'XGpio_InterruptEnable'
+../src/main.c:370: error: 'XPAR_FIT_TIMER_0_INTERRUPT_MASK' undeclared (first use in this function)
+../src/main.c:370: error: 'XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK' undeclared (first use in this function)
+make: *** [src/main.o] Error 1
+=======
+
+**** Build of configuration Debug for project Lab3 ****
+
+make all 
+Building file: ../src/main.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../hello_world_bsp_0/microblaze_0/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -MMD -MP -MF"src/main.d" -MT"src/main.d" -o"src/main.o" "../src/main.c"
+../src/main.c:33:66: error: xgpio.h: No such file or directory
+../src/main.c:57: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'gpLED'
+../src/main.c:58: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'gpPB'
+../src/main.c: In function 'pb_interrupt_handler':
+../src/main.c:239: warning: implicit declaration of function 'XGpio_InterruptGlobalDisable'
+../src/main.c:239: error: 'gpPB' undeclared (first use in this function)
+../src/main.c:239: error: (Each undeclared identifier is reported only once
+../src/main.c:239: error: for each function it appears in.)
+../src/main.c:240: warning: implicit declaration of function 'XGpio_DiscreteRead'
+../src/main.c:242: warning: implicit declaration of function 'XGpio_InterruptClear'
+../src/main.c:243: warning: implicit declaration of function 'XGpio_InterruptGlobalEnable'
+../src/main.c: In function 'interrupt_handler_dispatcher':
+../src/main.c:255: error: 'XPAR_FIT_TIMER_0_INTERRUPT_MASK' undeclared (first use in this function)
+../src/main.c:260: error: 'XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK' undeclared (first use in this function)
+../src/main.c: In function 'main':
+../src/main.c:357: warning: implicit declaration of function 'srand'
+../src/main.c:361: warning: implicit declaration of function 'XGpio_Initialize'
+../src/main.c:361: error: 'gpPB' undeclared (first use in this function)
+../src/main.c:361: error: 'XPAR_PUSH_BUTTONS_5BITS_DEVICE_ID' undeclared (first use in this function)
+../src/main.c:363: warning: implicit declaration of function 'XGpio_SetDataDirection'
+../src/main.c:367: warning: implicit declaration of function 'XGpio_InterruptEnable'
+../src/main.c:370: error: 'XPAR_FIT_TIMER_0_INTERRUPT_MASK' undeclared (first use in this function)
+../src/main.c:370: error: 'XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK' undeclared (first use in this function)
+make: *** [src/main.o] Error 1
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

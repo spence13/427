@@ -1,0 +1,11 @@
+<<<<<<< HEAD
+#Wed Sep 14 15:39:43 MDT 2016
+eclipse.preferences.version=1
+preferredTargets=org.eclipse.cdt.debug.ui.toggleCBreakpointTarget\:org.eclipse.cdt.debug.ui.toggleCBreakpointTarget|
+org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<launchPerspectives/>\r\n
+=======
+#Wed Sep 14 15:39:43 MDT 2016
+eclipse.preferences.version=1
+preferredTargets=org.eclipse.cdt.debug.ui.toggleCBreakpointTarget\:org.eclipse.cdt.debug.ui.toggleCBreakpointTarget|
+org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<launchPerspectives/>\r\n
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

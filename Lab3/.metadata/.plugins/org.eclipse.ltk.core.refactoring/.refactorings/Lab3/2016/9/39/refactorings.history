@@ -1,0 +1,10 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Lab3/src/helloworld.c&apos; to &apos;vdmaTest.c&apos;" description="Rename resource &apos;helloworld.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/helloworld.c" name="vdmaTest.c" stamp="1474317663828" updateReferences="true"/>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Lab3/src/helloworld.c&apos; to &apos;vdmaTest.c&apos;" description="Rename resource &apos;helloworld.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/helloworld.c" name="vdmaTest.c" stamp="1474317663828" updateReferences="true"/>
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c
+</session>

@@ -1,0 +1,87 @@
+<<<<<<< HEAD
+/*
+ * bullet.c
+ *
+ *  Created on: Sep 22, 2016
+ *      Author: superman
+ */
+
+#include "bullet.h"
+
+// Packs each horizontal line of the figures into a single 32 bit word.
+#define packword3(b2,b1,b0) \
+( (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ))
+
+static const int bullet_3x4[] = // This is the pixel pattern for the tank
+{
+	packword3(0,1,0),
+	packword3(1,1,1),
+	packword3(0,1,0),
+	packword3(0,1,0)
+};
+
+int get_bullet(int row)
+{ // Returns the value of the tank at a certain row
+	return bullet_3x4[row];
+}
+
+draw_bullet()
+{
+	get_tank_x_position();
+
+    int x, y;
+    for(y=0; y < 5; y++){
+		for(x=0; x < 3; x++){
+			 if(get_bullet(y) & (1<<x)){
+				 framePointer[(HEIGHT+(DOUBLE*y))*MAX_X + tank_x_position + (2*x)] = GREEN;
+				 framePointer[(HEIGHT+(DOUBLE*y)+1)*MAX_X + tank_x_position + (2*x)] = GREEN;
+				 framePointer[(HEIGHT+(DOUBLE*y))*MAX_X + tank_x_position + (2*x)+1] = GREEN;
+				 framePointer[(HEIGHT+(DOUBLE*y)+1)*MAX_X + tank_x_position + (2*x)+1] = GREEN;
+			 }
+		}
+    }
+}
+=======
+/*
+ * bullet.c
+ *
+ *  Created on: Sep 22, 2016
+ *      Author: superman
+ */
+
+#include "bullet.h"
+
+// Packs each horizontal line of the figures into a single 32 bit word.
+#define packword3(b2,b1,b0) \
+( (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ))
+
+static const int bullet_3x4[] = // This is the pixel pattern for the tank
+{
+	packword3(0,1,0),
+	packword3(1,1,1),
+	packword3(0,1,0),
+	packword3(0,1,0)
+};
+
+int get_bullet(int row)
+{ // Returns the value of the tank at a certain row
+	return bullet_3x4[row];
+}
+
+draw_bullet()
+{
+	get_tank_x_position();
+
+    int x, y;
+    for(y=0; y < 5; y++){
+		for(x=0; x < 3; x++){
+			 if(get_bullet(y) & (1<<x)){
+				 framePointer[(HEIGHT+(DOUBLE*y))*MAX_X + tank_x_position + (2*x)] = GREEN;
+				 framePointer[(HEIGHT+(DOUBLE*y)+1)*MAX_X + tank_x_position + (2*x)] = GREEN;
+				 framePointer[(HEIGHT+(DOUBLE*y))*MAX_X + tank_x_position + (2*x)+1] = GREEN;
+				 framePointer[(HEIGHT+(DOUBLE*y)+1)*MAX_X + tank_x_position + (2*x)+1] = GREEN;
+			 }
+		}
+    }
+}
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

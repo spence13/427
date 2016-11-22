@@ -1,0 +1,391 @@
+<<<<<<< HEAD
+
+#include <stdint.h>
+#include "stdio.h"
+#include "globals.h"
+
+
+
+#define SAUCER_BITS_X 16
+#define SAUCER_BITS_Y 7
+#define SAUCER_PIXEL_WIDTH 32
+#define SAUCER_POINTS_INCREMENT 50
+#define SAUCER_POINTS_RANGE 7
+#define SAUCER_TOP_Y_PIX 45
+#define SAUCER_BOTTOM_Y_PIX 59
+
+// Packs each horizontal line of the figures into a single 24 bit word.
+#define packword16(b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+((b15 << 15) | (b14 << 14) | (b13 << 13) | (b12 << 12) | (b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | \
+ (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+
+//sprite for the mystery saucer
+static const uint32_t saucer_16x7[] =
+{
+packword16(0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0),
+packword16(0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0),
+packword16(0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0),
+packword16(0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0),
+packword16(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+packword16(0,0,1,1,1,0,0,1,1,0,0,1,1,1,0,0),
+packword16(0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0)
+};
+
+static int16_t saucer_x_position = 0; // Top left corner of the tank
+static int8_t saucer_exists_bool = 0;
+uint8_t spawn_at_left_bool = 1;
+uint16_t mystery_points = 0;
+
+//function to return bunker bits
+static uint32_t saucer_get_sprite_bits(uint8_t row)
+{
+	return saucer_16x7[row];
+}
+
+
+// Getter function for the global x position
+uint16_t saucer_get_saucer_x_position(){
+	return saucer_x_position;
+}
+
+// Setter function for the global x position
+static void saucer_set_saucer_x_position(uint16_t x_pos){
+	saucer_x_position = x_pos;
+}
+
+int8_t saucer_get_exists_bool(){
+	return saucer_exists_bool;
+}
+
+static void saucer_set_exists_bool(int8_t set_bool){
+	saucer_exists_bool = set_bool;
+}
+
+void saucer_spawn_randomly(unsigned int * framePointer){
+
+	saucer_exists_bool = 1;
+	spawn_at_left_bool = rand()%GLOBALS_DOUBLE;//spawn randomly left or right - srand initialized in main
+	mystery_points = ((rand()%SAUCER_POINTS_RANGE)*SAUCER_POINTS_INCREMENT)+SAUCER_POINTS_INCREMENT;//spawn random values for killing saucer (50-350)increments of 50
+	//spawns it at left of screen
+	if(spawn_at_left_bool){
+		saucer_x_position = GLOBALS_MIN_X - SAUCER_PIXEL_WIDTH;//set position of saucer at left of screen before shifting right
+		saucer_shift_right(framePointer);//call shift right routine
+	}
+	//spawns it at right of screen
+	else{
+		saucer_x_position = GLOBALS_MAX_X;//set position of saucer at right of screen before shifting left
+		saucer_shift_left(framePointer);//call shift left routine
+	}
+}
+
+
+
+//This function will draw a red saucer given the framePointer
+//contains functionality of only drawing to certain widths on both left and right side of saucer
+//depending on the parameter values that are passed in. drawing the entire saucer would be pass in (16,0)
+void saucer_draw(unsigned int * framePointer, uint8_t left_xbit_num, uint8_t right_xbit_num)
+{
+    int16_t x, y; //Iterators
+    for(y=0; y < SAUCER_BITS_Y; y++){ //Loop through the height of the saucer
+		for(x=left_xbit_num-1; x >=right_xbit_num; x--){ //start drawing at whatever left col they pass you(left_xbit_num), finish drawing at right col they pass you(right_xbit_num)
+			 if(saucer_get_sprite_bits(y) & (1<<x)){ //If the saucer pixel is a 1 at this position, draw a 4 pixel red box
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))] = GLOBALS_RED;//top of saucer at height 40
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))] = GLOBALS_RED;
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))+1] = GLOBALS_RED;
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))+1] = GLOBALS_RED;
+			 }
+		}
+    }
+}
+
+//This function will erase the green tank given the framePointer
+//unlike the draw function, the erase function just puts black over the entire width of the
+//saucer every time. does not have variable width functionality
+static void saucer_erase(unsigned int * framePointer)
+{
+    int16_t x, y; //Iterators
+    for(y=0; y < SAUCER_BITS_Y; y++){ //Loop through the height of the saucer
+		for(x=SAUCER_BITS_X-1; x >=0; x--){ //Loop through the width of the saucer
+			 if(saucer_get_sprite_bits(y) & (1<<x)){ //If the saucer pixel is a 1 at this position, draw a 4 pixel black box
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))] = GLOBALS_BLACK;
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))] = GLOBALS_BLACK;
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))+1] = GLOBALS_BLACK;
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))+1] = GLOBALS_BLACK;
+			 }
+		}
+    }
+}
+
+
+//This function will shift the tank left a frame, takes the framePointer
+void saucer_shift_left(unsigned int * framePointer)
+{
+	if(saucer_x_position <= GLOBALS_MIN_X - SAUCER_PIXEL_WIDTH){
+		saucer_exists_bool = 0;
+	}
+	else{
+		saucer_erase(framePointer); //Erase the whole saucer
+		saucer_x_position = saucer_x_position-GLOBALS_SHIFT_VAL; //Shift the pointer position left
+
+		//draws it gradually as it comes in on right side of screen
+		if (saucer_x_position >= GLOBALS_MAX_X - SAUCER_PIXEL_WIDTH){//saucer has started to come onto right screen at this point
+			int16_t draw_col = ((saucer_x_position + SAUCER_PIXEL_WIDTH) - GLOBALS_MAX_X)/GLOBALS_DOUBLE;//calculate the farthest col to the right you want to draw
+			saucer_draw(framePointer, SAUCER_BITS_X, draw_col+1);//draw saucer -> always draw col 16 (left side) of saucer, right side varies as it comes onto screen
+		}
+		//erases it gradually as it goes off left side of screen
+		else if (saucer_x_position <= GLOBALS_MIN_X){//saucer has started to slide off left of screen at this point
+			int16_t draw_col = (SAUCER_PIXEL_WIDTH + saucer_x_position)/GLOBALS_DOUBLE;//calculate the farthest left col you want to draw
+			if(draw_col <= 0){
+				draw_col = 0;//draw_col cant be negative cuz it draws the left col which must be >=0
+			}
+			saucer_draw(framePointer, draw_col, 0);//draw saucer -> left side varies as it slides off screen, always draw col 0(right side) of saucer
+		}
+		//draws it normally in middle of screen
+		else{
+			saucer_draw(framePointer,SAUCER_BITS_X,0); //Redraw saucer with new position
+		}
+	}
+}
+
+//This function will shift the tank right a frame, takes the framePointer
+void saucer_shift_right(unsigned int * framePointer)
+{
+	if(saucer_x_position >= GLOBALS_MAX_X){
+		saucer_exists_bool = 0;
+	}
+	else{
+		saucer_erase(framePointer); //Erase the whole saucer
+		saucer_x_position = saucer_x_position+GLOBALS_SHIFT_VAL; //Shift the pointer position left
+
+		//draws it in gradually as it comes in at left side of screen
+		if (saucer_x_position <= GLOBALS_MIN_X){//saucer has started to come in at right side of screen
+			int16_t draw_col = (SAUCER_PIXEL_WIDTH + saucer_x_position)/GLOBALS_DOUBLE;//calculate the farthest left col you want to draw
+			saucer_draw(framePointer, draw_col+1, 0);//draw saucer -> left side varies as it comes onto screen, always draw col 0 (right side) of saucer
+		}
+		//erases it gradually as it goes of right side of screen
+		else if (saucer_x_position >= GLOBALS_MAX_X - SAUCER_PIXEL_WIDTH){//saucer has started to slide off screen at this point
+			int16_t draw_col = ((saucer_x_position + SAUCER_PIXEL_WIDTH) - GLOBALS_MAX_X)/GLOBALS_DOUBLE;//calculate the farthest col to the right you want to draw
+			saucer_draw(framePointer, SAUCER_BITS_X, draw_col+1);//draw saucer -> always draw col 16 (left side) of saucer, right side varies as it goes off screen
+		}
+		//draws it normally in middle of screen
+		else{
+			saucer_draw(framePointer, SAUCER_BITS_X,0); //Redraw tank with new position
+		}
+	}
+}
+
+int8_t saucer_check_if_saucer_was_hit(unsigned int * framePointer, uint16_t bullet_x_pos, uint16_t bullet_y_pos)
+{
+	if((bullet_y_pos <= SAUCER_BOTTOM_Y_PIX) && (bullet_y_pos >= SAUCER_TOP_Y_PIX)){//if bullet is in the correct y range of the saucer
+		if((bullet_x_pos >= saucer_x_position) && (bullet_x_pos <= saucer_x_position+SAUCER_PIXEL_WIDTH)){//if bullet is in correct x range of the saucer
+			saucer_erase(framePointer); //Erase the whole saucer cuz it was shot
+			saucer_exists_bool = 0;//signal that the saucer no longer exists
+			return 1;//the saucer was hit by the bullet
+		}
+		else{
+			return 0;
+		}
+	}
+	else{
+		return 0;
+	}
+}
+
+
+=======
+
+#include <stdint.h>
+#include "stdio.h"
+#include "globals.h"
+
+
+
+#define SAUCER_BITS_X 16
+#define SAUCER_BITS_Y 7
+#define SAUCER_PIXEL_WIDTH 32
+#define SAUCER_POINTS_INCREMENT 50
+#define SAUCER_POINTS_RANGE 7
+#define SAUCER_TOP_Y_PIX 45
+#define SAUCER_BOTTOM_Y_PIX 59
+
+// Packs each horizontal line of the figures into a single 24 bit word.
+#define packword16(b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+((b15 << 15) | (b14 << 14) | (b13 << 13) | (b12 << 12) | (b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | \
+ (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+
+//sprite for the mystery saucer
+static const uint32_t saucer_16x7[] =
+{
+packword16(0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0),
+packword16(0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0),
+packword16(0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0),
+packword16(0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0),
+packword16(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+packword16(0,0,1,1,1,0,0,1,1,0,0,1,1,1,0,0),
+packword16(0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0)
+};
+
+static int16_t saucer_x_position = 0; // Top left corner of the tank
+static int8_t saucer_exists_bool = 0;
+uint8_t spawn_at_left_bool = 1;
+uint16_t mystery_points = 0;
+
+//function to return bunker bits
+static uint32_t saucer_get_sprite_bits(uint8_t row)
+{
+	return saucer_16x7[row];
+}
+
+
+// Getter function for the global x position
+uint16_t saucer_get_saucer_x_position(){
+	return saucer_x_position;
+}
+
+// Setter function for the global x position
+static void saucer_set_saucer_x_position(uint16_t x_pos){
+	saucer_x_position = x_pos;
+}
+
+int8_t saucer_get_exists_bool(){
+	return saucer_exists_bool;
+}
+
+static void saucer_set_exists_bool(int8_t set_bool){
+	saucer_exists_bool = set_bool;
+}
+
+void saucer_spawn_randomly(unsigned int * framePointer){
+
+	saucer_exists_bool = 1;
+	spawn_at_left_bool = rand()%GLOBALS_DOUBLE;//spawn randomly left or right - srand initialized in main
+	mystery_points = ((rand()%SAUCER_POINTS_RANGE)*SAUCER_POINTS_INCREMENT)+SAUCER_POINTS_INCREMENT;//spawn random values for killing saucer (50-350)increments of 50
+	//spawns it at left of screen
+	if(spawn_at_left_bool){
+		saucer_x_position = GLOBALS_MIN_X - SAUCER_PIXEL_WIDTH;//set position of saucer at left of screen before shifting right
+		saucer_shift_right(framePointer);//call shift right routine
+	}
+	//spawns it at right of screen
+	else{
+		saucer_x_position = GLOBALS_MAX_X;//set position of saucer at right of screen before shifting left
+		saucer_shift_left(framePointer);//call shift left routine
+	}
+}
+
+
+
+//This function will draw a red saucer given the framePointer
+//contains functionality of only drawing to certain widths on both left and right side of saucer
+//depending on the parameter values that are passed in. drawing the entire saucer would be pass in (16,0)
+void saucer_draw(unsigned int * framePointer, uint8_t left_xbit_num, uint8_t right_xbit_num)
+{
+    int16_t x, y; //Iterators
+    for(y=0; y < SAUCER_BITS_Y; y++){ //Loop through the height of the saucer
+		for(x=left_xbit_num-1; x >=right_xbit_num; x--){ //start drawing at whatever left col they pass you(left_xbit_num), finish drawing at right col they pass you(right_xbit_num)
+			 if(saucer_get_sprite_bits(y) & (1<<x)){ //If the saucer pixel is a 1 at this position, draw a 4 pixel red box
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))] = GLOBALS_RED;//top of saucer at height 40
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))] = GLOBALS_RED;
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))+1] = GLOBALS_RED;
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))+1] = GLOBALS_RED;
+			 }
+		}
+    }
+}
+
+//This function will erase the green tank given the framePointer
+//unlike the draw function, the erase function just puts black over the entire width of the
+//saucer every time. does not have variable width functionality
+static void saucer_erase(unsigned int * framePointer)
+{
+    int16_t x, y; //Iterators
+    for(y=0; y < SAUCER_BITS_Y; y++){ //Loop through the height of the saucer
+		for(x=SAUCER_BITS_X-1; x >=0; x--){ //Loop through the width of the saucer
+			 if(saucer_get_sprite_bits(y) & (1<<x)){ //If the saucer pixel is a 1 at this position, draw a 4 pixel black box
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))] = GLOBALS_BLACK;
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))] = GLOBALS_BLACK;
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))+1] = GLOBALS_BLACK;
+				 framePointer[(GLOBALS_SAUCER_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + saucer_x_position + (GLOBALS_DOUBLE*(SAUCER_BITS_X-x))+1] = GLOBALS_BLACK;
+			 }
+		}
+    }
+}
+
+
+//This function will shift the tank left a frame, takes the framePointer
+void saucer_shift_left(unsigned int * framePointer)
+{
+	if(saucer_x_position <= GLOBALS_MIN_X - SAUCER_PIXEL_WIDTH){
+		saucer_exists_bool = 0;
+	}
+	else{
+		saucer_erase(framePointer); //Erase the whole saucer
+		saucer_x_position = saucer_x_position-GLOBALS_SHIFT_VAL; //Shift the pointer position left
+
+		//draws it gradually as it comes in on right side of screen
+		if (saucer_x_position >= GLOBALS_MAX_X - SAUCER_PIXEL_WIDTH){//saucer has started to come onto right screen at this point
+			int16_t draw_col = ((saucer_x_position + SAUCER_PIXEL_WIDTH) - GLOBALS_MAX_X)/GLOBALS_DOUBLE;//calculate the farthest col to the right you want to draw
+			saucer_draw(framePointer, SAUCER_BITS_X, draw_col+1);//draw saucer -> always draw col 16 (left side) of saucer, right side varies as it comes onto screen
+		}
+		//erases it gradually as it goes off left side of screen
+		else if (saucer_x_position <= GLOBALS_MIN_X){//saucer has started to slide off left of screen at this point
+			int16_t draw_col = (SAUCER_PIXEL_WIDTH + saucer_x_position)/GLOBALS_DOUBLE;//calculate the farthest left col you want to draw
+			if(draw_col <= 0){
+				draw_col = 0;//draw_col cant be negative cuz it draws the left col which must be >=0
+			}
+			saucer_draw(framePointer, draw_col, 0);//draw saucer -> left side varies as it slides off screen, always draw col 0(right side) of saucer
+		}
+		//draws it normally in middle of screen
+		else{
+			saucer_draw(framePointer,SAUCER_BITS_X,0); //Redraw saucer with new position
+		}
+	}
+}
+
+//This function will shift the tank right a frame, takes the framePointer
+void saucer_shift_right(unsigned int * framePointer)
+{
+	if(saucer_x_position >= GLOBALS_MAX_X){
+		saucer_exists_bool = 0;
+	}
+	else{
+		saucer_erase(framePointer); //Erase the whole saucer
+		saucer_x_position = saucer_x_position+GLOBALS_SHIFT_VAL; //Shift the pointer position left
+
+		//draws it in gradually as it comes in at left side of screen
+		if (saucer_x_position <= GLOBALS_MIN_X){//saucer has started to come in at right side of screen
+			int16_t draw_col = (SAUCER_PIXEL_WIDTH + saucer_x_position)/GLOBALS_DOUBLE;//calculate the farthest left col you want to draw
+			saucer_draw(framePointer, draw_col+1, 0);//draw saucer -> left side varies as it comes onto screen, always draw col 0 (right side) of saucer
+		}
+		//erases it gradually as it goes of right side of screen
+		else if (saucer_x_position >= GLOBALS_MAX_X - SAUCER_PIXEL_WIDTH){//saucer has started to slide off screen at this point
+			int16_t draw_col = ((saucer_x_position + SAUCER_PIXEL_WIDTH) - GLOBALS_MAX_X)/GLOBALS_DOUBLE;//calculate the farthest col to the right you want to draw
+			saucer_draw(framePointer, SAUCER_BITS_X, draw_col+1);//draw saucer -> always draw col 16 (left side) of saucer, right side varies as it goes off screen
+		}
+		//draws it normally in middle of screen
+		else{
+			saucer_draw(framePointer, SAUCER_BITS_X,0); //Redraw tank with new position
+		}
+	}
+}
+
+int8_t saucer_check_if_saucer_was_hit(unsigned int * framePointer, uint16_t bullet_x_pos, uint16_t bullet_y_pos)
+{
+	if((bullet_y_pos <= SAUCER_BOTTOM_Y_PIX) && (bullet_y_pos >= SAUCER_TOP_Y_PIX)){//if bullet is in the correct y range of the saucer
+		if((bullet_x_pos >= saucer_x_position) && (bullet_x_pos <= saucer_x_position+SAUCER_PIXEL_WIDTH)){//if bullet is in correct x range of the saucer
+			saucer_erase(framePointer); //Erase the whole saucer cuz it was shot
+			saucer_exists_bool = 0;//signal that the saucer no longer exists
+			return 1;//the saucer was hit by the bullet
+		}
+		else{
+			return 0;
+		}
+	}
+	else{
+		return 0;
+	}
+}
+
+
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

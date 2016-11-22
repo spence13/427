@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;SpaceInvaders/src/videoController.c&apos;" deleteContents="false" description="Delete resource &apos;SpaceInvaders/src/videoController.c&apos;" element1="/SpaceInvaders/src/videoController.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1476159394836"/>&#x0A;<refactoring comment="Delete resource &apos;SpaceInvaders/src/videoController.h&apos;" deleteContents="false" description="Delete resource &apos;SpaceInvaders/src/videoController.h&apos;" element1="/SpaceInvaders/src/videoController.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1476159398471"/>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;SpaceInvaders/src/videoController.c&apos;" deleteContents="false" description="Delete resource &apos;SpaceInvaders/src/videoController.c&apos;" element1="/SpaceInvaders/src/videoController.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1476159394836"/>&#x0A;<refactoring comment="Delete resource &apos;SpaceInvaders/src/videoController.h&apos;" deleteContents="false" description="Delete resource &apos;SpaceInvaders/src/videoController.h&apos;" element1="/SpaceInvaders/src/videoController.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1476159398471"/>
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c
+</session>

@@ -1,0 +1,27 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>SpaceInvadersHW_hw_platform</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>com.xilinx.sdk.hw.HwProject</nature>
+	</natures>
+</projectDescription>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>SpaceInvadersHW_hw_platform</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>com.xilinx.sdk.hw.HwProject</nature>
+	</natures>
+</projectDescription>
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

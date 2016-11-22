@@ -1,0 +1,154 @@
+#include <xparameters.h>
+#include "platform.h"
+#include "xac97_l.h"
+#include "sounds.h"
+
+#include "game_sounds/soundexplosion.h"
+#include "game_sounds/soundinvade1.h"
+#include "game_sounds/soundinvade2.h"
+#include "game_sounds/soundinvade3.h"
+#include "game_sounds/soundinvade4.h"
+#include "game_sounds/soundinvadekill.h"
+#include "game_sounds/soundshoot.h"
+#include "game_sounds/soundufohigh.h"
+#include "game_sounds/soundufolow.h"
+
+extern uint16_t soundexplosion_sample_rate;//all the same sample rate
+
+extern uint8_t soundexplosion;
+extern uint16_t soundexplosion_num_samples;
+
+extern uint8_t soundinvade1;
+extern uint16_t soundinvade1_num_samples;
+
+extern uint8_t soundinvade2;
+extern uint16_t soundinvade2_num_samples;
+
+extern uint8_t soundinvade3;
+extern uint16_t soundinvade3_num_samples;
+
+extern uint8_t soundinvade4;
+extern uint16_t soundinvade4_num_samples;
+
+extern uint8_t soundinvadekill;
+extern uint16_t soundinvadekill_num_samples;
+
+extern uint8_t soundshoot;
+extern uint16_t soundshoot_num_samples;
+
+extern uint8_t soundufohigh;
+extern uint16_t soundufohigh_num_samples;
+
+extern uint8_t soundufolow;
+extern uint16_t soundufolow_num_samples;
+
+uint16_t get_sample_size(uint8_t current_sound)
+{
+	switch(current_sound)
+	{
+		case SOUND_ALIEN_MARCH1:
+			return soundinvade1_num_samples;
+		case SOUND_ALIEN_MARCH2:
+			return soundinvade2_num_samples;
+		case SOUND_ALIEN_MARCH3:
+			return soundinvade3_num_samples;
+		case SOUND_ALIEN_MARCH4:
+			return soundinvade4_num_samples;
+		case SOUND_UFO_HIGH:
+			return soundufohigh_num_samples;
+		case SOUND_UFO_LOW:
+			return soundinvade1_num_samples;
+		case SOUND_UFO_HIT:
+			return soundinvadekill_num_samples;
+		case SOUND_TANK_HIT:
+			return soundexplosion_num_samples;
+		case SOUND_TANK_SHOOT:
+			return soundshoot_num_samples;
+		default:
+			return 0;
+	}
+}
+
+void sound_init()
+{
+    XAC97_HardReset(XPAR_AXI_AC97_0_BASEADDR); //Hard reset
+
+    XAC97_AwaitCodecReady(XPAR_AXI_AC97_0_BASEADDR); //Wait for codec to be ready
+
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_ExtendedAudioStat, 1); //Enable VRA Mode
+
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCM_DAC_Rate, soundexplosion_sample_rate); //Writer frequency
+
+    // Play Volume Settings
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_AuxOutVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVolMono, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCBeepVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCMOutVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_LineInVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MicVol, AC97_VOL_MAX);
+
+    XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR); // Clear FIFOs
+}
+
+uint16_t play_sound(uint8_t current_sound, uint16_t current_sound_position)
+{
+	uint16_t num_samples;
+	uint8_t * samples;
+	switch(current_sound)
+	{
+		case SOUND_ALIEN_MARCH1:
+			num_samples = soundinvade1_num_samples;
+			samples = &(soundinvade1);
+			break;
+		case SOUND_ALIEN_MARCH2:
+			num_samples = soundinvade2_num_samples;
+			samples = &(soundinvade2);
+			break;
+		case SOUND_ALIEN_MARCH3:
+			num_samples = soundinvade3_num_samples;
+			samples = &(soundinvade3);
+			break;
+		case SOUND_ALIEN_MARCH4:
+			num_samples = soundinvade4_num_samples;
+			samples = &(soundinvade4);
+			break;
+		case SOUND_UFO_HIGH:
+			num_samples = soundufohigh_num_samples;
+			samples = &(soundufohigh);
+			break;
+		case SOUND_UFO_LOW:
+			num_samples = soundinvade1_num_samples;
+			samples = &(soundufolow);
+			break;
+		case SOUND_UFO_HIT:
+			num_samples = soundinvadekill_num_samples;
+			samples = &(soundinvadekill);
+			break;
+		case SOUND_TANK_HIT:
+			num_samples = soundexplosion_num_samples;
+			samples = &(soundexplosion);
+			break;
+		case SOUND_TANK_SHOOT:
+			num_samples = soundshoot_num_samples;
+			samples = &(soundshoot);
+			break;
+		default:
+			return 0;
+	}
+
+
+    //Set control bit to cause IN_FIFO interrupts
+
+    //Add AC97 mask to general INT masks
+
+    int32_t i; //iterator
+    int32_t bottom = (current_sound_position-100);
+    if (bottom < 0)
+    	bottom = 0;
+    for (i=current_sound_position-1; i >= bottom; i--) //loop through all samples of sound (we loop backwards, because we converted it backwards)
+    	XAC97_WriteFifo(XPAR_AXI_AC97_0_BASEADDR, samples[i]);
+
+    return (uint16_t)bottom;
+}
+

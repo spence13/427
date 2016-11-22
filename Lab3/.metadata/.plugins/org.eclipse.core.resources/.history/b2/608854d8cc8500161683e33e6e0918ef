@@ -1,0 +1,33 @@
+<<<<<<< HEAD
+/*
+ * aliens.h
+ *
+ *  Created on: Sep 21, 2016
+ *      Author: superman
+ */
+
+#ifndef ALIENS_H_
+#define ALIENS_H_
+
+void update_alien_pos(unsigned int *);
+void kill_alien(unsigned int *, int);
+void fire_alien_missile(unsigned int *);
+
+#endif /* ALIENS_H_ */
+=======
+/*
+ * aliens.h
+ *
+ *  Created on: Sep 21, 2016
+ *      Author: superman
+ */
+
+#ifndef ALIENS_H_
+#define ALIENS_H_
+
+void update_alien_pos(unsigned int *);
+void kill_alien(unsigned int *, int);
+void fire_alien_missile(unsigned int *);
+
+#endif /* ALIENS_H_ */
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

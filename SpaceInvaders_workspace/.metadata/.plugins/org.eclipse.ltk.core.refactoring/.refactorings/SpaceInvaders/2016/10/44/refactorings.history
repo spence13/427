@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;SpaceInvaders/src/sounds&apos; to &apos;game_sounds&apos;" description="Rename resource &apos;sounds&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/sounds" name="game_sounds" stamp="1477437659627" updateReferences="true"/>
+</session>

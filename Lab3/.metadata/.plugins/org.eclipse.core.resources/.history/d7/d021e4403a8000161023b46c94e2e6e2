@@ -1,0 +1,41 @@
+<<<<<<< HEAD
+/*
+ * tank.c
+ *
+ *  Created on: Sep 21, 2016
+ *      Author: superman
+ */
+
+static const int tank_15x8[] = // This is the pixel pattern for the tank
+{
+	packword15(0,0,0,0,0,0,0,1,0,0,0,0,0,0,0),
+	packword15(0,0,0,0,0,0,1,1,1,0,0,0,0,0,0),
+	packword15(0,0,0,0,0,0,1,1,1,0,0,0,0,0,0),
+	packword15(0,1,1,1,1,1,1,1,1,1,1,1,1,1,0),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)
+};
+
+=======
+/*
+ * tank.c
+ *
+ *  Created on: Sep 21, 2016
+ *      Author: superman
+ */
+
+static const int tank_15x8[] = // This is the pixel pattern for the tank
+{
+	packword15(0,0,0,0,0,0,0,1,0,0,0,0,0,0,0),
+	packword15(0,0,0,0,0,0,1,1,1,0,0,0,0,0,0),
+	packword15(0,0,0,0,0,0,1,1,1,0,0,0,0,0,0),
+	packword15(0,1,1,1,1,1,1,1,1,1,1,1,1,1,0),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)
+};
+
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

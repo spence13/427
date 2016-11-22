@@ -1,0 +1,443 @@
+<<<<<<< HEAD
+/*
+ * bunker.c
+ *
+ *  Created on: Sep 22, 2016
+ *      Author: superman
+ */
+
+#include "bunker.h"
+#include "globals.h"
+
+
+// Packs each horizontal line of the figures into a single 24 bit word.
+#define packword24(b23,b22,b21,b20,b19,b18,b17,b16,b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+((b23 << 23) | (b22 << 22) | (b21 << 21) | (b20 << 20) | (b19 << 19) | (b18 << 18) | (b17 << 17) | (b16 << 16) |  \
+ (b15 << 15) | (b14 << 14) | (b13 << 13) | (b12 << 12) | (b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | \
+ (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// Packs each horizontal line of the figures into a single 6 bit word.
+#define packword6(b5,b4,b3,b2,b1,b0) \
+((b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// Shape of the entire bunker.
+static const int bunker_24x18[] =
+{
+packword24(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0),
+packword24(0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0),
+packword24(0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0),
+packword24(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1)
+};
+
+// These are the blocks that comprise the bunker and each time a bullet
+// strikes one of these blocks, you erod the block as you sequence through
+// these patterns.
+static const int bunkerDamage0_6x6[] =
+{
+packword6(0,1,1,0,0,0),
+packword6(0,0,0,0,0,1),
+packword6(1,1,0,1,0,0),
+packword6(1,0,0,0,0,0),
+packword6(0,0,1,1,0,0),
+packword6(0,0,0,0,1,0)
+};
+
+static const int bunkerDamage1_6x6[] =
+{
+packword6(1,1,1,0,1,0),
+packword6(1,0,1,0,0,1),
+packword6(1,1,0,1,1,1),
+packword6(1,0,0,0,0,0),
+packword6(0,1,1,1,0,1),
+packword6(0,1,1,0,1,0)
+};
+
+static const int bunkerDamage2_6x6[] =
+{
+packword6(1,1,1,1,1,1),
+packword6(1,0,1,1,0,1),
+packword6(1,1,0,1,1,1),
+packword6(1,1,0,1,1,0),
+packword6(0,1,1,1,0,1),
+packword6(1,1,1,1,1,1)
+};
+
+static const int bunkerDamage3_6x6[] =
+{
+packword6(1,1,1,1,1,1),
+packword6(1,1,1,1,1,1),
+packword6(1,1,1,1,1,1),
+packword6(1,1,1,1,1,1),
+packword6(1,1,1,1,1,1),
+packword6(1,1,1,1,1,1)
+};
+
+
+bunker_get_bunker_bits(int row)
+{
+	return bunker_24x18[row];
+}
+
+bunker_get_bunker_damage0_bits(int row)
+{
+	return bunkerDamage0_6x6[row];
+}
+
+bunker_get_bunker_damage1_bits(int row)
+{
+	return bunkerDamage1_6x6[row];
+}
+
+bunker_get_bunker_damage2_bits(int row)
+{
+	return bunkerDamage2_6x6[row];
+}
+bunker_get_bunker_damage3_bits(int row)
+{
+	return bunkerDamage3_6x6[row];
+}
+
+
+bunker_draw(unsigned int * framePointer)
+{
+
+    int bunker_x_pos;
+    for(bunker_x_pos = GLOBALS_LEFT_BUNKER_START_PIXEL; bunker_x_pos < GLOBALS_MAX_X; bunker_x_pos=bunker_x_pos + GLOBALS_BUNKER_PIX_SEPARATION){
+        int x, y;
+        for(y=0; y < 18; y++){
+    		for(x=0; x < 32; x++){
+    			 if(bunker_get_bunker_bits(y) & (1<<x)){
+    				 framePointer[(GLOBALS_BUNKER_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + bunker_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_GREEN;
+    				 framePointer[(GLOBALS_BUNKER_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + bunker_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_GREEN;
+    				 framePointer[(GLOBALS_BUNKER_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + bunker_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_GREEN;
+    				 framePointer[(GLOBALS_BUNKER_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + bunker_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_GREEN;
+    			 }
+    		}
+        }
+    }
+
+}
+
+bunker_erode(unsigned int * framePointer, char bunker_number)
+{
+	int bunker_erode_y_pos = 0;
+	int bunker_erode_x_pos = 0;
+	int erosion_block = 10;
+	//int bunker_number = 2;
+
+
+	switch(erosion_block)
+	{
+		case 1:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_1;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_1;
+			break;
+		case 2:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_1;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_2;
+			break;
+		case 3:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_1;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_3;
+			break;
+		case 4:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_1;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_4;
+			break;
+		case 5:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_2;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_1;
+			break;
+		case 6:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_2;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_2;
+			break;
+		case 7:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_2;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_3;
+			break;
+		case 8:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_2;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_4;
+			break;
+		case 9:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_3;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_1;
+			break;
+		case 10:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_3;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_4;
+			break;
+		default:
+			break;
+	}
+
+	switch(bunker_number)
+	{
+		case '1':
+			bunker_erode_x_pos = bunker_erode_x_pos;
+			break;
+		case '2':
+			bunker_erode_x_pos = bunker_erode_x_pos + GLOBALS_BUNKER_PIX_SEPARATION;
+			break;
+		case '3':
+			bunker_erode_x_pos = bunker_erode_x_pos + GLOBALS_BUNKER_PIX_SEPARATION*2;
+			break;
+		case '4':
+			bunker_erode_x_pos = bunker_erode_x_pos + GLOBALS_BUNKER_PIX_SEPARATION*3;
+			break;
+		default:
+			break;
+	}
+	xil_printf("y: %d\n\r",bunker_erode_y_pos);
+	xil_printf("x: %d\n\r",bunker_erode_x_pos);
+    int x, y;
+    for(y=0; y < 6; y++){
+		for(x=0; x < 6; x++){
+			 if(bunker_get_bunker_damage0_bits(y) & (1<<x)){
+				 framePointer[(bunker_erode_y_pos+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + bunker_erode_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;
+				 framePointer[(bunker_erode_y_pos+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + bunker_erode_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;
+				 framePointer[(bunker_erode_y_pos+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + bunker_erode_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;
+				 framePointer[(bunker_erode_y_pos+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + bunker_erode_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK
+						 ;
+			 }
+		}
+    }
+}
+
+=======
+/*
+ * bunker.c
+ *
+ *  Created on: Sep 22, 2016
+ *      Author: superman
+ */
+
+#include "bunker.h"
+#include "globals.h"
+
+
+// Packs each horizontal line of the figures into a single 24 bit word.
+#define packword24(b23,b22,b21,b20,b19,b18,b17,b16,b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+((b23 << 23) | (b22 << 22) | (b21 << 21) | (b20 << 20) | (b19 << 19) | (b18 << 18) | (b17 << 17) | (b16 << 16) |  \
+ (b15 << 15) | (b14 << 14) | (b13 << 13) | (b12 << 12) | (b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | \
+ (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// Packs each horizontal line of the figures into a single 6 bit word.
+#define packword6(b5,b4,b3,b2,b1,b0) \
+((b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// Shape of the entire bunker.
+static const int bunker_24x18[] =
+{
+packword24(0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0),
+packword24(0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0),
+packword24(0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0),
+packword24(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1),
+packword24(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1)
+};
+
+// These are the blocks that comprise the bunker and each time a bullet
+// strikes one of these blocks, you erod the block as you sequence through
+// these patterns.
+static const int bunkerDamage0_6x6[] =
+{
+packword6(0,1,1,0,0,0),
+packword6(0,0,0,0,0,1),
+packword6(1,1,0,1,0,0),
+packword6(1,0,0,0,0,0),
+packword6(0,0,1,1,0,0),
+packword6(0,0,0,0,1,0)
+};
+
+static const int bunkerDamage1_6x6[] =
+{
+packword6(1,1,1,0,1,0),
+packword6(1,0,1,0,0,1),
+packword6(1,1,0,1,1,1),
+packword6(1,0,0,0,0,0),
+packword6(0,1,1,1,0,1),
+packword6(0,1,1,0,1,0)
+};
+
+static const int bunkerDamage2_6x6[] =
+{
+packword6(1,1,1,1,1,1),
+packword6(1,0,1,1,0,1),
+packword6(1,1,0,1,1,1),
+packword6(1,1,0,1,1,0),
+packword6(0,1,1,1,0,1),
+packword6(1,1,1,1,1,1)
+};
+
+static const int bunkerDamage3_6x6[] =
+{
+packword6(1,1,1,1,1,1),
+packword6(1,1,1,1,1,1),
+packword6(1,1,1,1,1,1),
+packword6(1,1,1,1,1,1),
+packword6(1,1,1,1,1,1),
+packword6(1,1,1,1,1,1)
+};
+
+
+bunker_get_bunker_bits(int row)
+{
+	return bunker_24x18[row];
+}
+
+bunker_get_bunker_damage0_bits(int row)
+{
+	return bunkerDamage0_6x6[row];
+}
+
+bunker_get_bunker_damage1_bits(int row)
+{
+	return bunkerDamage1_6x6[row];
+}
+
+bunker_get_bunker_damage2_bits(int row)
+{
+	return bunkerDamage2_6x6[row];
+}
+bunker_get_bunker_damage3_bits(int row)
+{
+	return bunkerDamage3_6x6[row];
+}
+
+
+bunker_draw(unsigned int * framePointer)
+{
+
+    int bunker_x_pos;
+    for(bunker_x_pos = GLOBALS_LEFT_BUNKER_START_PIXEL; bunker_x_pos < GLOBALS_MAX_X; bunker_x_pos=bunker_x_pos + GLOBALS_BUNKER_PIX_SEPARATION){
+        int x, y;
+        for(y=0; y < 18; y++){
+    		for(x=0; x < 32; x++){
+    			 if(bunker_get_bunker_bits(y) & (1<<x)){
+    				 framePointer[(GLOBALS_BUNKER_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + bunker_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_GREEN;
+    				 framePointer[(GLOBALS_BUNKER_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + bunker_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_GREEN;
+    				 framePointer[(GLOBALS_BUNKER_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + bunker_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_GREEN;
+    				 framePointer[(GLOBALS_BUNKER_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + bunker_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_GREEN;
+    			 }
+    		}
+        }
+    }
+
+}
+
+bunker_erode(unsigned int * framePointer, char bunker_number)
+{
+	int bunker_erode_y_pos = 0;
+	int bunker_erode_x_pos = 0;
+	int erosion_block = 10;
+	//int bunker_number = 2;
+
+
+	switch(erosion_block)
+	{
+		case 1:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_1;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_1;
+			break;
+		case 2:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_1;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_2;
+			break;
+		case 3:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_1;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_3;
+			break;
+		case 4:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_1;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_4;
+			break;
+		case 5:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_2;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_1;
+			break;
+		case 6:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_2;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_2;
+			break;
+		case 7:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_2;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_3;
+			break;
+		case 8:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_2;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_4;
+			break;
+		case 9:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_3;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_1;
+			break;
+		case 10:
+			bunker_erode_y_pos = GLOBALS_ERODE_BLOCK_Y_POS_3;
+			bunker_erode_x_pos = GLOBALS_ERODE_BLOCK_X_POS_4;
+			break;
+		default:
+			break;
+	}
+
+	switch(bunker_number)
+	{
+		case '1':
+			bunker_erode_x_pos = bunker_erode_x_pos;
+			break;
+		case '2':
+			bunker_erode_x_pos = bunker_erode_x_pos + GLOBALS_BUNKER_PIX_SEPARATION;
+			break;
+		case '3':
+			bunker_erode_x_pos = bunker_erode_x_pos + GLOBALS_BUNKER_PIX_SEPARATION*2;
+			break;
+		case '4':
+			bunker_erode_x_pos = bunker_erode_x_pos + GLOBALS_BUNKER_PIX_SEPARATION*3;
+			break;
+		default:
+			break;
+	}
+	xil_printf("y: %d\n\r",bunker_erode_y_pos);
+	xil_printf("x: %d\n\r",bunker_erode_x_pos);
+    int x, y;
+    for(y=0; y < 6; y++){
+		for(x=0; x < 6; x++){
+			 if(bunker_get_bunker_damage0_bits(y) & (1<<x)){
+				 framePointer[(bunker_erode_y_pos+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + bunker_erode_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;
+				 framePointer[(bunker_erode_y_pos+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + bunker_erode_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;
+				 framePointer[(bunker_erode_y_pos+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + bunker_erode_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;
+				 framePointer[(bunker_erode_y_pos+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + bunker_erode_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK
+						 ;
+			 }
+		}
+    }
+}
+
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

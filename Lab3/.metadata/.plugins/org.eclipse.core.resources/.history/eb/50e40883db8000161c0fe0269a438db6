@@ -1,0 +1,95 @@
+<<<<<<< HEAD
+/*
+ * bullet.c
+ *
+ *  Created on: Sep 22, 2016
+ *      Author: superman
+ */
+
+#include "bullet.h"
+#include "tank.h"
+
+#define GREEN 0x0000FF00
+#define WHITE 0xFFFFFFFF
+#define BLACK 0
+#define DOUBLE 2
+#define SHIFT_VAL 4
+#define MIN_X 0
+#define MAX_X 640
+#define HEIGHT 420
+#define TANK_PIXEL_WIDTH 30
+
+// Packs each horizontal line of the figures into a single 32 bit word.
+#define packword3(b2,b1,b0) \
+( (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ))
+
+static const int bullet_3x4[] = // This is the pixel pattern for the tank
+{
+	packword3(0,1,0),
+	packword3(1,1,1),
+	packword3(0,1,0),
+	packword3(0,1,0)
+};
+
+int get_bullet(int row)
+{ // Returns the value of the tank at a certain row
+	return bullet_3x4[row];
+}
+
+draw_bullet(unsigned int * framePointer)
+{
+	int tank_x_position = get_tank_x_position() + TANK_PIXEL_WIDTH/2 - 1;
+
+	int i;
+	for(i=1; i<7; i++){
+		framePointer[(HEIGHT-i)*MAX_X + tank_x_position] = WHITE;
+	}
+}
+=======
+/*
+ * bullet.c
+ *
+ *  Created on: Sep 22, 2016
+ *      Author: superman
+ */
+
+#include "bullet.h"
+#include "tank.h"
+
+#define GREEN 0x0000FF00
+#define WHITE 0xFFFFFFFF
+#define BLACK 0
+#define DOUBLE 2
+#define SHIFT_VAL 4
+#define MIN_X 0
+#define MAX_X 640
+#define HEIGHT 420
+#define TANK_PIXEL_WIDTH 30
+
+// Packs each horizontal line of the figures into a single 32 bit word.
+#define packword3(b2,b1,b0) \
+( (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ))
+
+static const int bullet_3x4[] = // This is the pixel pattern for the tank
+{
+	packword3(0,1,0),
+	packword3(1,1,1),
+	packword3(0,1,0),
+	packword3(0,1,0)
+};
+
+int get_bullet(int row)
+{ // Returns the value of the tank at a certain row
+	return bullet_3x4[row];
+}
+
+draw_bullet(unsigned int * framePointer)
+{
+	int tank_x_position = get_tank_x_position() + TANK_PIXEL_WIDTH/2 - 1;
+
+	int i;
+	for(i=1; i<7; i++){
+		framePointer[(HEIGHT-i)*MAX_X + tank_x_position] = WHITE;
+	}
+}
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

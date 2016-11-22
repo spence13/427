@@ -1,0 +1,7 @@
+wave add / -radix hex
+restart
+
+isim force add Bus2IP_Clk 1 -value 0 -time 5 ns -repeat 10 ms
+
+
+run 10000 ms

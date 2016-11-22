@@ -1,0 +1,269 @@
+#include <xparameters.h>
+#include "platform.h"
+#include "xac97_l.h"
+#include "sounds.h"
+#include "saucer.h"
+#include <stdio.h>
+#include "bullet.h"
+
+#include "game_sounds/soundexplosion.h"
+#include "game_sounds/soundinvade1.h"
+#include "game_sounds/soundinvade2.h"
+#include "game_sounds/soundinvade3.h"
+#include "game_sounds/soundinvade4.h"
+#include "game_sounds/soundinvadekill.h"
+#include "game_sounds/soundshoot.h"
+#include "game_sounds/soundufohigh.h"
+#include "game_sounds/soundufolow.h"
+
+extern uint16_t soundexplosion_sample_rate;//all the same sample rate
+
+extern uint8_t soundexplosion[];
+extern uint16_t soundexplosion_num_samples;
+
+extern uint8_t soundinvade1[];
+extern uint16_t soundinvade1_num_samples;
+
+extern uint8_t soundinvade2[];
+extern uint16_t soundinvade2_num_samples;
+
+extern uint8_t soundinvade3[];
+extern uint16_t soundinvade3_num_samples;
+
+extern uint8_t soundinvade4[];
+extern uint16_t soundinvade4_num_samples;
+
+extern uint8_t soundinvadekill[];
+extern uint16_t soundinvadekill_num_samples;
+
+extern uint8_t soundshoot[];
+extern uint16_t soundshoot_num_samples;
+
+extern uint8_t soundufohigh[];
+extern uint16_t soundufohigh_num_samples;
+
+extern uint8_t soundufolow[];
+extern uint16_t soundufolow_num_samples;
+
+
+uint16_t alien_march_sound_counter1 = 0;
+uint16_t alien_march_sound_counter2 = 0;
+uint16_t alien_march_sound_counter3 = 0;
+uint16_t alien_march_sound_counter4 = 0;
+uint16_t ufo_high_sound_counter = 0;
+uint16_t ufo_low_sound_counter = 0;
+uint16_t ufo_hit_sound_counter = 0;
+uint16_t tank_hit_sound_counter = 0;
+uint16_t tank_shoot_sound_counter = 0;
+
+uint8_t ufo_high_low_switch = 0; //boolean
+
+
+
+void set_sample_size(uint8_t current_sound)
+{
+	switch(current_sound)
+	{
+		case SOUND_ALIEN_MARCH1:
+			alien_march_sound_counter1 = soundinvade1_num_samples;
+			break;
+		case SOUND_ALIEN_MARCH2:
+			alien_march_sound_counter2 = soundinvade2_num_samples;
+			break;
+		case SOUND_ALIEN_MARCH3:
+			alien_march_sound_counter3 = soundinvade3_num_samples;
+			break;
+		case SOUND_ALIEN_MARCH4:
+			alien_march_sound_counter4 = soundinvade4_num_samples;
+			break;
+		case SOUND_UFO_HIGH:
+			ufo_high_sound_counter = soundufohigh_num_samples;
+			break;
+		case SOUND_UFO_LOW:
+			ufo_low_sound_counter = soundinvade1_num_samples;
+			break;
+		case SOUND_UFO_HIT:
+			ufo_hit_sound_counter = soundinvadekill_num_samples;
+			break;
+		case SOUND_TANK_HIT:
+			tank_hit_sound_counter = soundexplosion_num_samples;
+			break;
+		case SOUND_TANK_SHOOT:
+			tank_shoot_sound_counter = soundshoot_num_samples;
+			break;
+		default:
+			return;
+	}
+}
+
+void sound_init()
+{
+    XAC97_HardReset(XPAR_AXI_AC97_0_BASEADDR); //Hard reset
+
+    XAC97_AwaitCodecReady(XPAR_AXI_AC97_0_BASEADDR); //Wait for codec to be ready
+
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_ExtendedAudioStat, 1); //Enable VRA Mode
+
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCM_DAC_Rate, soundexplosion_sample_rate); //Writer frequency
+
+    // Play Volume Settings
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_AuxOutVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVolMono, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCBeepVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCMOutVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_LineInVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MicVol, AC97_VOL_MAX);
+
+    XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR); // Clear FIFOs
+}
+
+void play_sound()
+{
+	uint8_t num_active_sounds = (alien_march_sound_counter1!=0) + (alien_march_sound_counter2!=0) + (alien_march_sound_counter3!=0) + (alien_march_sound_counter4!=0)
+			+ (ufo_high_sound_counter!=0) + (ufo_low_sound_counter!=0) + (ufo_hit_sound_counter!=0) + (tank_hit_sound_counter!=0) + (tank_shoot_sound_counter!=0);
+	uint8_t num_loops = 100*num_active_sounds;
+	uint8_t i;
+	for (i=0; i < 200; i++)
+	{
+		if (tank_shoot_sound_counter > 0)
+		{
+			XAC97_mSetInFifoData(XPAR_AXI_AC97_0_BASEADDR, soundshoot[tank_shoot_sound_counter]);
+			tank_shoot_sound_counter--;
+			if(tank_shoot_sound_counter == 0){//(!bullet_get_is_fired()){
+				XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR); // Clear FIFOs
+				tank_shoot_sound_counter = 0;
+			}
+		}
+		if (tank_hit_sound_counter > 0)
+		{
+			XAC97_mSetInFifoData(XPAR_AXI_AC97_0_BASEADDR, soundexplosion[tank_hit_sound_counter]);
+			tank_hit_sound_counter--;
+			if(tank_hit_sound_counter == 0){
+				XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR); // Clear FIFOs
+				tank_hit_sound_counter = 0;
+			}
+		}
+		if (ufo_hit_sound_counter > 0)
+		{
+			XAC97_mSetInFifoData(XPAR_AXI_AC97_0_BASEADDR, soundinvadekill[ufo_hit_sound_counter]);
+			ufo_hit_sound_counter--;
+			if(ufo_hit_sound_counter == 0){
+				XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR); // Clear FIFOs
+				ufo_hit_sound_counter = 0;
+			}
+		}
+		if (saucer_get_exists_bool() && ufo_high_low_switch == 0){
+				if (ufo_high_sound_counter > 0)
+				{
+					XAC97_mSetInFifoData(XPAR_AXI_AC97_0_BASEADDR, soundufohigh[ufo_high_sound_counter]);
+					ufo_high_sound_counter--;
+				}
+				else
+				{
+					ufo_high_low_switch = 1;
+					set_sample_size(SOUND_UFO_LOW);
+				}
+		}
+		if (tank_shoot_sound_counter > 0)
+			continue;
+		if (saucer_get_exists_bool() && ufo_high_low_switch == 1){
+				if (ufo_low_sound_counter > 0)
+				{
+					XAC97_mSetInFifoData(XPAR_AXI_AC97_0_BASEADDR, soundufolow[ufo_low_sound_counter]);
+					ufo_low_sound_counter--;
+				}
+				else
+				{
+					ufo_high_low_switch = 0;
+					set_sample_size(SOUND_UFO_HIGH);
+				}
+		}
+		if (!saucer_get_exists_bool())
+		{
+			if (ufo_high_sound_counter > 0)
+			{
+				XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR); // Clear FIFOs
+				ufo_high_sound_counter = 0;
+			}
+			if (ufo_low_sound_counter > 0)
+			{
+				XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR); // Clear FIFOs
+				ufo_low_sound_counter = 0;
+			}
+		}
+		if (alien_march_sound_counter1 > 0)
+		{
+			XAC97_mSetInFifoData(XPAR_AXI_AC97_0_BASEADDR, soundinvade1[alien_march_sound_counter1]);
+			alien_march_sound_counter1--;
+			if(alien_march_sound_counter1 == 0){//(!bullet_get_is_fired()){
+				XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR); // Clear FIFOs
+				alien_march_sound_counter1 = 0;
+			}
+		}
+	}
+
+//
+//	uint16_t num_samples;
+//	uint8_t * samples;
+//	switch(current_sound)
+//	{
+//		case SOUND_ALIEN_MARCH1:
+//			XAC97_mSetInFifoData(XPAR_AXI_AC97_0_BASEADDR, soundinvade1[alien_march_sound_counter1]);
+//			num_samples = soundinvade1_num_samples;
+//			samples = &(soundinvade1);
+//			break;
+//		case SOUND_ALIEN_MARCH2:
+//			num_samples = soundinvade2_num_samples;
+//			samples = &(soundinvade2);
+//			break;
+//		case SOUND_ALIEN_MARCH3:
+//			num_samples = soundinvade3_num_samples;
+//			samples = &(soundinvade3);
+//			break;
+//		case SOUND_ALIEN_MARCH4:
+//			num_samples = soundinvade4_num_samples;
+//			samples = &(soundinvade4);
+//			break;
+//		case SOUND_UFO_HIGH:
+//			num_samples = soundufohigh_num_samples;
+//			samples = &(soundufohigh);
+//			break;
+//		case SOUND_UFO_LOW:
+//			num_samples = soundinvade1_num_samples;
+//			samples = &(soundufolow);
+//			break;
+//		case SOUND_UFO_HIT:
+//			num_samples = soundinvadekill_num_samples;
+//			samples = &(soundinvadekill);
+//			break;
+//		case SOUND_TANK_HIT:
+//			num_samples = soundexplosion_num_samples;
+//			samples = &(soundexplosion);
+//			break;
+//		case SOUND_TANK_SHOOT:
+//			num_samples = soundshoot_num_samples;
+//			samples = &(soundshoot);
+//			break;
+//		default:
+//			return 0;
+//	}
+
+
+    //Set control bit to cause IN_FIFO interrupts
+
+    //Add AC97 mask to general INT masks
+
+//    int32_t i; //iterator
+//    int32_t bottom = (current_sound_position-100);
+//    if (bottom < 0)
+//    	bottom = 0;
+//
+//    for (i=current_sound_position-1; i >= bottom; i--) //loop through all samples of sound (we loop backwards, because we converted it backwards)
+//    	XAC97_mSetInFifoData(XPAR_AXI_AC97_0_BASEADDR, samples[i]);
+//
+//    if (bottom == 0)
+//    	XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR); // Clear FIFOs
+//    return (uint16_t)bottom;
+}
+

@@ -1,0 +1,29 @@
+<<<<<<< HEAD
+run
+-ifmt VHDL
+-ent axi_vdma_0_wrapper_fifo_generator_v8_3_top 
+-p xc6slx4-tqg144-3
+-ifn xst.prj
+-write_timing_constraints No
+-iobuf YES
+-max_fanout 100
+-ofn axi_vdma_0_wrapper_fifo_generator_v8_3_top 
+-ofmt NGC
+-bus_delimiter ()
+-hierarchy_separator /
+-case Maintain
+=======
+run
+-ifmt VHDL
+-ent axi_vdma_0_wrapper_fifo_generator_v8_3_top 
+-p xc6slx4-tqg144-3
+-ifn xst.prj
+-write_timing_constraints No
+-iobuf YES
+-max_fanout 100
+-ofn axi_vdma_0_wrapper_fifo_generator_v8_3_top 
+-ofmt NGC
+-bus_delimiter ()
+-hierarchy_separator /
+-case Maintain
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

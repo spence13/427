@@ -1,0 +1,16 @@
+/*
+ * sounds.c
+ *
+ *  Created on: Oct 24, 2016
+ *      Author: superman
+ */
+
+extern sounds/soundexplosion;
+extern sounds/soundeinvade1;
+extern sounds/soundeinvade2;
+extern sounds/soundeinvade3;
+extern sounds/soundeinvade4;
+extern sounds/soundinvadekill;
+extern sounds/soundshoot;
+extern sounds/soundufohigh;
+extern sounds/soundufolow;

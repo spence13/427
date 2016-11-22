@@ -1,0 +1,76 @@
+/*
+ * Copyright (c) 2009 Xilinx, Inc.  All rights reserved.
+ *
+ * Xilinx, Inc.
+ * XILINX IS PROVIDING THIS DESIGN, CODE, OR INFORMATION "AS IS" AS A
+ * COURTESY TO YOU.  BY PROVIDING THIS DESIGN, CODE, OR INFORMATION AS
+ * ONE POSSIBLE   IMPLEMENTATION OF THIS FEATURE, APPLICATION OR
+ * STANDARD, XILINX IS MAKING NO REPRESENTATION THAT THIS IMPLEMENTATION
+ * IS FREE FROM ANY CLAIMS OF INFRINGEMENT, AND YOU ARE RESPONSIBLE
+ * FOR OBTAINING ANY RIGHTS YOU MAY REQUIRE FOR YOUR IMPLEMENTATION.
+ * XILINX EXPRESSLY DISCLAIMS ANY WARRANTY WHATSOEVER WITH RESPECT TO
+ * THE ADEQUACY OF THE IMPLEMENTATION, INCLUDING BUT NOT LIMITED TO
+ * ANY WARRANTIES OR REPRESENTATIONS THAT THIS IMPLEMENTATION IS FREE
+ * FROM CLAIMS OF INFRINGEMENT, IMPLIED WARRANTIES OF MERCHANTABILITY
+ * AND FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ */
+
+/*
+ * helloworld.c: simple test application
+ */
+#include <xparameters.h>
+#include <stdio.h>
+#include "platform.h"
+#include <stdint.h>
+#include "test.h"
+#include "xac97_l.h"
+
+extern uint16_t soundexplosion_sample_rate;//all the same sample rate
+extern uint8_t soundexplosion[];
+extern uint16_t soundexplosion_num_samples;
+
+void print(char *str);
+
+int main()
+{
+    init_platform();
+    XAC97_HardReset(XPAR_AXI_AC97_0_BASEADDR);
+    XAC97_AwaitCodecReady(XPAR_AXI_AC97_0_BASEADDR);
+
+    /** Enable VRA Mode **/
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_ExtendedAudioStat, 1);
+
+    /** Writer frequency **/
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCM_DAC_Rate, soundexplosion_sample_rate);
+
+    /** Play Volume Settings **/
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_AuxOutVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVolMono, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCBeepVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCMOutVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_LineInVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MicVol, AC97_VOL_MAX);
+
+    /** Clear FIFOs *
+     * */
+    XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR);
+
+    print("Hello World\n\r");
+
+    while(1)
+    {
+		int i;
+		for (i=soundexplosion_num_samples; i >= 0; i--)
+		{
+			XAC97_WriteFifo(XPAR_AXI_AC97_0_BASEADDR, soundexplosion[i]);
+		}
+    }
+
+
+    print("finish\n\r");
+    cleanup_platform();
+
+    return 0;
+}

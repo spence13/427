@@ -1,0 +1,35 @@
+<<<<<<< HEAD
+/*
+ * bullet.h
+ *
+ *  Created on: Sep 22, 2016
+ *      Author: superman
+ */
+
+#ifndef BULLET_H_
+#define BULLET_H_
+
+
+int get_bullet(int);
+void draw_bullet(unsigned int *);
+
+
+#endif /* BULLET_H_ */
+=======
+/*
+ * bullet.h
+ *
+ *  Created on: Sep 22, 2016
+ *      Author: superman
+ */
+
+#ifndef BULLET_H_
+#define BULLET_H_
+
+
+int get_bullet(int);
+void draw_bullet(unsigned int *);
+
+
+#endif /* BULLET_H_ */
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

@@ -1,0 +1,23 @@
+<<<<<<< HEAD
+# Output products list for <chipscope_icon_0>
+chipscope_icon_0.asy
+chipscope_icon_0.ejp
+chipscope_icon_0.gise
+chipscope_icon_0.ngc
+chipscope_icon_0.xco
+chipscope_icon_0.xise
+chipscope_icon_0_flist.txt
+chipscope_icon_0_readme.txt
+chipscope_icon_0_xmdf.tcl
+=======
+# Output products list for <chipscope_icon_0>
+chipscope_icon_0.asy
+chipscope_icon_0.ejp
+chipscope_icon_0.gise
+chipscope_icon_0.ngc
+chipscope_icon_0.xco
+chipscope_icon_0.xise
+chipscope_icon_0_flist.txt
+chipscope_icon_0_readme.txt
+chipscope_icon_0_xmdf.tcl
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

@@ -1,0 +1,12 @@
+
+**** Build of configuration Debug for project hello_world_0 ****
+
+make all 
+Building file: ../src/helloworld.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -I../../hello_world_bsp_0/microblaze_0/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mcpu=v8.20.b -mno-xl-soft-mul -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.d" -o"src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:38: error: 'XPAR_NES_CONTROLLER_0_BASEADDR' undeclared (first use in this function)
+../src/helloworld.c:38: error: (Each undeclared identifier is reported only once
+../src/helloworld.c:38: error: for each function it appears in.)
+make: *** [src/helloworld.o] Error 1

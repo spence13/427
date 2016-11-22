@@ -1,0 +1,17 @@
+<<<<<<< HEAD
+#Wed Sep 21 16:31:01 MDT 2016
+eclipse.preferences.version=1
+tipsAndTricks=true
+platformState=1345658210983
+EXIT_PROMPT_ON_CLOSE_LAST_WINDOW=false
+quickStart=false
+PROBLEMS_FILTERS_MIGRATE=true
+=======
+#Wed Sep 21 16:31:01 MDT 2016
+eclipse.preferences.version=1
+tipsAndTricks=true
+platformState=1345658210983
+EXIT_PROMPT_ON_CLOSE_LAST_WINDOW=false
+quickStart=false
+PROBLEMS_FILTERS_MIGRATE=true
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

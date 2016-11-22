@@ -1,0 +1,51 @@
+<<<<<<< HEAD
+/*
+ * bunker.h
+ *
+ *  Created on: Sep 22, 2016
+ *      Author: superman
+ */
+
+#ifndef BUNKER_H_
+#define BUNKER_H_
+
+int bunker_get_bunker_bits(int);
+int bunker_get_bunker_damage0_bits(int);
+int bunker_get_bunker_damage1_bits(int);
+int bunker_get_bunker_damage2_bits(int);
+int bunker_get_bunker_damage3_bits(int);
+void bunker_draw(unsigned int *);
+void bunker_get_erosion_block(int);
+void bunker_get_erosion_bunker_num(int);
+void bunker_get_erosion_state(int);
+void bunker_erode(unsigned int * framePointer, int, int);
+
+
+
+#endif /* BUNKER_H_ */
+=======
+/*
+ * bunker.h
+ *
+ *  Created on: Sep 22, 2016
+ *      Author: superman
+ */
+
+#ifndef BUNKER_H_
+#define BUNKER_H_
+
+int bunker_get_bunker_bits(int);
+int bunker_get_bunker_damage0_bits(int);
+int bunker_get_bunker_damage1_bits(int);
+int bunker_get_bunker_damage2_bits(int);
+int bunker_get_bunker_damage3_bits(int);
+void bunker_draw(unsigned int *);
+void bunker_get_erosion_block(int);
+void bunker_get_erosion_bunker_num(int);
+void bunker_get_erosion_state(int);
+void bunker_erode(unsigned int * framePointer, int, int);
+
+
+
+#endif /* BUNKER_H_ */
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

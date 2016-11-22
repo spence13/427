@@ -1,0 +1,15 @@
+##############################################################################
+## Filename:          C:\Madsen\SpaceInvadersCreativeHW/drivers/nes_controller_v1_00_a/data/nes_controller_v2_1_0.mdd
+## Description:       Microprocessor Driver Definition
+## Date:              Thu Nov 19 13:48:36 2015 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+OPTION psf_version = 2.1.0;
+
+BEGIN DRIVER nes_controller
+
+  OPTION supported_peripherals = (nes_controller);
+  OPTION depends = (common_v1_00_a);
+  OPTION copyfiles = all;
+
+END DRIVER

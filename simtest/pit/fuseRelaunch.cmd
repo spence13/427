@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "C:/Users/superman/Desktop/427/simtest/pit/user_logic_isim_beh.exe" -prj "C:/Users/superman/Desktop/427/simtest/pit/user_logic_beh.prj" "work.user_logic" 

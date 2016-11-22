@@ -1,0 +1,23 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="CleanDialogSettings">
+		<item value="500" key="DIALOG_WIDTH"/>
+		<item value="329" key="DIALOG_Y_ORIGIN"/>
+		<item value="905" key="DIALOG_X_ORIGIN"/>
+		<item value="377" key="DIALOG_HEIGHT"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+	</section>
+</section>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="CleanDialogSettings">
+		<item value="500" key="DIALOG_WIDTH"/>
+		<item value="329" key="DIALOG_Y_ORIGIN"/>
+		<item value="905" key="DIALOG_X_ORIGIN"/>
+		<item value="377" key="DIALOG_HEIGHT"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+	</section>
+</section>
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

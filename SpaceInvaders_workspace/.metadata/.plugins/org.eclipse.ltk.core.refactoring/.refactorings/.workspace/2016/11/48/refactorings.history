@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 2 resources" deleteContents="false" description="Delete 2 resources" element1="/SpaceInvaders/src/nes.c" element2="/SpaceInvaders/src/nes.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="2" stamp="1479748785798"/>
+</session>

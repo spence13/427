@@ -1,0 +1,47 @@
+/*
+ * sounds.c
+ *
+ *  Created on: Oct 24, 2016
+ *      Author: superman
+ */
+
+#include <stdint.h>
+#include "sounds/soundexplosion.h"
+#include "sounds/soundinvade1.h"
+#include "sounds/soundinvade2.h"
+#include "sounds/soundinvade3.h"
+#include "sounds/soundinvade4.h"
+#include "sounds/soundinvadekill.h"
+#include "sounds/soundshoot.h"
+#include "sounds/soundufohigh.h"
+#include "sounds/soundufolow.h"
+
+extern uint16_t soundexplosion_sample_rate;
+
+
+extern uint8_t soundexplosion;
+extern uint16_t soundexplosion_num_samples;
+
+extern uint8_t soundeinvade1;
+extern uint16_t soundinvade1_num_samples;
+
+extern uint8_t soundeinvade2;
+extern uint16_t soundinvade2_num_samples;
+
+extern uint8_t soundeinvade3;
+extern uint16_t soundinvade3_num_samples;
+
+extern uint8_t soundeinvade4;
+extern uint16_t soundinvade4_num_samples;
+
+extern uint8_t soundinvadekill;
+extern uint16_t soundinvadekill_num_samples;
+
+extern uint8_t soundshoot;
+extern uint16_t soundshoot_num_samples;
+
+extern uint8_t soundufohigh;
+extern uint16_t soundufohigh_num_samples;
+
+extern uint8_t soundufolow;
+extern uint16_t soundufolow_num_samples;

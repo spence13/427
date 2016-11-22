@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+-g TdoPin:PULLNONE
+-g StartUpClk:JTAGCLK
+#add other options here.
+=======
+-g TdoPin:PULLNONE
+-g StartUpClk:JTAGCLK
+#add other options here.
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

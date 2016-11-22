@@ -1,0 +1,553 @@
+<<<<<<< HEAD
+!SESSION 2016-10-10 21:01:37.852 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-10-10 21:03:09.106
+!MESSAGE Indexed 'hello_world_bsp_0' (61 sources, 50 headers) in 1.04 sec: 1,921 declarations; 9,148 references; 18 unresolved inclusions; 0 syntax errors; 81 unresolved names (0.73%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-10-10 21:03:09.402
+!MESSAGE Indexed 'SpaceInvaders' (2 sources, 31 headers) in 0.28 sec: 871 declarations; 826 references; 3 unresolved inclusions; 0 syntax errors; 1 unresolved names (0.06%)
+!SESSION 2016-10-11 19:21:57.374 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-10-11 19:22:09.248
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2016-10-12 20:23:17.228 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.cdt.debug.mi.core 4 42 2016-10-12 21:10:56.388
+!MESSAGE Internal Error
+!STACK 0
+org.eclipse.cdt.debug.mi.core.cdi.MI2CDIException: Inferior terminated[]
+	at org.eclipse.cdt.debug.mi.core.cdi.SharedLibraryManager.getMIShareds(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.cdi.SharedLibraryManager.updateState(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.cdi.SharedLibraryManager.update(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.cdi.EventManager.processSuspendedEvent(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.cdi.EventManager.update(Unknown Source)
+	at java.util.Observable.notifyObservers(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.MISession.notifyObservers(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.EventThread.run(Unknown Source)
+!SESSION 2016-10-24 13:11:31.883 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-10-24 13:11:55.756
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-10-24 13:11:59.531
+!MESSAGE Indexed 'SpaceInvaders' (9 sources, 60 headers) in 0.94 sec: 2,614 declarations; 5,745 references; 3 unresolved inclusions; 0 syntax errors; 1 unresolved names (0.01%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-10-24 13:12:00.342
+!MESSAGE Indexed 'hello_world_bsp_0' (61 sources, 50 headers) in 0.80 sec: 1,921 declarations; 9,148 references; 18 unresolved inclusions; 0 syntax errors; 81 unresolved names (0.73%)
+!SESSION 2016-10-25 17:08:14.861 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.osgi 2 1 2016-10-25 17:20:59.424
+!MESSAGE NLS unused message: RenameCSourceFolderChange_ErrorMsg in: org.eclipse.cdt.internal.ui.refactoring.rename.Messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-10-25 17:20:59.424
+!MESSAGE NLS missing message: RenameCSourceFolderChange_ErroMsg in: org.eclipse.cdt.internal.ui.refactoring.rename.Messages
+!SESSION 2016-10-26 13:39:21.160 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-10-26 13:59:17.716
+!MESSAGE Indexed 'standalone_bsp_0' (0 sources, 8 headers) in 0.06 sec: 0 declarations; 0 references; 8 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+!SESSION 2016-10-26 14:22:55.776 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.debug.core 4 2 2016-10-26 15:49:47.693
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.debug.core".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.debug.mi.core.cdi.Session.terminate(Unknown Source)
+	at org.eclipse.cdt.debug.internal.core.SessionManager.handleTerminateEvent(Unknown Source)
+	at org.eclipse.cdt.debug.internal.core.SessionManager.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1089)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1123)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:390)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.debug.core 4 125 2016-10-26 15:49:47.880
+!MESSAGE An exception occurred while dispatching debug events.
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.debug.mi.core.cdi.Session.terminate(Unknown Source)
+	at org.eclipse.cdt.debug.internal.core.SessionManager.handleTerminateEvent(Unknown Source)
+	at org.eclipse.cdt.debug.internal.core.SessionManager.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1089)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1123)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:390)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2016-10-27 10:13:31.343 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-10-27 10:13:34.497
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2016-11-16 16:39:23.352 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.cdt.managedbuilder.core 4 0 2016-11-16 18:40:36.665
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.core.CCorePlugin.getCProjectDescription(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2$ScannerConfigInfoSet.load(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2$ScannerConfigInfoSet.<init>(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2.createInfoSet(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigProfileManager.createScannerConfigBuildInfo2Set(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.getContainer(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.createMap(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.getInfo(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getContextInfo(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getContextInfo(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getDiscoveredInfo(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ProfileInfoProvider.getEntryValues(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.getDiscoveredEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.putEntriesToLevel(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.initCache(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.getEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.getEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.getEntriesToCopy(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.createStore(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.copySettingsFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.copySettingsFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.<init>(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.copyLanguageData(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultFolderData.copyDataFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.<init>(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.copyFolderData(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultConfigurationData.copySettingsFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.core.model.CoreModel.getProjectDescription(Unknown Source)
+	at com.xilinx.sdk.managedbuilder.scannerconfig.ManagedMBGCCScannerInfoConsoleParser.doCalcManagedBuildOnState(Unknown Source)
+	at com.xilinx.sdk.managedbuilder.scannerconfig.ManagedMBGCCScannerInfoConsoleParser.isManagedBuildOn(Unknown Source)
+	at com.xilinx.sdk.managedbuilder.scannerconfig.ManagedMBGCCScannerInfoConsoleParser.processLine(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.processLine(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.access$0(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.checkLine(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.cdt.core.CommandLauncher.printCommandLine(Unknown Source)
+	at org.eclipse.cdt.core.CommandLauncher.waitAndRead(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.invokeMake(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.invokeBuilder(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(Unknown Source)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:629)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:172)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:203)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:255)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:258)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:343)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 2 2016-11-16 18:40:36.759
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.runtime.CoreException: 
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.invokeMake(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.invokeBuilder(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(Unknown Source)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:629)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:172)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:203)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:255)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:258)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:343)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.lang.NullPointerException
+	at org.eclipse.cdt.core.CCorePlugin.getCProjectDescription(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2$ScannerConfigInfoSet.load(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2$ScannerConfigInfoSet.<init>(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2.createInfoSet(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigProfileManager.createScannerConfigBuildInfo2Set(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.getContainer(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.createMap(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.getInfo(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getContextInfo(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getContextInfo(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getDiscoveredInfo(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ProfileInfoProvider.getEntryValues(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.getDiscoveredEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.putEntriesToLevel(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.initCache(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.getEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.getEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.getEntriesToCopy(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.createStore(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.copySettingsFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.copySettingsFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.<init>(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.copyLanguageData(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultFolderData.copyDataFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.<init>(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.copyFolderData(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultConfigurationData.copySettingsFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.core.model.CoreModel.getProjectDescription(Unknown Source)
+	at com.xilinx.sdk.managedbuilder.scannerconfig.ManagedMBGCCScannerInfoConsoleParser.doCalcManagedBuildOnState(Unknown Source)
+	at com.xilinx.sdk.managedbuilder.scannerconfig.ManagedMBGCCScannerInfoConsoleParser.isManagedBuildOn(Unknown Source)
+	at com.xilinx.sdk.managedbuilder.scannerconfig.ManagedMBGCCScannerInfoConsoleParser.processLine(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.processLine(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.access$0(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.checkLine(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.cdt.core.CommandLauncher.printCommandLine(Unknown Source)
+	at org.eclipse.cdt.core.CommandLauncher.waitAndRead(Unknown Source)
+	... 17 more
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2016-11-16 18:40:36.759
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.core.CCorePlugin.getCProjectDescription(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2$ScannerConfigInfoSet.load(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2$ScannerConfigInfoSet.<init>(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2.createInfoSet(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigProfileManager.createScannerConfigBuildInfo2Set(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.getContainer(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.createMap(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.getInfo(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getContextInfo(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getContextInfo(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getDiscoveredInfo(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ProfileInfoProvider.getEntryValues(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.getDiscoveredEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.putEntriesToLevel(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.initCache(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.getEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.getEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.getEntriesToCopy(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.createStore(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.copySettingsFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.copySettingsFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.<init>(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.copyLanguageData(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultFolderData.copyDataFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.<init>(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.copyFolderData(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultConfigurationData.copySettingsFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.core.model.CoreModel.getProjectDescription(Unknown Source)
+	at com.xilinx.sdk.managedbuilder.scannerconfig.ManagedMBGCCScannerInfoConsoleParser.doCalcManagedBuildOnState(Unknown Source)
+	at com.xilinx.sdk.managedbuilder.scannerconfig.ManagedMBGCCScannerInfoConsoleParser.isManagedBuildOn(Unknown Source)
+	at com.xilinx.sdk.managedbuilder.scannerconfig.ManagedMBGCCScannerInfoConsoleParser.processLine(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.processLine(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.access$0(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.checkLine(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.cdt.core.CommandLauncher.printCommandLine(Unknown Source)
+	at org.eclipse.cdt.core.CommandLauncher.waitAndRead(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.invokeMake(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.invokeBuilder(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(Unknown Source)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:629)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:172)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:203)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:255)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:258)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:343)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.managedbuilder.core 4 0 2016-11-16 18:40:36.759
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.core.CCorePlugin.getCProjectDescription(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2$ScannerConfigInfoSet.load(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2$ScannerConfigInfoSet.<init>(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2.createInfoSet(Unknown Source)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigProfileManager.createScannerConfigBuildInfo2Set(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.getContainer(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.createMap(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.getInfo(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getContextInfo(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getContextInfo(Unknown Source)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getDiscoveredInfo(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ProfileInfoProvider.getEntryValues(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.getDiscoveredEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.putEntriesToLevel(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.initCache(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.getEntries(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.getEntries(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.getEntriesToCopy(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.createStore(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.copySettingsFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.copySettingsFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.<init>(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.copyLanguageData(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultFolderData.copyDataFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.<init>(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.copyFolderData(Unknown Source)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultConfigurationData.copySettingsFrom(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(Unknown Source)
+	at org.eclipse.cdt.core.model.CoreModel.getProjectDescription(Unknown Source)
+	at com.xilinx.sdk.managedbuilder.scannerconfig.ManagedMBGCCScannerInfoConsoleParser.doCalcManagedBuildOnState(Unknown Source)
+	at com.xilinx.sdk.managedbuilder.scannerconfig.ManagedMBGCCScannerInfoConsoleParser.isManagedBuildOn(Unknown Source)
+	at com.xilinx.sdk.managedbuilder.scannerconfig.ManagedMBGCCScannerInfoConsoleParser.processLine(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.processLine(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.access$0(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.checkLine(Unknown Source)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.write(Unknown Source)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.cdt.core.CommandLauncher.printCommandLine(Unknown Source)
+	at org.eclipse.cdt.core.CommandLauncher.waitAndRead(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.invokeMake(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.invokeBuilder(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(Unknown Source)
+	at org.eclipse.cdt.managedbuilder.internal.core.CommonBuilder.build(Unknown Source)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:629)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:172)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:203)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:255)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:258)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:343)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2016-11-16 18:46:27.181 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-11-16 18:46:32.488
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2016-11-18 14:43:31.948 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.debug.core 4 125 2016-11-18 14:49:35.759
+!MESSAGE Error logged from Debug Core: 
+!STACK 0
+java.io.IOException: Write end dead
+	at java.io.PipedInputStream.read(Unknown Source)
+	at java.io.PipedInputStream.read(Unknown Source)
+	at java.io.BufferedInputStream.read1(Unknown Source)
+	at java.io.BufferedInputStream.read(Unknown Source)
+	at java.io.FilterInputStream.read(Unknown Source)
+	at org.eclipse.debug.internal.core.OutputStreamMonitor.read(OutputStreamMonitor.java:144)
+	at org.eclipse.debug.internal.core.OutputStreamMonitor.access$1(OutputStreamMonitor.java:134)
+	at org.eclipse.debug.internal.core.OutputStreamMonitor$1.run(OutputStreamMonitor.java:207)
+	at java.lang.Thread.run(Unknown Source)
+!SESSION 2016-11-21 07:31:32.363 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-11-21 07:31:51.897
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+=======
+!SESSION 2016-10-10 21:01:37.852 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-10-10 21:03:09.106
+!MESSAGE Indexed 'hello_world_bsp_0' (61 sources, 50 headers) in 1.04 sec: 1,921 declarations; 9,148 references; 18 unresolved inclusions; 0 syntax errors; 81 unresolved names (0.73%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-10-10 21:03:09.402
+!MESSAGE Indexed 'SpaceInvaders' (2 sources, 31 headers) in 0.28 sec: 871 declarations; 826 references; 3 unresolved inclusions; 0 syntax errors; 1 unresolved names (0.06%)
+!SESSION 2016-10-11 19:21:57.374 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-10-11 19:22:09.248
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!SESSION 2016-10-12 20:23:17.228 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.cdt.debug.mi.core 4 42 2016-10-12 21:10:56.388
+!MESSAGE Internal Error
+!STACK 0
+org.eclipse.cdt.debug.mi.core.cdi.MI2CDIException: Inferior terminated[]
+	at org.eclipse.cdt.debug.mi.core.cdi.SharedLibraryManager.getMIShareds(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.cdi.SharedLibraryManager.updateState(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.cdi.SharedLibraryManager.update(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.cdi.EventManager.processSuspendedEvent(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.cdi.EventManager.update(Unknown Source)
+	at java.util.Observable.notifyObservers(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.MISession.notifyObservers(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.EventThread.run(Unknown Source)
+!SESSION 2016-10-24 13:11:31.883 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-10-24 13:11:55.756
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-10-24 13:11:59.531
+!MESSAGE Indexed 'SpaceInvaders' (9 sources, 60 headers) in 0.94 sec: 2,614 declarations; 5,745 references; 3 unresolved inclusions; 0 syntax errors; 1 unresolved names (0.01%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-10-24 13:12:00.342
+!MESSAGE Indexed 'hello_world_bsp_0' (61 sources, 50 headers) in 0.80 sec: 1,921 declarations; 9,148 references; 18 unresolved inclusions; 0 syntax errors; 81 unresolved names (0.73%)
+!SESSION 2016-10-25 17:08:14.861 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.osgi 2 1 2016-10-25 17:20:59.424
+!MESSAGE NLS unused message: RenameCSourceFolderChange_ErrorMsg in: org.eclipse.cdt.internal.ui.refactoring.rename.Messages
+
+!ENTRY org.eclipse.osgi 2 1 2016-10-25 17:20:59.424
+!MESSAGE NLS missing message: RenameCSourceFolderChange_ErroMsg in: org.eclipse.cdt.internal.ui.refactoring.rename.Messages
+!SESSION 2016-10-26 13:39:21.160 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-10-26 13:59:17.716
+!MESSAGE Indexed 'standalone_bsp_0' (0 sources, 8 headers) in 0.06 sec: 0 declarations; 0 references; 8 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
+!SESSION 2016-10-26 14:22:55.776 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.debug.core 4 2 2016-10-26 15:49:47.693
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.debug.core".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.debug.mi.core.cdi.Session.terminate(Unknown Source)
+	at org.eclipse.cdt.debug.internal.core.SessionManager.handleTerminateEvent(Unknown Source)
+	at org.eclipse.cdt.debug.internal.core.SessionManager.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1089)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1123)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:390)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.debug.core 4 125 2016-10-26 15:49:47.880
+!MESSAGE An exception occurred while dispatching debug events.
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.debug.mi.core.cdi.Session.terminate(Unknown Source)
+	at org.eclipse.cdt.debug.internal.core.SessionManager.handleTerminateEvent(Unknown Source)
+	at org.eclipse.cdt.debug.internal.core.SessionManager.handleDebugEvents(Unknown Source)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1089)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1123)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:390)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2016-10-27 10:13:31.343 -----------------------------------------------
+eclipse.buildId=Release 13.4 Build SDK_O.87xd
+java.version=1.6.0_21
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-10-27 10:13:34.497
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

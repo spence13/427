@@ -1,0 +1,8 @@
+-batch 
+-create nes_controller 
+-ver 1.00.a 
+-dir "C:\Users\superman\Desktop\427\SpaceInvadersFinalHW\SpaceInvaderTestHW2" 
+-lang vhdl 
+-bus axi4lite s 
+-reg 2 
+-xps 

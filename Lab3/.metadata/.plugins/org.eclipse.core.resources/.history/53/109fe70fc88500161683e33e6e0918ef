@@ -1,0 +1,541 @@
+<<<<<<< HEAD
+#include "aliens.h"
+#include "globals.h"
+
+#include <stdio.h>
+
+#define ALIENS_ROWS 5
+#define ALIENS_COLS 11
+#define ALIENS_BITS_X 12
+#define ALIENS_BITS_Y 8
+#define ALIEN_SPACER_X 5
+#define ALIEN_SPACER_Y 10
+#define ALIEN_FRAME_SIZE_X (11*12 + 10*ALIEN_SPACER_X)*2
+#define ALIEN_FRAME_SIZE_Y (5*8 + 4*ALIEN_SPACER_Y)*2
+#define ALIEN_X_MOVEMENT 4
+#define ALIEN_Y_MOVEMENT 4
+
+// Packs each horizontal line of the figures into a single 12 bit word.
+#define packword12(b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+ ((b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | (b7  << 7 ) | (b6  << 6 ) | \
+ (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ))
+
+// Packs each horizontal line of the figures into a single 12 bit word.
+#define packword11(b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+ ((b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | (b7  << 7 ) | (b6  << 6 ) | \
+ (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ))
+
+static const int alien_explosion_12x10[] =
+{
+	packword12(0,0,0,0,0,0,1,0,0,0,0,0),
+	packword12(0,0,0,1,0,0,1,0,0,0,1,0),
+	packword12(1,0,0,1,0,0,0,0,0,1,0,0),
+	packword12(0,1,0,0,1,0,0,0,1,0,0,0),
+	packword12(0,0,0,0,0,0,0,0,0,0,1,1),
+	packword12(1,1,0,0,0,0,0,0,0,0,0,0),
+	packword12(0,0,0,1,0,0,0,1,0,0,1,0),
+	packword12(0,0,1,0,0,0,0,0,1,0,0,1),
+	packword12(0,1,0,0,0,1,0,0,1,0,0,0),
+	packword12(0,0,0,0,0,1,0,0,0,0,0,0)
+};
+
+static const int alien_top_in_12x8[] =
+{
+	packword12(0,0,0,0,0,1,1,0,0,0,0,0),
+	packword12(0,0,0,0,1,1,1,1,0,0,0,0),
+	packword12(0,0,0,1,1,1,1,1,1,0,0,0),
+	packword12(0,0,1,1,0,1,1,0,1,1,0,0),
+	packword12(0,0,1,1,1,1,1,1,1,1,0,0),
+	packword12(0,0,0,1,0,1,1,0,1,0,0,0),
+	packword12(0,0,1,0,0,0,0,0,0,1,0,0),
+	packword12(0,0,0,1,0,0,0,0,1,0,0,0)
+};
+
+static const int alien_top_out_12x8[] =
+{
+	packword12(0,0,0,0,0,1,1,0,0,0,0,0),
+	packword12(0,0,0,0,1,1,1,1,0,0,0,0),
+	packword12(0,0,0,1,1,1,1,1,1,0,0,0),
+	packword12(0,0,1,1,0,1,1,0,1,1,0,0),
+	packword12(0,0,1,1,1,1,1,1,1,1,0,0),
+	packword12(0,0,0,0,1,0,0,1,0,0,0,0),
+	packword12(0,0,0,1,0,1,1,0,1,0,0,0),
+	packword12(0,0,1,0,1,0,0,1,0,1,0,0)
+};
+
+static const int alien_middle_in_12x8[] =
+{
+	packword12(0,0,0,1,0,0,0,0,0,1,0,0),
+	packword12(0,0,0,0,1,0,0,0,1,0,0,0),
+	packword12(0,0,0,1,1,1,1,1,1,1,0,0),
+	packword12(0,0,1,1,0,1,1,1,0,1,1,0),
+	packword12(0,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(0,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(0,1,0,1,0,0,0,0,0,1,0,1),
+	packword12(0,0,0,0,1,1,0,1,1,0,0,0)
+};
+
+static const int alien_middle_out_12x8[] =
+{
+	packword12(0,0,0,1,0,0,0,0,0,1,0,0),
+	packword12(0,1,0,0,1,0,0,0,1,0,0,1),
+	packword12(0,1,0,1,1,1,1,1,1,1,0,1),
+	packword12(0,1,1,1,0,1,1,1,0,1,1,1),
+	packword12(0,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(0,0,1,1,1,1,1,1,1,1,1,0),
+	packword12(0,0,0,1,0,0,0,0,0,1,0,0),
+	packword12(0,0,1,0,0,0,0,0,0,0,1,0)
+};
+
+static const int alien_bottom_in_12x8[] =
+{
+	packword12(0,0,0,0,1,1,1,1,0,0,0,0),
+	packword12(0,1,1,1,1,1,1,1,1,1,1,0),
+	packword12(1,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(1,1,1,0,0,1,1,0,0,1,1,1),
+	packword12(1,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(0,0,1,1,1,0,0,1,1,1,0,0),
+	packword12(0,1,1,0,0,1,1,0,0,1,1,0),
+	packword12(0,0,1,1,0,0,0,0,1,1,0,0)
+};
+
+static const int alien_bottom_out_12x8[] =
+{
+	packword12(0,0,0,0,1,1,1,1,0,0,0,0),
+	packword12(0,1,1,1,1,1,1,1,1,1,1,0),
+	packword12(1,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(1,1,1,0,0,1,1,0,0,1,1,1),
+	packword12(1,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(0,0,0,1,1,0,0,1,1,0,0,0),
+	packword12(0,0,1,1,0,1,1,0,1,1,0,0),
+	packword12(1,1,0,0,0,0,0,0,0,0,1,1)
+};
+
+
+static int aliens_alive[] = // This global will keep track of which aliens are alive. 1 = alive, 0 = dead
+{
+	packword11(1,1,1,1,1,1,1,1,1,1,1),
+	packword11(1,1,1,1,1,1,1,1,1,1,1),
+	packword11(1,1,1,1,1,1,1,1,1,1,1),
+	packword11(1,1,1,1,1,1,1,1,1,1,1),
+	packword11(1,1,1,1,1,1,1,1,1,1,1)
+};
+
+
+int alien_frame_pos_x = GLOBALS_MAX_X/GLOBALS_TWO - ALIEN_FRAME_SIZE_X/2;
+int alien_frame_pos_y = 50;
+int alien_frame_direction = 0; // Right when 0, Left when 1
+int aliens_legs = 0; // 0 when legs closed, 1 when legs opened
+
+void draw_single_alien(unsigned int * framePointer, const int * alien_sprite, int current_pos_x, int current_pos_y)
+{
+	int x, y;
+	for (y=0; y < ALIENS_BITS_Y; y++){
+		for (x=0; x < ALIENS_BITS_X; x++){
+			 if(alien_sprite[y] & (1<<x)){
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)] = GLOBALS_WHITE;
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)+1] = GLOBALS_WHITE;
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)] = GLOBALS_WHITE;
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)+1] = GLOBALS_WHITE;
+			 }
+		}
+	}
+}
+
+void erase_single_alien(unsigned int * framePointer, const int * alien_sprite, int current_pos_x, int current_pos_y)
+{
+	int x, y;
+	for (y=0; y < ALIENS_BITS_Y; y++){
+		for (x=0; x < ALIENS_BITS_X; x++){
+			 if(alien_sprite[y] & (1<<x)){
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;
+			 }
+		}
+	}
+}
+
+void shift_aliens_right()
+{
+	if (alien_frame_pos_x + ALIEN_FRAME_SIZE_X + ALIEN_X_MOVEMENT >= GLOBALS_MAX_X)
+	{
+		alien_frame_pos_y += ALIEN_Y_MOVEMENT;
+		alien_frame_direction = 1;
+	}
+	else
+		alien_frame_pos_x += ALIEN_X_MOVEMENT;
+}
+
+void shift_aliens_left()
+{
+	if (alien_frame_pos_x - ALIEN_X_MOVEMENT <= ALIEN_X_MOVEMENT)
+	{
+		alien_frame_pos_y += ALIEN_Y_MOVEMENT;
+		alien_frame_direction = 0;
+	}
+	else
+		alien_frame_pos_x -= ALIEN_X_MOVEMENT;
+}
+
+void update_alien_pos(unsigned int * framePointer)
+{
+	int original_x_pos = alien_frame_pos_x;
+	int previous_x_pos = alien_frame_pos_x;
+	int previous_y_pos = alien_frame_pos_y;
+
+	if (alien_frame_direction)
+		shift_aliens_left();
+	else
+		shift_aliens_right();
+
+	int x, y;
+	int current_x_pos = alien_frame_pos_x;
+	int current_y_pos = alien_frame_pos_y;
+
+	for (y=0; y < ALIENS_ROWS; y++){
+		previous_x_pos = original_x_pos;
+		current_x_pos = alien_frame_pos_x;
+		for (x=0; x < ALIENS_COLS; x++){
+			if (aliens_alive[y] & (1<<x)){
+				if (y == 0 && aliens_legs){
+					erase_single_alien(framePointer, alien_top_out_12x8, previous_x_pos, previous_y_pos);
+					draw_single_alien(framePointer, alien_top_in_12x8, current_x_pos, current_y_pos);
+				}
+				else if (y == 0 && !aliens_legs){
+					erase_single_alien(framePointer, alien_top_in_12x8, previous_x_pos, previous_y_pos);
+					draw_single_alien(framePointer, alien_top_out_12x8, current_x_pos, current_y_pos);
+				}
+				else if (y > 0 && y <= 2 && aliens_legs){
+					erase_single_alien(framePointer, alien_middle_out_12x8, previous_x_pos, previous_y_pos);
+					draw_single_alien(framePointer, alien_middle_in_12x8, current_x_pos, current_y_pos);
+				}
+				else if (y > 0 && y <= 2 && !aliens_legs){
+					erase_single_alien(framePointer, alien_middle_in_12x8, previous_x_pos, previous_y_pos);
+					draw_single_alien(framePointer, alien_middle_out_12x8, current_x_pos, current_y_pos);
+				}
+				else if (y > 2 && aliens_legs){
+					erase_single_alien(framePointer, alien_bottom_out_12x8, previous_x_pos, previous_y_pos);
+					draw_single_alien(framePointer, alien_bottom_in_12x8, current_x_pos, current_y_pos);
+				}
+				else if (y > 2 && !aliens_legs){
+					erase_single_alien(framePointer, alien_bottom_in_12x8, previous_x_pos, previous_y_pos);
+					draw_single_alien(framePointer, alien_bottom_out_12x8, current_x_pos, current_y_pos);
+				}
+
+				current_x_pos += 2*ALIENS_BITS_X + ALIEN_SPACER_X;
+				previous_x_pos += 2*ALIENS_BITS_X + ALIEN_SPACER_X;
+			}
+		}
+		current_y_pos += 2*ALIENS_BITS_Y + ALIEN_SPACER_Y;
+		previous_y_pos += 2*ALIENS_BITS_Y + ALIEN_SPACER_Y;
+	}
+	aliens_legs = (aliens_legs+1)%2;
+}
+
+void kill_alien(unsigned int * framePointer, int alien_num)
+{
+	xil_printf("alien_num=%d\n\r", alien_num);
+	if (alien_num > 54)
+		return;
+
+	int row = alien_num/ALIENS_COLS;
+	int col = alien_num%ALIENS_COLS;
+	xil_printf("%d, %d\n\r", row, col);
+
+	int alien_x_pos = alien_frame_pos_x + ((ALIENS_BITS_X + ALIEN_SPACER_X)*col);
+	int alien_y_pos = alien_frame_pos_y + ((ALIENS_BITS_Y + ALIEN_SPACER_Y)*row);
+
+	if (row == 0 && aliens_legs)
+		erase_single_alien(framePointer, alien_top_out_12x8, alien_x_pos, alien_y_pos);
+	else if (row == 0 && !aliens_legs)
+		erase_single_alien(framePointer, alien_top_in_12x8, alien_x_pos, alien_y_pos);
+	else if (row > 0 && row <= 2 && aliens_legs)
+		erase_single_alien(framePointer, alien_middle_out_12x8, alien_x_pos, alien_y_pos);
+	else if (row > 0 && row <= 2 && !aliens_legs)
+		erase_single_alien(framePointer, alien_middle_in_12x8, alien_x_pos, alien_y_pos);
+	else if (row > 2 && aliens_legs)
+		erase_single_alien(framePointer, alien_bottom_out_12x8, alien_x_pos, alien_y_pos);
+	else if (row > 2 && !aliens_legs)
+		erase_single_alien(framePointer, alien_bottom_in_12x8, alien_x_pos, alien_y_pos);
+
+	aliens_alive[row][col] = 0;
+}
+
+
+
+
+
+
+=======
+#include "aliens.h"
+#include "globals.h"
+
+#include <stdio.h>
+
+#define ALIENS_ROWS 5
+#define ALIENS_COLS 11
+#define ALIENS_BITS_X 12
+#define ALIENS_BITS_Y 8
+#define ALIEN_SPACER_X 5
+#define ALIEN_SPACER_Y 10
+#define ALIEN_FRAME_SIZE_X (11*12 + 10*ALIEN_SPACER_X)*2
+#define ALIEN_FRAME_SIZE_Y (5*8 + 4*ALIEN_SPACER_Y)*2
+#define ALIEN_X_MOVEMENT 4
+#define ALIEN_Y_MOVEMENT 4
+
+// Packs each horizontal line of the figures into a single 12 bit word.
+#define packword12(b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+ ((b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | (b7  << 7 ) | (b6  << 6 ) | \
+ (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ))
+
+// Packs each horizontal line of the figures into a single 12 bit word.
+#define packword11(b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+ ((b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | (b7  << 7 ) | (b6  << 6 ) | \
+ (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ))
+
+static const int alien_explosion_12x10[] =
+{
+	packword12(0,0,0,0,0,0,1,0,0,0,0,0),
+	packword12(0,0,0,1,0,0,1,0,0,0,1,0),
+	packword12(1,0,0,1,0,0,0,0,0,1,0,0),
+	packword12(0,1,0,0,1,0,0,0,1,0,0,0),
+	packword12(0,0,0,0,0,0,0,0,0,0,1,1),
+	packword12(1,1,0,0,0,0,0,0,0,0,0,0),
+	packword12(0,0,0,1,0,0,0,1,0,0,1,0),
+	packword12(0,0,1,0,0,0,0,0,1,0,0,1),
+	packword12(0,1,0,0,0,1,0,0,1,0,0,0),
+	packword12(0,0,0,0,0,1,0,0,0,0,0,0)
+};
+
+static const int alien_top_in_12x8[] =
+{
+	packword12(0,0,0,0,0,1,1,0,0,0,0,0),
+	packword12(0,0,0,0,1,1,1,1,0,0,0,0),
+	packword12(0,0,0,1,1,1,1,1,1,0,0,0),
+	packword12(0,0,1,1,0,1,1,0,1,1,0,0),
+	packword12(0,0,1,1,1,1,1,1,1,1,0,0),
+	packword12(0,0,0,1,0,1,1,0,1,0,0,0),
+	packword12(0,0,1,0,0,0,0,0,0,1,0,0),
+	packword12(0,0,0,1,0,0,0,0,1,0,0,0)
+};
+
+static const int alien_top_out_12x8[] =
+{
+	packword12(0,0,0,0,0,1,1,0,0,0,0,0),
+	packword12(0,0,0,0,1,1,1,1,0,0,0,0),
+	packword12(0,0,0,1,1,1,1,1,1,0,0,0),
+	packword12(0,0,1,1,0,1,1,0,1,1,0,0),
+	packword12(0,0,1,1,1,1,1,1,1,1,0,0),
+	packword12(0,0,0,0,1,0,0,1,0,0,0,0),
+	packword12(0,0,0,1,0,1,1,0,1,0,0,0),
+	packword12(0,0,1,0,1,0,0,1,0,1,0,0)
+};
+
+static const int alien_middle_in_12x8[] =
+{
+	packword12(0,0,0,1,0,0,0,0,0,1,0,0),
+	packword12(0,0,0,0,1,0,0,0,1,0,0,0),
+	packword12(0,0,0,1,1,1,1,1,1,1,0,0),
+	packword12(0,0,1,1,0,1,1,1,0,1,1,0),
+	packword12(0,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(0,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(0,1,0,1,0,0,0,0,0,1,0,1),
+	packword12(0,0,0,0,1,1,0,1,1,0,0,0)
+};
+
+static const int alien_middle_out_12x8[] =
+{
+	packword12(0,0,0,1,0,0,0,0,0,1,0,0),
+	packword12(0,1,0,0,1,0,0,0,1,0,0,1),
+	packword12(0,1,0,1,1,1,1,1,1,1,0,1),
+	packword12(0,1,1,1,0,1,1,1,0,1,1,1),
+	packword12(0,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(0,0,1,1,1,1,1,1,1,1,1,0),
+	packword12(0,0,0,1,0,0,0,0,0,1,0,0),
+	packword12(0,0,1,0,0,0,0,0,0,0,1,0)
+};
+
+static const int alien_bottom_in_12x8[] =
+{
+	packword12(0,0,0,0,1,1,1,1,0,0,0,0),
+	packword12(0,1,1,1,1,1,1,1,1,1,1,0),
+	packword12(1,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(1,1,1,0,0,1,1,0,0,1,1,1),
+	packword12(1,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(0,0,1,1,1,0,0,1,1,1,0,0),
+	packword12(0,1,1,0,0,1,1,0,0,1,1,0),
+	packword12(0,0,1,1,0,0,0,0,1,1,0,0)
+};
+
+static const int alien_bottom_out_12x8[] =
+{
+	packword12(0,0,0,0,1,1,1,1,0,0,0,0),
+	packword12(0,1,1,1,1,1,1,1,1,1,1,0),
+	packword12(1,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(1,1,1,0,0,1,1,0,0,1,1,1),
+	packword12(1,1,1,1,1,1,1,1,1,1,1,1),
+	packword12(0,0,0,1,1,0,0,1,1,0,0,0),
+	packword12(0,0,1,1,0,1,1,0,1,1,0,0),
+	packword12(1,1,0,0,0,0,0,0,0,0,1,1)
+};
+
+
+static int aliens_alive[] = // This global will keep track of which aliens are alive. 1 = alive, 0 = dead
+{
+	packword11(1,1,1,1,1,1,1,1,1,1,1),
+	packword11(1,1,1,1,1,1,1,1,1,1,1),
+	packword11(1,1,1,1,1,1,1,1,1,1,1),
+	packword11(1,1,1,1,1,1,1,1,1,1,1),
+	packword11(1,1,1,1,1,1,1,1,1,1,1)
+};
+
+
+int alien_frame_pos_x = GLOBALS_MAX_X/GLOBALS_TWO - ALIEN_FRAME_SIZE_X/2;
+int alien_frame_pos_y = 50;
+int alien_frame_direction = 0; // Right when 0, Left when 1
+int aliens_legs = 0; // 0 when legs closed, 1 when legs opened
+
+void draw_single_alien(unsigned int * framePointer, const int * alien_sprite, int current_pos_x, int current_pos_y)
+{
+	int x, y;
+	for (y=0; y < ALIENS_BITS_Y; y++){
+		for (x=0; x < ALIENS_BITS_X; x++){
+			 if(alien_sprite[y] & (1<<x)){
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)] = GLOBALS_WHITE;
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)+1] = GLOBALS_WHITE;
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)] = GLOBALS_WHITE;
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)+1] = GLOBALS_WHITE;
+			 }
+		}
+	}
+}
+
+void erase_single_alien(unsigned int * framePointer, const int * alien_sprite, int current_pos_x, int current_pos_y)
+{
+	int x, y;
+	for (y=0; y < ALIENS_BITS_Y; y++){
+		for (x=0; x < ALIENS_BITS_X; x++){
+			 if(alien_sprite[y] & (1<<x)){
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;
+				 framePointer[(current_pos_y + (GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + current_pos_x + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;
+			 }
+		}
+	}
+}
+
+void shift_aliens_right()
+{
+	if (alien_frame_pos_x + ALIEN_FRAME_SIZE_X + ALIEN_X_MOVEMENT >= GLOBALS_MAX_X)
+	{
+		alien_frame_pos_y += ALIEN_Y_MOVEMENT;
+		alien_frame_direction = 1;
+	}
+	else
+		alien_frame_pos_x += ALIEN_X_MOVEMENT;
+}
+
+void shift_aliens_left()
+{
+	if (alien_frame_pos_x - ALIEN_X_MOVEMENT <= ALIEN_X_MOVEMENT)
+	{
+		alien_frame_pos_y += ALIEN_Y_MOVEMENT;
+		alien_frame_direction = 0;
+	}
+	else
+		alien_frame_pos_x -= ALIEN_X_MOVEMENT;
+}
+
+void update_alien_pos(unsigned int * framePointer)
+{
+	int original_x_pos = alien_frame_pos_x;
+	int previous_x_pos = alien_frame_pos_x;
+	int previous_y_pos = alien_frame_pos_y;
+
+	if (alien_frame_direction)
+		shift_aliens_left();
+	else
+		shift_aliens_right();
+
+	int x, y;
+	int current_x_pos = alien_frame_pos_x;
+	int current_y_pos = alien_frame_pos_y;
+
+	for (y=0; y < ALIENS_ROWS; y++){
+		previous_x_pos = original_x_pos;
+		current_x_pos = alien_frame_pos_x;
+		for (x=0; x < ALIENS_COLS; x++){
+			if (aliens_alive[y] & (1<<x)){
+				if (y == 0 && aliens_legs){
+					erase_single_alien(framePointer, alien_top_out_12x8, previous_x_pos, previous_y_pos);
+					draw_single_alien(framePointer, alien_top_in_12x8, current_x_pos, current_y_pos);
+				}
+				else if (y == 0 && !aliens_legs){
+					erase_single_alien(framePointer, alien_top_in_12x8, previous_x_pos, previous_y_pos);
+					draw_single_alien(framePointer, alien_top_out_12x8, current_x_pos, current_y_pos);
+				}
+				else if (y > 0 && y <= 2 && aliens_legs){
+					erase_single_alien(framePointer, alien_middle_out_12x8, previous_x_pos, previous_y_pos);
+					draw_single_alien(framePointer, alien_middle_in_12x8, current_x_pos, current_y_pos);
+				}
+				else if (y > 0 && y <= 2 && !aliens_legs){
+					erase_single_alien(framePointer, alien_middle_in_12x8, previous_x_pos, previous_y_pos);
+					draw_single_alien(framePointer, alien_middle_out_12x8, current_x_pos, current_y_pos);
+				}
+				else if (y > 2 && aliens_legs){
+					erase_single_alien(framePointer, alien_bottom_out_12x8, previous_x_pos, previous_y_pos);
+					draw_single_alien(framePointer, alien_bottom_in_12x8, current_x_pos, current_y_pos);
+				}
+				else if (y > 2 && !aliens_legs){
+					erase_single_alien(framePointer, alien_bottom_in_12x8, previous_x_pos, previous_y_pos);
+					draw_single_alien(framePointer, alien_bottom_out_12x8, current_x_pos, current_y_pos);
+				}
+
+				current_x_pos += 2*ALIENS_BITS_X + ALIEN_SPACER_X;
+				previous_x_pos += 2*ALIENS_BITS_X + ALIEN_SPACER_X;
+			}
+		}
+		current_y_pos += 2*ALIENS_BITS_Y + ALIEN_SPACER_Y;
+		previous_y_pos += 2*ALIENS_BITS_Y + ALIEN_SPACER_Y;
+	}
+	aliens_legs = (aliens_legs+1)%2;
+}
+
+void kill_alien(unsigned int * framePointer, int alien_num)
+{
+	xil_printf("alien_num=%d\n\r", alien_num);
+	if (alien_num > 54)
+		return;
+
+	int row = alien_num/ALIENS_COLS;
+	int col = alien_num%ALIENS_COLS;
+	xil_printf("%d, %d\n\r", row, col);
+
+	int alien_x_pos = alien_frame_pos_x + ((ALIENS_BITS_X + ALIEN_SPACER_X)*col);
+	int alien_y_pos = alien_frame_pos_y + ((ALIENS_BITS_Y + ALIEN_SPACER_Y)*row);
+
+	if (row == 0 && aliens_legs)
+		erase_single_alien(framePointer, alien_top_out_12x8, alien_x_pos, alien_y_pos);
+	else if (row == 0 && !aliens_legs)
+		erase_single_alien(framePointer, alien_top_in_12x8, alien_x_pos, alien_y_pos);
+	else if (row > 0 && row <= 2 && aliens_legs)
+		erase_single_alien(framePointer, alien_middle_out_12x8, alien_x_pos, alien_y_pos);
+	else if (row > 0 && row <= 2 && !aliens_legs)
+		erase_single_alien(framePointer, alien_middle_in_12x8, alien_x_pos, alien_y_pos);
+	else if (row > 2 && aliens_legs)
+		erase_single_alien(framePointer, alien_bottom_out_12x8, alien_x_pos, alien_y_pos);
+	else if (row > 2 && !aliens_legs)
+		erase_single_alien(framePointer, alien_bottom_in_12x8, alien_x_pos, alien_y_pos);
+
+	aliens_alive[row][col] = 0;
+}
+
+
+
+
+
+
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

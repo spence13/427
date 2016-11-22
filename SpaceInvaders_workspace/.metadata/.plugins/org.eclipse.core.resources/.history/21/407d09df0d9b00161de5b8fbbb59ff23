@@ -1,0 +1,115 @@
+#include <stdint.h>
+#include <xparameters.h>
+#include <stdio.h>
+#include "platform.h"
+#include "xac97_l.h"
+#include "sounds.h"
+
+#include "game_sounds/soundexplosion.h"
+#include "game_sounds/soundinvade1.h"
+#include "game_sounds/soundinvade2.h"
+#include "game_sounds/soundinvade3.h"
+#include "game_sounds/soundinvade4.h"
+#include "game_sounds/soundinvadekill.h"
+#include "game_sounds/soundshoot.h"
+#include "game_sounds/soundufohigh.h"
+#include "game_sounds/soundufolow.h"
+
+extern uint16_t soundexplosion_sample_rate;//all the same sample rate
+
+
+extern uint8_t soundexplosion;
+extern uint16_t soundexplosion_num_samples;
+
+extern uint8_t soundeinvade1;
+extern uint16_t soundinvade1_num_samples;
+
+extern uint8_t soundeinvade2;
+extern uint16_t soundinvade2_num_samples;
+
+extern uint8_t soundeinvade3;
+extern uint16_t soundinvade3_num_samples;
+
+extern uint8_t soundeinvade4;
+extern uint16_t soundinvade4_num_samples;
+
+extern uint8_t soundinvadekill;
+extern uint16_t soundinvadekill_num_samples;
+
+extern uint8_t soundshoot;
+extern uint16_t soundshoot_num_samples;
+
+extern uint8_t soundufohigh;
+extern uint16_t soundufohigh_num_samples;
+
+extern uint8_t soundufolow;
+extern uint16_t soundufolow_num_samples;
+
+
+
+void sounds_init()
+{
+
+}
+
+
+
+
+
+
+
+/*
+ *
+ *
+ *
+ *
+ *
+ *
+
+extern uint16_t soundexplosion_sample_rate;//all the same sample rate
+extern uint8_t soundexplosion[];
+extern uint16_t soundexplosion_num_samples;
+
+void print(char *str);
+
+int main()
+{
+    init_platform();
+    XAC97_HardReset(XPAR_AXI_AC97_0_BASEADDR);
+    XAC97_AwaitCodecReady(XPAR_AXI_AC97_0_BASEADDR);
+
+    //Enable VRA Mode
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_ExtendedAudioStat, 1);
+
+    //Writer frequency
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCM_DAC_Rate, soundexplosion_sample_rate);
+
+    // Play Volume Settings
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_AuxOutVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVolMono, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCBeepVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCMOutVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_LineInVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MicVol, AC97_VOL_MAX);
+
+    // Clear FIFOs
+    XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR);
+
+    print("Hello World\n\r");
+
+
+    int i;
+    for (i=soundexplosion_num_samples; i >= 0; i--)
+    {
+    	XAC97_WriteFifo(XPAR_AXI_AC97_0_BASEADDR, soundexplosion[i]);
+    }
+
+
+
+    print("finish\n\r");
+    cleanup_platform();
+
+    return 0;
+}
+ */

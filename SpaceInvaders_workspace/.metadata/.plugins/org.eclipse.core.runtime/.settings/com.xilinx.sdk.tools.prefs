@@ -1,0 +1,31 @@
+<<<<<<< HEAD
+#Thu Oct 13 00:25:17 MDT 2016
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.data=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:Stack=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:Stack-size=4096
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.sdata2=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.rodata=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.bss=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:Heap-size=1024
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.sbss2=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.text=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.sdata=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:Heap=MCB_DDR2_S0_AXI_BASEADDR
+eclipse.preferences.version=1
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.sbss=MCB_DDR2_S0_AXI_BASEADDR
+=======
+#Thu Oct 13 00:25:17 MDT 2016
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.data=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:Stack=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:Stack-size=4096
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.sdata2=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.rodata=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.bss=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:Heap-size=1024
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.sbss2=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.text=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.sdata=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:Heap=MCB_DDR2_S0_AXI_BASEADDR
+eclipse.preferences.version=1
+com.xilinx.sdk.linkgen.prefs.SpaceInvaders\:.sbss=MCB_DDR2_S0_AXI_BASEADDR
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

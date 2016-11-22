@@ -1,0 +1,55 @@
+<<<<<<< HEAD
+/*
+ * tank.h
+ *
+ *  Created on: Sep 21, 2016
+ *      Author: superman
+ */
+
+#ifndef TANK_H_
+#define TANK_H_
+
+int get_tank(int);
+
+int get_tank_x_position();
+void set_tank_x_position(int);
+
+void draw_tank(unsigned int *);
+void erase_tank(unsigned int *);
+
+void tank_shift_left(unsigned int *);
+void tank_shift_right(unsigned int *);
+
+
+
+
+
+#endif /* TANK_H_ */
+=======
+/*
+ * tank.h
+ *
+ *  Created on: Sep 21, 2016
+ *      Author: superman
+ */
+
+#ifndef TANK_H_
+#define TANK_H_
+
+int get_tank(int);
+
+int get_tank_x_position();
+void set_tank_x_position(int);
+
+void draw_tank(unsigned int *);
+void erase_tank(unsigned int *);
+
+void tank_shift_left(unsigned int *);
+void tank_shift_right(unsigned int *);
+
+
+
+
+
+#endif /* TANK_H_ */
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

@@ -1,0 +1,8 @@
+-batch 
+-create pit_timer 
+-ver 1.00.a 
+-dir "C:\Madsen\SpaceInvadersCreativeHW" 
+-lang vhdl 
+-bus axi4lite s 
+-reg 2 
+-xps 

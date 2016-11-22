@@ -1,0 +1,187 @@
+<<<<<<< HEAD
+#
+# pin constraints
+#
+NET Digilent_QuadSPI_Cntlr_C_pin LOC = "R15"  |  IOSTANDARD = "LVCMOS33" | PULLUP; 
+NET Digilent_QuadSPI_Cntlr_DQ[0] LOC = "T13"  |  IOSTANDARD = "LVCMOS33";
+NET Digilent_QuadSPI_Cntlr_DQ[1] LOC = "R13"  |  IOSTANDARD = "LVCMOS33";
+NET Digilent_QuadSPI_Cntlr_DQ[2] LOC = "T14"  |  IOSTANDARD = "LVCMOS33";
+NET Digilent_QuadSPI_Cntlr_DQ[3] LOC = "V14"  |  IOSTANDARD = "LVCMOS33";
+NET Digilent_QuadSPI_Cntlr_S_pin LOC = "V3"  |  IOSTANDARD = "LVCMOS33";
+NET GCLK LOC = "L15"  |  IOSTANDARD = "LVCMOS33";
+NET RESET LOC = "T15"  |  IOSTANDARD = "LVCMOS33"  |  TIG;
+NET RS232_Uart_1_sin LOC = "A16"  |  IOSTANDARD = "LVCMOS33";
+NET RS232_Uart_1_sout LOC = "B16"  |  IOSTANDARD = "LVCMOS33";
+NET rzq IOSTANDARD = "LVCMOS18_JEDEC";
+NET zio IOSTANDARD = "LVCMOS18_JEDEC";
+
+#Push Buttons
+#
+#
+NET Push_Buttons_5Bits_TRI_I[0] LOC = "N4"  |  IOSTANDARD = "LVCMOS18";
+NET Push_Buttons_5Bits_TRI_I[1] LOC = "P4"  |  IOSTANDARD = "LVCMOS18";
+NET Push_Buttons_5Bits_TRI_I[2] LOC = "P3"  |  IOSTANDARD = "LVCMOS18";
+NET Push_Buttons_5Bits_TRI_I[3] LOC = "F6"  |  IOSTANDARD = "LVCMOS18";
+NET Push_Buttons_5Bits_TRI_I[4] LOC = "F5"  |  IOSTANDARD = "LVCMOS18";
+#
+# additional constraints
+#
+
+# PMOD Connector
+#NET nes_controller_0_NES_latch_pin  LOC = "T3" | IOSTANDARD = LVCMOS33; # Bank = 2,  Pin name = IO_L62N_D6,     Sch name = JA-D0_N
+#NET nes_controller_0_NES_data_pin  LOC = "R3" | IOSTANDARD = LVCMOS33; # Bank = 2,  Pin name = IO_L62P_D5,     Sch name = JA-D0_P
+#NET nes_controller_0_NES_pulse_pin  LOC = "P6" | IOSTANDARD = LVCMOS33; # Bank = 2,  Pin name = IO_L64N_D9,     Sch name = JA-D2_N
+=======
+#
+# pin constraints
+#
+NET Digilent_QuadSPI_Cntlr_C_pin LOC = "R15"  |  IOSTANDARD = "LVCMOS33" | PULLUP; 
+NET Digilent_QuadSPI_Cntlr_DQ[0] LOC = "T13"  |  IOSTANDARD = "LVCMOS33";
+NET Digilent_QuadSPI_Cntlr_DQ[1] LOC = "R13"  |  IOSTANDARD = "LVCMOS33";
+NET Digilent_QuadSPI_Cntlr_DQ[2] LOC = "T14"  |  IOSTANDARD = "LVCMOS33";
+NET Digilent_QuadSPI_Cntlr_DQ[3] LOC = "V14"  |  IOSTANDARD = "LVCMOS33";
+NET Digilent_QuadSPI_Cntlr_S_pin LOC = "V3"  |  IOSTANDARD = "LVCMOS33";
+NET GCLK LOC = "L15"  |  IOSTANDARD = "LVCMOS33";
+NET RESET LOC = "T15"  |  IOSTANDARD = "LVCMOS33"  |  TIG;
+NET RS232_Uart_1_sin LOC = "A16"  |  IOSTANDARD = "LVCMOS33";
+NET RS232_Uart_1_sout LOC = "B16"  |  IOSTANDARD = "LVCMOS33";
+NET rzq IOSTANDARD = "LVCMOS18_JEDEC";
+NET zio IOSTANDARD = "LVCMOS18_JEDEC";
+
+#Push Buttons
+#
+#
+NET Push_Buttons_5Bits_TRI_I[0] LOC = "N4"  |  IOSTANDARD = "LVCMOS18";
+NET Push_Buttons_5Bits_TRI_I[1] LOC = "P4"  |  IOSTANDARD = "LVCMOS18";
+NET Push_Buttons_5Bits_TRI_I[2] LOC = "P3"  |  IOSTANDARD = "LVCMOS18";
+NET Push_Buttons_5Bits_TRI_I[3] LOC = "F6"  |  IOSTANDARD = "LVCMOS18";
+NET Push_Buttons_5Bits_TRI_I[4] LOC = "F5"  |  IOSTANDARD = "LVCMOS18";
+#
+# additional constraints
+#
+
+# PMOD Connector
+ NET nes_controller_0_NES_latch_pin  LOC = "T3"; # Bank = 2,  Pin name = IO_L62N_D6,     Sch name = JA-D0_N
+ NET nes_controller_0_NES_data_pin  LOC = "R3"; # Bank = 2,  Pin name = IO_L62P_D5,     Sch name = JA-D0_P
+ NET nes_controller_0_NES_clk_pin  LOC = "P6"; # Bank = 2,  Pin name = IO_L64N_D9,     Sch name = JA-D2_N
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c
+# NET "JB<3>"  LOC = "N5"; # Bank = 2,  Pin name = IO_L64P_D8,     Sch name = JA-D2_P
+# NET "JB<4>"  LOC = "V9"; # Bank = 2,  Pin name = IO_L32N_GCLK28, Sch name = JA-CLK_N
+# NET "JB<5>"  LOC = "T9"; # Bank = 2,  Pin name = IO_L32P_GCLK29, Sch name = JA-CLK_P
+# NET "JB<6>"  LOC = "V4"; # Bank = 2,  Pin name = IO_L63N,        Sch name = JA-D1_N
+<<<<<<< HEAD
+# NET "JB<7>"  LOC = "T4"; # Bank = 2,  Pin name = IO_L63P,        Sch name = JA-D1_P
+
+NET nes_controller_0_NES_latch_pin  LOC = "U16" | IOSTANDARD = "LVCMOS33"; # Bank = 2,  Pin name = IO_L2P_CMPCLK,        	Sch name = EXP-IO1_P
+NET nes_controller_0_NES_data_pin  LOC = "U15" | IOSTANDARD = "LVCMOS33"; # Bank = 2,  Pin name = *IO_L5P,        		Sch name = EXP-IO2_P
+NET nes_controller_0_NES_pulse_pin  LOC = "U13" | IOSTANDARD = "LVCMOS33"; # Bank = 2,  Pin name = IO_L14P_D11,        	Sch name = EXP-IO3_P
+
+
+## Leds
+#Net nes_controller_0_buttons_pin[0] LOC = "U18" | IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L2P_CMPCLK, Sch name = LD0
+#Net nes_controller_0_buttons_pin[1] LOC = "M14" |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L2N_CMPMOSI, Sch name = LD1
+#Net nes_controller_0_buttons_pin[2] LOC = "N14" |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L5P, Sch name = LD2
+#Net nes_controller_0_buttons_pin[3] LOC = "L14" |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L5N, Sch name = LD3
+#Net nes_controller_0_buttons_pin[4] LOC = "M13" |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L15P, Sch name = LD4
+#Net nes_controller_0_buttons_pin[5] LOC = "D4" |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L15N, Sch name = LD5
+#Net nes_controller_0_buttons_pin[6] LOC = "P16" |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L16P, Sch name = LD6
+#Net nes_controller_0_buttons_pin[7] LOC = "N12" |  IOSTANDARD = LVCMOS33; #Bank = 2, pin name = IO_L16N_VREF, Sch name = LD7
+
+################AXI_AC97 CONSTRAINTS########################
+Net axi_ac97_0_Bit_Clk_pin LOC = L13 | IOSTANDARD = LVCMOS33;
+Net axi_ac97_0_SData_In_pin LOC = T18 | IOSTANDARD = LVCMOS33;
+Net axi_ac97_0_SData_Out_pin LOC = N16 | IOSTANDARD = LVCMOS33;
+Net axi_ac97_0_Sync_pin  LOC = U17 | IOSTANDARD = LVCMOS33;
+Net axi_ac97_0_AC97Reset_n_pin LOC = T17 | IOSTANDARD = LVCMOS33;
+#############################################################
+
+NET "GCLK" TNM_NET = sys_clk_pin;
+TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 100000 kHz;
+
+#### HDMI Core constraints
+# Overwrite existing VCCAUX setting for TMDS interfaces
+CONFIG VCCAUX = 3.3;
+
+############################################################
+
+NET "*TMDS_TX_0_N*"    LOC = "C8"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_0_P*"    LOC = "D8"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_1_N*"    LOC = "A7"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_1_P*"    LOC = "C7"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_2_N*"    LOC = "A8"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_2_P*"    LOC = "B8"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_CLK_N*"  LOC = "A6"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_CLK_P*"  LOC = "B6"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_0_N*"    LOC = "K18" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_0_P*"    LOC = "K17" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_1_N*"    LOC = "L18" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_1_P*"    LOC = "L17" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_2_N*"    LOC = "J18" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_2_P*"    LOC = "J16" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_CLK_N*"  LOC = "H18" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_CLK_P*"  LOC = "H17" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_SCL*"    LOC = "M16" | IOSTANDARD = "I2C";
+NET "*TMDS_RX_SDA*"    LOC = "M18" | IOSTANDARD = "I2C";
+
+############################################################
+
+NET "*SIG_PLL0?CLKOUT2" TNM_NET = globclk;
+NET "*Inst_DynClkGen?PllOut_x1" TNM_NET = hdmipclk;
+
+############################################################
+# Timing Constraints                                       #
+############################################################
+
+TIMESPEC TS_path1 = FROM globclk TO hdmipclk 14 ns;
+=======
+# NET "JB<7>"  LOC = "T4"; # Bank = 2,  Pin name = IO_L63P,        Sch name = JA-D1_P
+
+
+################AXI_AC97 CONSTRAINTS########################
+Net axi_ac97_0_Bit_Clk_pin LOC = L13 | IOSTANDARD = LVCMOS33;
+Net axi_ac97_0_SData_In_pin LOC = T18 | IOSTANDARD = LVCMOS33;
+Net axi_ac97_0_SData_Out_pin LOC = N16 | IOSTANDARD = LVCMOS33;
+Net axi_ac97_0_Sync_pin  LOC = U17 | IOSTANDARD = LVCMOS33;
+Net axi_ac97_0_AC97Reset_n_pin LOC = T17 | IOSTANDARD = LVCMOS33;
+#############################################################
+
+NET "GCLK" TNM_NET = sys_clk_pin;
+TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 100000 kHz;
+
+#### HDMI Core constraints
+# Overwrite existing VCCAUX setting for TMDS interfaces
+CONFIG VCCAUX = 3.3;
+
+############################################################
+
+NET "*TMDS_TX_0_N*"    LOC = "C8"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_0_P*"    LOC = "D8"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_1_N*"    LOC = "A7"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_1_P*"    LOC = "C7"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_2_N*"    LOC = "A8"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_2_P*"    LOC = "B8"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_CLK_N*"  LOC = "A6"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_TX_CLK_P*"  LOC = "B6"  | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_0_N*"    LOC = "K18" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_0_P*"    LOC = "K17" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_1_N*"    LOC = "L18" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_1_P*"    LOC = "L17" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_2_N*"    LOC = "J18" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_2_P*"    LOC = "J16" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_CLK_N*"  LOC = "H18" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_CLK_P*"  LOC = "H17" | IOSTANDARD = "TMDS_33";
+NET "*TMDS_RX_SCL*"    LOC = "M16" | IOSTANDARD = "I2C";
+NET "*TMDS_RX_SDA*"    LOC = "M18" | IOSTANDARD = "I2C";
+
+############################################################
+
+NET "*SIG_PLL0?CLKOUT2" TNM_NET = globclk;
+NET "*Inst_DynClkGen?PllOut_x1" TNM_NET = hdmipclk;
+
+############################################################
+# Timing Constraints                                       #
+############################################################
+
+TIMESPEC TS_path1 = FROM globclk TO hdmipclk 14 ns;
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c
+TIMESPEC TS_path2 = FROM hdmipclk TO globclk 10 ns;

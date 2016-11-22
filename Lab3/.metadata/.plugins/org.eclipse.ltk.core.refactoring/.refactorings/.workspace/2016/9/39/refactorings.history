@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Lab3/src/reading.c&apos;" deleteContents="false" description="Delete resource &apos;Lab3/src/reading.c&apos;" element1="/Lab3/src/reading.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1474487686314"/>&#x0A;<refactoring comment="Delete resource &apos;Lab3/src/vdmaTest.c&apos;" deleteContents="false" description="Delete resource &apos;Lab3/src/vdmaTest.c&apos;" element1="/Lab3/src/vdmaTest.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1474490002428"/>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Lab3/src/reading.c&apos;" deleteContents="false" description="Delete resource &apos;Lab3/src/reading.c&apos;" element1="/Lab3/src/reading.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1474487686314"/>&#x0A;<refactoring comment="Delete resource &apos;Lab3/src/vdmaTest.c&apos;" deleteContents="false" description="Delete resource &apos;Lab3/src/vdmaTest.c&apos;" element1="/Lab3/src/vdmaTest.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1474490002428"/>
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c
+</session>

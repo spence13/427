@@ -1,0 +1,17 @@
+<<<<<<< HEAD
+INFILE=C:\Users\superman\Desktop\427\SpaceInvaderTestHW2\implementation\system.ncd
+OUTFILE=C:\Users\superman\Desktop\427\SpaceInvaderTestHW2\implementation\system.bit
+FAMILY=Spartan6
+PART=xc6slx45-3csg324
+WORKINGDIR=C:\Users\superman\Desktop\427\SpaceInvaderTestHW2\implementation
+LICENSE=ISE
+USER_INFO=174672765_1777505556_210596263_102
+=======
+INFILE=C:\Users\superman\Desktop\427\SpaceInvaderTestHW2\implementation\system.ncd
+OUTFILE=C:\Users\superman\Desktop\427\SpaceInvaderTestHW2\implementation\system.bit
+FAMILY=Spartan6
+PART=xc6slx45-3csg324
+WORKINGDIR=C:\Users\superman\Desktop\427\SpaceInvaderTestHW2\implementation
+LICENSE=ISE
+USER_INFO=174672765_1777505556_210596263_102
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

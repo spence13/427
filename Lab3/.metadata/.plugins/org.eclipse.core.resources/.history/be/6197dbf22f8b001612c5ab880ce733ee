@@ -1,0 +1,213 @@
+<<<<<<< HEAD
+#include "tank.h"
+#include "globals.h"
+
+#define TANK_BITS_X 15
+#define TANK_BITS_Y 8
+
+// Packs each horizontal line of the figures into a single 15 bit word.
+#define packword15(b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+((b14 << 14) | (b13 << 13) | (b12 << 12) | (b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) |	\
+ (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ))
+
+static const uint16_t tank_15x8[] = // This is the pixel pattern for the tank
+{
+	packword15(0,0,0,0,0,0,0,1,0,0,0,0,0,0,0),
+	packword15(0,0,0,0,0,0,1,1,1,0,0,0,0,0,0),
+	packword15(0,0,0,0,0,0,1,1,1,0,0,0,0,0,0),
+	packword15(0,1,1,1,1,1,1,1,1,1,1,1,1,1,0),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)
+};
+
+static uint16_t tank_x_position = GLOBALS_MAX_X/GLOBALS_TWO; // Top left corner of the tank
+
+// Returns the value of the tank at a certain row
+uint16_t tank_get_tank_bits(uint16_t row){
+	return tank_15x8[row];
+}
+
+// Getter function for the global x position
+uint16_t tank_get_tank_x_position(){
+	return tank_x_position;
+}
+
+// Setter function for the global x position
+static void tank_set_tank_x_position(uint16_t x_pos){ 
+	tank_x_position = x_pos;
+}
+
+//This function will draw a green tank given the framePointer
+static void tank_draw(unsigned int * framePointer)
+{
+    uint16_t x, y; //Iterators
+    for(y=0; y < TANK_BITS_Y; y++){ //Loop through the height of the tank
+		for(x=0; x < TANK_BITS_X; x++){ //Loop through the width of the tank
+			 if(tank_get_tank_bits(y) & (1<<x)){ //If the tank pixel is a 1 at this position, draw a 4 pixel green box
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)] = GLOBALS_GREEN;
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)] = GLOBALS_GREEN;
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)+1] = GLOBALS_GREEN;
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)+1] = GLOBALS_GREEN;
+			 }
+		}
+    }
+}
+
+//This function will erase the green tank given the framePointer
+static void tank_erase(unsigned int * framePointer)
+{
+    uint16_t x, y; //Iterators
+    for(y=0; y < TANK_BITS_Y; y++){ //Loop through the height of the tank
+		for(x=0; x < TANK_BITS_X; x++){ //Loop through the width of the tank
+			 if(tank_get_tank_bits(y) & (1<<x)){ //If the tank pixel is a 1 at this position, draw a 4 pixel black box
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;
+			 }
+		}
+    }
+}
+
+//This function will shift the tank left a frame, takes the framePointer
+void tank_shift_left(unsigned int * framePointer)
+{
+	tank_erase(framePointer); //Erase the whole tank
+
+	tank_x_position = tank_x_position-GLOBALS_SHIFT_VAL; //Shift the pointer position left
+	if (tank_x_position < GLOBALS_MIN_X) //Make sure we don't pass the edge of the screen
+		tank_x_position = GLOBALS_MIN_X;
+
+	tank_draw(framePointer); //Redraw tank with new position
+}
+
+//This function will shift the tank right a frame, takes the framePointer
+void tank_shift_right(unsigned int * framePointer)
+{
+	tank_erase(framePointer); //Erase the whole tank
+
+	tank_x_position = tank_x_position+GLOBALS_SHIFT_VAL; //Shift the pointer position left
+	if (tank_x_position > GLOBALS_MAX_X-GLOBALS_TANK_PIX_WIDTH) //Make sure we don't pass the edge of the screen
+		tank_x_position = GLOBALS_MAX_X-GLOBALS_TANK_PIX_WIDTH;
+
+	tank_draw(framePointer); //Redraw tank with new position
+}
+
+//This function will draw the green line beneath the tank, takes the framePointer
+void tank_draw_bottom_line(unsigned int * framePointer)
+{
+	uint16_t i; //Iterator
+	for(i=0; i < GLOBALS_MAX_X; i++){ //Loop through the width of the screen, and set 2 pixels to green
+		framePointer[GLOBALS_BOTTOM_LINE_Y_POS*GLOBALS_MAX_X + i] = GLOBALS_GREEN;
+		framePointer[(GLOBALS_BOTTOM_LINE_Y_POS+1)*GLOBALS_MAX_X + i] = GLOBALS_GREEN;
+	}
+}
+=======
+#include "tank.h"
+#include "globals.h"
+
+#define TANK_BITS_X 15
+#define TANK_BITS_Y 8
+
+// Packs each horizontal line of the figures into a single 15 bit word.
+#define packword15(b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+((b14 << 14) | (b13 << 13) | (b12 << 12) | (b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) |	\
+ (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ))
+
+static const uint16_t tank_15x8[] = // This is the pixel pattern for the tank
+{
+	packword15(0,0,0,0,0,0,0,1,0,0,0,0,0,0,0),
+	packword15(0,0,0,0,0,0,1,1,1,0,0,0,0,0,0),
+	packword15(0,0,0,0,0,0,1,1,1,0,0,0,0,0,0),
+	packword15(0,1,1,1,1,1,1,1,1,1,1,1,1,1,0),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+	packword15(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)
+};
+
+static uint16_t tank_x_position = GLOBALS_MAX_X/GLOBALS_TWO; // Top left corner of the tank
+
+// Returns the value of the tank at a certain row
+uint16_t tank_get_tank_bits(uint16_t row){
+	return tank_15x8[row];
+}
+
+// Getter function for the global x position
+uint16_t tank_get_tank_x_position(){
+	return tank_x_position;
+}
+
+// Setter function for the global x position
+static void tank_set_tank_x_position(uint16_t x_pos){ 
+	tank_x_position = x_pos;
+}
+
+//This function will draw a green tank given the framePointer
+static void tank_draw(unsigned int * framePointer)
+{
+    uint16_t x, y; //Iterators
+    for(y=0; y < TANK_BITS_Y; y++){ //Loop through the height of the tank
+		for(x=0; x < TANK_BITS_X; x++){ //Loop through the width of the tank
+			 if(tank_get_tank_bits(y) & (1<<x)){ //If the tank pixel is a 1 at this position, draw a 4 pixel green box
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)] = GLOBALS_GREEN;
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)] = GLOBALS_GREEN;
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)+1] = GLOBALS_GREEN;
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)+1] = GLOBALS_GREEN;
+			 }
+		}
+    }
+}
+
+//This function will erase the green tank given the framePointer
+static void tank_erase(unsigned int * framePointer)
+{
+    uint16_t x, y; //Iterators
+    for(y=0; y < TANK_BITS_Y; y++){ //Loop through the height of the tank
+		for(x=0; x < TANK_BITS_X; x++){ //Loop through the width of the tank
+			 if(tank_get_tank_bits(y) & (1<<x)){ //If the tank pixel is a 1 at this position, draw a 4 pixel black box
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;
+				 framePointer[(GLOBALS_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + tank_x_position + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;
+			 }
+		}
+    }
+}
+
+//This function will shift the tank left a frame, takes the framePointer
+void tank_shift_left(unsigned int * framePointer)
+{
+	tank_erase(framePointer); //Erase the whole tank
+
+	tank_x_position = tank_x_position-GLOBALS_SHIFT_VAL; //Shift the pointer position left
+	if (tank_x_position < GLOBALS_MIN_X) //Make sure we don't pass the edge of the screen
+		tank_x_position = GLOBALS_MIN_X;
+
+	tank_draw(framePointer); //Redraw tank with new position
+}
+
+//This function will shift the tank right a frame, takes the framePointer
+void tank_shift_right(unsigned int * framePointer)
+{
+	tank_erase(framePointer); //Erase the whole tank
+
+	tank_x_position = tank_x_position+GLOBALS_SHIFT_VAL; //Shift the pointer position left
+	if (tank_x_position > GLOBALS_MAX_X-GLOBALS_TANK_PIX_WIDTH) //Make sure we don't pass the edge of the screen
+		tank_x_position = GLOBALS_MAX_X-GLOBALS_TANK_PIX_WIDTH;
+
+	tank_draw(framePointer); //Redraw tank with new position
+}
+
+//This function will draw the green line beneath the tank, takes the framePointer
+void tank_draw_bottom_line(unsigned int * framePointer)
+{
+	uint16_t i; //Iterator
+	for(i=0; i < GLOBALS_MAX_X; i++){ //Loop through the width of the screen, and set 2 pixels to green
+		framePointer[GLOBALS_BOTTOM_LINE_Y_POS*GLOBALS_MAX_X + i] = GLOBALS_GREEN;
+		framePointer[(GLOBALS_BOTTOM_LINE_Y_POS+1)*GLOBALS_MAX_X + i] = GLOBALS_GREEN;
+	}
+}
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

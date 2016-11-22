@@ -1,0 +1,75 @@
+#include <stdint.h>
+#include <xparameters.h>
+#include <stdio.h>
+#include "platform.h"
+#include "xac97_l.h"
+#include "sounds.h"
+
+#include "game_sounds/soundexplosion.h"
+#include "game_sounds/soundinvade1.h"
+#include "game_sounds/soundinvade2.h"
+#include "game_sounds/soundinvade3.h"
+#include "game_sounds/soundinvade4.h"
+#include "game_sounds/soundinvadekill.h"
+#include "game_sounds/soundshoot.h"
+#include "game_sounds/soundufohigh.h"
+#include "game_sounds/soundufolow.h"
+
+extern uint16_t soundexplosion_sample_rate;//all the same sample rate
+
+extern uint8_t soundexplosion;
+extern uint16_t soundexplosion_num_samples;
+
+extern uint8_t soundeinvade1;
+extern uint16_t soundinvade1_num_samples;
+
+extern uint8_t soundeinvade2;
+extern uint16_t soundinvade2_num_samples;
+
+extern uint8_t soundeinvade3;
+extern uint16_t soundinvade3_num_samples;
+
+extern uint8_t soundeinvade4;
+extern uint16_t soundinvade4_num_samples;
+
+extern uint8_t soundinvadekill;
+extern uint16_t soundinvadekill_num_samples;
+
+extern uint8_t soundshoot;
+extern uint16_t soundshoot_num_samples;
+
+extern uint8_t soundufohigh;
+extern uint16_t soundufohigh_num_samples;
+
+extern uint8_t soundufolow;
+extern uint16_t soundufolow_num_samples;
+
+
+void play_sound(uint16_t num_samples, uint8_t * samples)
+{
+    XAC97_HardReset(XPAR_AXI_AC97_0_BASEADDR); //Hard reset
+
+    XAC97_AwaitCodecReady(XPAR_AXI_AC97_0_BASEADDR); //Wait for codec to be ready
+
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_ExtendedAudioStat, 1); //Enable VRA Mode
+
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCM_DAC_Rate, soundexplosion_sample_rate); //Writer frequency
+
+    // Play Volume Settings
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_AuxOutVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MasterVolMono, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCBeepVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_PCMOutVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_LineInVol, AC97_VOL_MAX);
+    XAC97_WriteReg(XPAR_AXI_AC97_0_BASEADDR, AC97_MicVol, AC97_VOL_MAX);
+
+    XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR); // Clear FIFOs
+
+    int32_t i; //iterator
+    for (i=num_samples; i >= 0; i--) //loop through all samples of sound (we loop backwards, because we converted it backwards)
+    	XAC97_WriteFifo(XPAR_AXI_AC97_0_BASEADDR, samples[i]);
+
+    XAC97_ClearFifos(XPAR_AXI_AC97_0_BASEADDR); // Clear FIFOs
+}
+

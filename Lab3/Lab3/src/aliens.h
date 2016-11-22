@@ -1,0 +1,25 @@
+<<<<<<< HEAD
+#ifndef ALIENS_H_
+#define ALIENS_H_
+
+#include <stdint.h>
+
+void update_alien_pos(unsigned int *); // Wait for a char from UART, then call the appropriate functions
+void kill_alien(unsigned int *, uint8_t); // Kill alien at the given integer
+void fire_alien_bullet(unsigned int *); // Fire a bullet from a random alien
+void update_alien_bullets(unsigned int *); // Advance alien bullets one frame
+
+#endif /* ALIENS_H_ */
+=======
+#ifndef ALIENS_H_
+#define ALIENS_H_
+
+#include <stdint.h>
+
+void update_alien_pos(unsigned int *); // Wait for a char from UART, then call the appropriate functions
+void kill_alien(unsigned int *, uint8_t); // Kill alien at the given integer
+void fire_alien_bullet(unsigned int *); // Fire a bullet from a random alien
+void update_alien_bullets(unsigned int *); // Advance alien bullets one frame
+
+#endif /* ALIENS_H_ */
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

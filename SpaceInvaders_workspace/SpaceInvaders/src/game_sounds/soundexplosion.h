@@ -1,0 +1,5 @@
+#ifndef SOUNDEXPLOSION_H_
+#define SOUNDEXPLOSION_H_
+
+
+#endif /* SOUNDEXPLOSION_H_ */

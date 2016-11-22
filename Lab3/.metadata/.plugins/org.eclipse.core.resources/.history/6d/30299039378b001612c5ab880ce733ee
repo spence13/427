@@ -1,0 +1,27 @@
+<<<<<<< HEAD
+#ifndef BUNKER_H_
+#define BUNKER_H_
+
+#include <stdint.h>
+
+void bunker_draw(unsigned int *);
+void bunker_get_erosion_block(int);
+void bunker_get_erosion_bunker_num(int);
+void bunker_get_erosion_state(int);
+void bunker_erode(unsigned int * framePointer, int);
+
+#endif /* BUNKER_H_ */
+=======
+#ifndef BUNKER_H_
+#define BUNKER_H_
+
+#include <stdint.h>
+
+void bunker_draw(unsigned int *);
+void bunker_get_erosion_block(int);
+void bunker_get_erosion_bunker_num(int);
+void bunker_get_erosion_state(int);
+void bunker_erode(unsigned int * framePointer, int);
+
+#endif /* BUNKER_H_ */
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

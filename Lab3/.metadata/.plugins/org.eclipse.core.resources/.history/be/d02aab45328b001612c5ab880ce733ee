@@ -1,0 +1,689 @@
+<<<<<<< HEAD
+#include "stats.h"
+#include "globals.h"
+#include "tank.h"
+#include <stdint.h>
+
+#define STATS_ROWS 5 //Number of rows
+#define STATS_COLUMNS 28 //Number of columns
+#define STATS_NEW_COLUMNS 3 //Number of columns after 1st iteration
+#define STATS_LIVES_COLUMNS 24 //Number of columns in lives word
+#define STATS_TANK_ROWS 8 //Number of rows in tank
+#define STATS_TANK_COLUMNS 15 //Number of columns in tank
+
+// Packs each horizontal line of the figures into a single 29 bit word.
+#define packword29(b28,b27,b26,b25,b24,b23,b22,b21,b20,b19,b18,b17,b16,b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+((b28 << 28) | (b27 << 27) | (b26 << 26) | (b25 << 25) | (b24 << 24) | \
+ (b23 << 23) | (b22 << 22) | (b21 << 21) | (b20 << 20) | (b19 << 19) | (b18 << 18) | (b17 << 17) | (b16 << 16) |  \
+ (b15 << 15) | (b14 << 14) | (b13 << 13) | (b12 << 12) | (b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | \
+ (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// Packs each horizontal line of the figures into a single 24 bit word.
+#define packword24(b23,b22,b21,b20,b19,b18,b17,b16,b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+((b23 << 23) | (b22 << 22) | (b21 << 21) | (b20 << 20) | (b19 << 19) | (b18 << 18) | (b17 << 17) | (b16 << 16) |  \
+ (b15 << 15) | (b14 << 14) | (b13 << 13) | (b12 << 12) | (b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | \
+ (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// Packs each horizontal line of the figures into a single 4 bit word.
+#define packword4(b3,b2,b1,b0) \
+((b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// SCORE
+static const uint32_t stats_score29x5[] =
+{
+packword29(0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,1),
+packword29(1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0),
+packword29(0,1,1,1,0,0,1,0,0,0,0,0,1,0,0,0,1,0,1,1,1,1,0,0,1,1,1,1,0),
+packword29(0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0),
+packword29(1,1,1,1,0,0,0,1,1,1,1,0,0,1,1,1,0,0,1,0,0,0,1,0,1,1,1,1,1)
+};
+
+// LIVES
+static const uint32_t stats_lives_24x5[] =
+{
+packword24(1,0,0,0,0,1,0,1,0,0,0,1,0,1,1,1,1,1,0,0,1,1,1,1),
+packword24(1,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,0),
+packword24(1,0,0,0,0,1,0,1,0,0,0,1,0,1,1,1,1,0,0,0,1,1,1,0),
+packword24(1,0,0,0,0,1,0,0,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,1),
+packword24(1,1,1,1,0,1,0,0,0,1,0,0,0,1,1,1,1,1,0,1,1,1,1,0)
+};
+
+
+// sprite for number 0
+static const uint8_t stats0_4x5[] =
+{
+packword4(0,1,1,0),
+packword4(1,0,0,1),
+packword4(1,0,0,1),
+packword4(1,0,0,1),
+packword4(0,1,1,0)
+};
+
+//sprite for number 1
+static const uint8_t stats1_4x5[] =
+{
+packword4(0,0,1,0),
+packword4(0,1,1,0),
+packword4(1,0,1,0),
+packword4(0,0,1,0),
+packword4(1,1,1,1)
+};
+
+//sprite for number 2
+static const uint8_t stats2_4x5[] =
+{
+packword4(1,1,1,0),
+packword4(0,0,0,1),
+packword4(0,1,1,0),
+packword4(1,0,0,0),
+packword4(1,1,1,1)
+};
+
+//sprite for number 3
+static const uint8_t stats3_4x5[] =
+{
+packword4(1,1,1,0),
+packword4(0,0,0,1),
+packword4(0,1,1,0),
+packword4(0,0,0,1),
+packword4(1,1,1,0)
+};
+
+//sprite for number 4
+static const uint8_t stats4_4x5[] =
+{
+packword4(1,0,1,0),
+packword4(1,0,1,0),
+packword4(1,1,1,1),
+packword4(0,0,1,0),
+packword4(0,0,1,0)
+};
+
+//sprite for number 5
+static const uint8_t stats5_4x5[] =
+{
+packword4(1,1,1,1),
+packword4(1,0,0,0),
+packword4(1,1,1,0),
+packword4(0,0,0,1),
+packword4(1,1,1,0)
+};
+
+//sprite for number 6
+static const uint8_t stats6_4x5[] =
+{
+packword4(0,1,1,0),
+packword4(1,0,0,0),
+packword4(1,1,1,0),
+packword4(1,0,0,1),
+packword4(0,1,1,0)
+};
+
+//sprite for number 7
+static const uint8_t stats7_4x5[] =
+{
+packword4(1,1,1,1),
+packword4(1,0,0,1),
+packword4(0,0,1,0),
+packword4(0,1,0,0),
+packword4(0,1,0,0)
+};
+
+//sprite for number 8
+static const uint8_t stats8_4x5[] =
+{
+packword4(0,1,1,0),
+packword4(1,0,0,1),
+packword4(0,1,1,0),
+packword4(1,0,0,1),
+packword4(0,1,1,0)
+};
+
+//sprite for number 9
+static const uint8_t stats9_4x5[] =
+{
+packword4(0,1,1,0),
+packword4(1,0,0,1),
+packword4(0,1,1,1),
+packword4(0,0,0,1),
+packword4(0,1,1,0)
+};
+
+//get bits for the word score
+static uint32_t stats_get_score_bits(uint8_t row)
+{
+	return stats_score29x5[row];
+}
+
+//get bits for the word lives
+static uint32_t stats_get_lives_bits(uint8_t row)
+{
+	return stats_lives_24x5[row];
+}
+
+//get bits for the num 0
+static uint8_t stats_get_0_bits(uint8_t row)
+{
+	return stats0_4x5[row];
+}
+
+//get bits for the num 1
+static uint8_t stats_get_1_bits(uint8_t row)
+{
+	return stats1_4x5[row];
+}
+
+//get bits for the num 2
+static uint8_t stats_get_2_bits(uint8_t row)
+{
+	return stats2_4x5[row];
+}
+
+//get bits for the num 3
+static uint8_t stats_get_3_bits(uint8_t row)
+{
+	return stats3_4x5[row];
+}
+
+//get bits for the num 4
+static uint8_t stats_get_4_bits(uint8_t row)
+{
+	return stats4_4x5[row];
+}
+
+//get bits for the num 5
+static uint8_t stats_get_5_bits(uint8_t row)
+{
+	return stats5_4x5[row];
+}
+
+//get bits for the num 6
+static uint8_t stats_get_6_bits(uint8_t row)
+{
+	return stats6_4x5[row];
+}
+
+//get bits for the num 7
+static uint8_t stats_get_7_bits(uint8_t row)
+{
+	return stats7_4x5[row];
+}
+
+//get bits for the num 8
+static uint8_t stats_get_8_bits(uint8_t row)
+{
+	return stats8_4x5[row];
+}
+
+//get bits for the num 9
+static uint8_t stats_get_9_bits(uint8_t row)
+{
+	return stats9_4x5[row];
+}
+
+//draws the word "score" as a single sprite
+void stats_draw_score_word(unsigned int * framePointer)
+{
+    int8_t x, y; //Iterators
+    for(y=0; y < STATS_ROWS; y++){//iterate through all rows
+		for(x=STATS_COLUMNS; x >= 0; x--){//iterate through all col
+			 if(stats_get_score_bits(y) & (1<<x)){//draw a pixel if bit is a 1
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + GLOBALS_SCORE_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_COLUMNS-x))] = GLOBALS_WHITE;//draw 4 white pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + GLOBALS_SCORE_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_COLUMNS-x))] = GLOBALS_WHITE;//draw 4 white pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + GLOBALS_SCORE_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_COLUMNS-x))+1] = GLOBALS_WHITE;//draw 4 white pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + GLOBALS_SCORE_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_COLUMNS-x))+1] = GLOBALS_WHITE;//draw 4 white pixels per bit
+			 }
+		}
+    }
+
+    x = 0;//reset x coord before drawing next sprite
+    y = 0;//reset y coord before drawing next sprite
+    //loop to draw the number zero initially
+    for(y=0; y < STATS_ROWS; y++){//iterate through all rows
+		for(x=STATS_NEW_COLUMNS; x >= 0; x--){//iterate through all col
+			 if(stats_get_0_bits(y) & (1<<x)){//draw a pixel if bit is a 1
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + GLOBALS_SCORE_NUMBER_X_POS + (GLOBALS_DOUBLE*(STATS_NEW_COLUMNS-x))] = GLOBALS_GREEN;//draw 4 green pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + GLOBALS_SCORE_NUMBER_X_POS + (GLOBALS_DOUBLE*(STATS_NEW_COLUMNS-x))] = GLOBALS_GREEN;//draw 4 green pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + GLOBALS_SCORE_NUMBER_X_POS + (GLOBALS_DOUBLE*(STATS_NEW_COLUMNS-x))+1] = GLOBALS_GREEN;//draw 4 green pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + GLOBALS_SCORE_NUMBER_X_POS + (GLOBALS_DOUBLE*(STATS_NEW_COLUMNS-x))+1] = GLOBALS_GREEN;//draw 4 green pixels per bit
+			 }
+		}
+    }
+}
+
+//draws the word "lives" as a single sprite
+void stats_draw_lives_word(unsigned int * framePointer)
+{
+    uint8_t x, y; //Iterators
+    for(y=0; y < STATS_ROWS; y++){//iterate through all rows
+		for(x=STATS_LIVES_COLUMNS-1; x >= 0; x--){//iterate through all col
+			 if(stats_get_lives_bits(y) & (1<<x)){//draw a pixel if bit is a 1
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + GLOBALS_LIVES_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_LIVES_COLUMNS-x))] = GLOBALS_WHITE;//draw 4 white pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + GLOBALS_LIVES_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_LIVES_COLUMNS-x))] = GLOBALS_WHITE;//draw 4 white pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + GLOBALS_LIVES_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_LIVES_COLUMNS-x))+1] = GLOBALS_WHITE;//draw 4 white pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + GLOBALS_LIVES_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_LIVES_COLUMNS-x))+1] = GLOBALS_WHITE;//draw 4 white pixels per bit
+			 }
+		}
+    }
+}
+
+//draws the tank representing a life depending on which one you specify
+void stats_draw_lives_tank(unsigned int * framePointer, uint8_t tank_number)
+{
+	uint16_t lives_tank_x_pos = 0;//variable to be set to correct tank life x_pos to draw
+	//switch statement to determine which tank life to draw
+	switch(tank_number)
+	{
+		case 1://left tank life
+			lives_tank_x_pos = GLOBALS_LIVES_TANK1_X_POS;//change x pos depending on which tank life to draw (left)
+			break;
+		case 2://middle tank life
+			lives_tank_x_pos = GLOBALS_LIVES_TANK2_X_POS;//change x pos depending on which tank life to draw (middle)
+			break;
+		case 3://right tank life
+			lives_tank_x_pos = GLOBALS_LIVES_TANK3_X_POS;//change x pos depending on tank life to draw (right)
+			break;
+		default:
+			break;
+	}
+
+    uint8_t x, y; //Iterators
+    for(y=0; y < STATS_TANK_ROWS; y++){//iterate through all rows
+		for(x=0; x < STATS_TANK_COLUMNS; x++){//iterate through all col
+			 if(tank_get_tank_bits(y) & (1<<x)){//draw a pixel if bit is a one
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_GREEN;//draw 4 green pixels per bit
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_GREEN;//draw 4 green pixels
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_GREEN;//draw 4 green pixels
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_GREEN;//draw 4 green pixels
+			 }
+		}
+    }
+}
+
+//erase the tank life depending on which one you specify
+void stats_erase_lives_tank(unsigned int * framePointer, uint8_t tank_number)
+{
+	uint16_t lives_tank_x_pos = 0;//variable to be set to correct tank life x_pos to draw
+	//switch statement to determine which tank life to erase
+	switch(tank_number)
+	{
+		case 1://left tank life
+			lives_tank_x_pos = GLOBALS_LIVES_TANK1_X_POS;//change x pos depending on which tank life to erase (left)
+			break;
+		case 2://middle tank life
+			lives_tank_x_pos = GLOBALS_LIVES_TANK2_X_POS;//change x pos depending on which tank life to erase (middle)
+			break;
+		case 3://right tank life
+			lives_tank_x_pos = GLOBALS_LIVES_TANK3_X_POS;//change x pos depending on which tank life to erase (right)
+			break;
+		default:
+			break;
+	}
+
+    uint8_t x, y; //Iterators
+    for(y=0; y < STATS_TANK_ROWS; y++){//iterate through all rows
+		for(x=0; x < STATS_TANK_COLUMNS; x++){//iterate through all col
+			 if(tank_get_tank_bits(y) & (1<<x)){//draw a pixel if bit is a 1
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;//draw 4 black pixels per bit
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;//draw 4 black pixels per bit
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;//draw 4 black pixels per bit
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;//draw 4 black pixels per bit
+			 }
+		}
+    }
+}
+
+
+
+
+
+
+
+
+
+
+=======
+#include "stats.h"
+#include "globals.h"
+#include "tank.h"
+#include <stdint.h>
+
+#define STATS_ROWS 5 //Number of rows
+#define STATS_COLUMNS 28 //Number of columns
+#define STATS_NEW_COLUMNS 3 //Number of columns after 1st iteration
+#define STATS_LIVES_COLUMNS 24 //Number of columns in lives word
+#define STATS_TANK_ROWS 8 //Number of rows in tank
+#define STATS_TANK_COLUMNS 15 //Number of columns in tank
+
+// Packs each horizontal line of the figures into a single 29 bit word.
+#define packword29(b28,b27,b26,b25,b24,b23,b22,b21,b20,b19,b18,b17,b16,b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+((b28 << 28) | (b27 << 27) | (b26 << 26) | (b25 << 25) | (b24 << 24) | \
+ (b23 << 23) | (b22 << 22) | (b21 << 21) | (b20 << 20) | (b19 << 19) | (b18 << 18) | (b17 << 17) | (b16 << 16) |  \
+ (b15 << 15) | (b14 << 14) | (b13 << 13) | (b12 << 12) | (b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | \
+ (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// Packs each horizontal line of the figures into a single 24 bit word.
+#define packword24(b23,b22,b21,b20,b19,b18,b17,b16,b15,b14,b13,b12,b11,b10,b9,b8,b7,b6,b5,b4,b3,b2,b1,b0) \
+((b23 << 23) | (b22 << 22) | (b21 << 21) | (b20 << 20) | (b19 << 19) | (b18 << 18) | (b17 << 17) | (b16 << 16) |  \
+ (b15 << 15) | (b14 << 14) | (b13 << 13) | (b12 << 12) | (b11 << 11) | (b10 << 10) | (b9  << 9 ) | (b8  << 8 ) | \
+ (b7  << 7 ) | (b6  << 6 ) | (b5  << 5 ) | (b4  << 4 ) | (b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// Packs each horizontal line of the figures into a single 4 bit word.
+#define packword4(b3,b2,b1,b0) \
+((b3  << 3 ) | (b2  << 2 ) | (b1  << 1 ) | (b0  << 0 ) )
+
+// SCORE
+static const uint32_t stats_score29x5[] =
+{
+packword29(0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,1),
+packword29(1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0),
+packword29(0,1,1,1,0,0,1,0,0,0,0,0,1,0,0,0,1,0,1,1,1,1,0,0,1,1,1,1,0),
+packword29(0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0),
+packword29(1,1,1,1,0,0,0,1,1,1,1,0,0,1,1,1,0,0,1,0,0,0,1,0,1,1,1,1,1)
+};
+
+// LIVES
+static const uint32_t stats_lives_24x5[] =
+{
+packword24(1,0,0,0,0,1,0,1,0,0,0,1,0,1,1,1,1,1,0,0,1,1,1,1),
+packword24(1,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,0),
+packword24(1,0,0,0,0,1,0,1,0,0,0,1,0,1,1,1,1,0,0,0,1,1,1,0),
+packword24(1,0,0,0,0,1,0,0,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,1),
+packword24(1,1,1,1,0,1,0,0,0,1,0,0,0,1,1,1,1,1,0,1,1,1,1,0)
+};
+
+
+// sprite for number 0
+static const uint8_t stats0_4x5[] =
+{
+packword4(0,1,1,0),
+packword4(1,0,0,1),
+packword4(1,0,0,1),
+packword4(1,0,0,1),
+packword4(0,1,1,0)
+};
+
+//sprite for number 1
+static const uint8_t stats1_4x5[] =
+{
+packword4(0,0,1,0),
+packword4(0,1,1,0),
+packword4(1,0,1,0),
+packword4(0,0,1,0),
+packword4(1,1,1,1)
+};
+
+//sprite for number 2
+static const uint8_t stats2_4x5[] =
+{
+packword4(1,1,1,0),
+packword4(0,0,0,1),
+packword4(0,1,1,0),
+packword4(1,0,0,0),
+packword4(1,1,1,1)
+};
+
+//sprite for number 3
+static const uint8_t stats3_4x5[] =
+{
+packword4(1,1,1,0),
+packword4(0,0,0,1),
+packword4(0,1,1,0),
+packword4(0,0,0,1),
+packword4(1,1,1,0)
+};
+
+//sprite for number 4
+static const uint8_t stats4_4x5[] =
+{
+packword4(1,0,1,0),
+packword4(1,0,1,0),
+packword4(1,1,1,1),
+packword4(0,0,1,0),
+packword4(0,0,1,0)
+};
+
+//sprite for number 5
+static const uint8_t stats5_4x5[] =
+{
+packword4(1,1,1,1),
+packword4(1,0,0,0),
+packword4(1,1,1,0),
+packword4(0,0,0,1),
+packword4(1,1,1,0)
+};
+
+//sprite for number 6
+static const uint8_t stats6_4x5[] =
+{
+packword4(0,1,1,0),
+packword4(1,0,0,0),
+packword4(1,1,1,0),
+packword4(1,0,0,1),
+packword4(0,1,1,0)
+};
+
+//sprite for number 7
+static const uint8_t stats7_4x5[] =
+{
+packword4(1,1,1,1),
+packword4(1,0,0,1),
+packword4(0,0,1,0),
+packword4(0,1,0,0),
+packword4(0,1,0,0)
+};
+
+//sprite for number 8
+static const uint8_t stats8_4x5[] =
+{
+packword4(0,1,1,0),
+packword4(1,0,0,1),
+packword4(0,1,1,0),
+packword4(1,0,0,1),
+packword4(0,1,1,0)
+};
+
+//sprite for number 9
+static const uint8_t stats9_4x5[] =
+{
+packword4(0,1,1,0),
+packword4(1,0,0,1),
+packword4(0,1,1,1),
+packword4(0,0,0,1),
+packword4(0,1,1,0)
+};
+
+//get bits for the word score
+static uint32_t stats_get_score_bits(uint8_t row)
+{
+	return stats_score29x5[row];
+}
+
+//get bits for the word lives
+static uint32_t stats_get_lives_bits(uint8_t row)
+{
+	return stats_lives_24x5[row];
+}
+
+//get bits for the num 0
+static uint8_t stats_get_0_bits(uint8_t row)
+{
+	return stats0_4x5[row];
+}
+
+//get bits for the num 1
+static uint8_t stats_get_1_bits(uint8_t row)
+{
+	return stats1_4x5[row];
+}
+
+//get bits for the num 2
+static uint8_t stats_get_2_bits(uint8_t row)
+{
+	return stats2_4x5[row];
+}
+
+//get bits for the num 3
+static uint8_t stats_get_3_bits(uint8_t row)
+{
+	return stats3_4x5[row];
+}
+
+//get bits for the num 4
+static uint8_t stats_get_4_bits(uint8_t row)
+{
+	return stats4_4x5[row];
+}
+
+//get bits for the num 5
+static uint8_t stats_get_5_bits(uint8_t row)
+{
+	return stats5_4x5[row];
+}
+
+//get bits for the num 6
+static uint8_t stats_get_6_bits(uint8_t row)
+{
+	return stats6_4x5[row];
+}
+
+//get bits for the num 7
+static uint8_t stats_get_7_bits(uint8_t row)
+{
+	return stats7_4x5[row];
+}
+
+//get bits for the num 8
+static uint8_t stats_get_8_bits(uint8_t row)
+{
+	return stats8_4x5[row];
+}
+
+//get bits for the num 9
+static uint8_t stats_get_9_bits(uint8_t row)
+{
+	return stats9_4x5[row];
+}
+
+//draws the word "score" as a single sprite
+void stats_draw_score_word(unsigned int * framePointer)
+{
+    int8_t x, y; //Iterators
+    for(y=0; y < STATS_ROWS; y++){//iterate through all rows
+		for(x=STATS_COLUMNS; x >= 0; x--){//iterate through all col
+			 if(stats_get_score_bits(y) & (1<<x)){//draw a pixel if bit is a 1
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + GLOBALS_SCORE_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_COLUMNS-x))] = GLOBALS_WHITE;//draw 4 white pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + GLOBALS_SCORE_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_COLUMNS-x))] = GLOBALS_WHITE;//draw 4 white pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + GLOBALS_SCORE_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_COLUMNS-x))+1] = GLOBALS_WHITE;//draw 4 white pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + GLOBALS_SCORE_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_COLUMNS-x))+1] = GLOBALS_WHITE;//draw 4 white pixels per bit
+			 }
+		}
+    }
+
+    x = 0;//reset x coord before drawing next sprite
+    y = 0;//reset y coord before drawing next sprite
+    //loop to draw the number zero initially
+    for(y=0; y < STATS_ROWS; y++){//iterate through all rows
+		for(x=STATS_NEW_COLUMNS; x >= 0; x--){//iterate through all col
+			 if(stats_get_0_bits(y) & (1<<x)){//draw a pixel if bit is a 1
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + GLOBALS_SCORE_NUMBER_X_POS + (GLOBALS_DOUBLE*(STATS_NEW_COLUMNS-x))] = GLOBALS_GREEN;//draw 4 green pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + GLOBALS_SCORE_NUMBER_X_POS + (GLOBALS_DOUBLE*(STATS_NEW_COLUMNS-x))] = GLOBALS_GREEN;//draw 4 green pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + GLOBALS_SCORE_NUMBER_X_POS + (GLOBALS_DOUBLE*(STATS_NEW_COLUMNS-x))+1] = GLOBALS_GREEN;//draw 4 green pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + GLOBALS_SCORE_NUMBER_X_POS + (GLOBALS_DOUBLE*(STATS_NEW_COLUMNS-x))+1] = GLOBALS_GREEN;//draw 4 green pixels per bit
+			 }
+		}
+    }
+}
+
+//draws the word "lives" as a single sprite
+void stats_draw_lives_word(unsigned int * framePointer)
+{
+    uint8_t x, y; //Iterators
+    for(y=0; y < STATS_ROWS; y++){//iterate through all rows
+		for(x=STATS_LIVES_COLUMNS-1; x >= 0; x--){//iterate through all col
+			 if(stats_get_lives_bits(y) & (1<<x)){//draw a pixel if bit is a 1
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + GLOBALS_LIVES_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_LIVES_COLUMNS-x))] = GLOBALS_WHITE;//draw 4 white pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + GLOBALS_LIVES_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_LIVES_COLUMNS-x))] = GLOBALS_WHITE;//draw 4 white pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + GLOBALS_LIVES_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_LIVES_COLUMNS-x))+1] = GLOBALS_WHITE;//draw 4 white pixels per bit
+				 framePointer[(GLOBALS_SCORE_LIVES_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + GLOBALS_LIVES_WORD_X_POS + (GLOBALS_DOUBLE*(STATS_LIVES_COLUMNS-x))+1] = GLOBALS_WHITE;//draw 4 white pixels per bit
+			 }
+		}
+    }
+}
+
+//draws the tank representing a life depending on which one you specify
+void stats_draw_lives_tank(unsigned int * framePointer, uint8_t tank_number)
+{
+	uint16_t lives_tank_x_pos = 0;//variable to be set to correct tank life x_pos to draw
+	//switch statement to determine which tank life to draw
+	switch(tank_number)
+	{
+		case 1://left tank life
+			lives_tank_x_pos = GLOBALS_LIVES_TANK1_X_POS;//change x pos depending on which tank life to draw (left)
+			break;
+		case 2://middle tank life
+			lives_tank_x_pos = GLOBALS_LIVES_TANK2_X_POS;//change x pos depending on which tank life to draw (middle)
+			break;
+		case 3://right tank life
+			lives_tank_x_pos = GLOBALS_LIVES_TANK3_X_POS;//change x pos depending on tank life to draw (right)
+			break;
+		default:
+			break;
+	}
+
+    uint8_t x, y; //Iterators
+    for(y=0; y < STATS_TANK_ROWS; y++){//iterate through all rows
+		for(x=0; x < STATS_TANK_COLUMNS; x++){//iterate through all col
+			 if(tank_get_tank_bits(y) & (1<<x)){//draw a pixel if bit is a one
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_GREEN;//draw 4 green pixels per bit
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_GREEN;//draw 4 green pixels
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_GREEN;//draw 4 green pixels
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_GREEN;//draw 4 green pixels
+			 }
+		}
+    }
+}
+
+//erase the tank life depending on which one you specify
+void stats_erase_lives_tank(unsigned int * framePointer, uint8_t tank_number)
+{
+	uint16_t lives_tank_x_pos = 0;//variable to be set to correct tank life x_pos to draw
+	//switch statement to determine which tank life to erase
+	switch(tank_number)
+	{
+		case 1://left tank life
+			lives_tank_x_pos = GLOBALS_LIVES_TANK1_X_POS;//change x pos depending on which tank life to erase (left)
+			break;
+		case 2://middle tank life
+			lives_tank_x_pos = GLOBALS_LIVES_TANK2_X_POS;//change x pos depending on which tank life to erase (middle)
+			break;
+		case 3://right tank life
+			lives_tank_x_pos = GLOBALS_LIVES_TANK3_X_POS;//change x pos depending on which tank life to erase (right)
+			break;
+		default:
+			break;
+	}
+
+    uint8_t x, y; //Iterators
+    for(y=0; y < STATS_TANK_ROWS; y++){//iterate through all rows
+		for(x=0; x < STATS_TANK_COLUMNS; x++){//iterate through all col
+			 if(tank_get_tank_bits(y) & (1<<x)){//draw a pixel if bit is a 1
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;//draw 4 black pixels per bit
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)] = GLOBALS_BLACK;//draw 4 black pixels per bit
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y))*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;//draw 4 black pixels per bit
+				 framePointer[(GLOBALS_LIVES_TANK_Y_POS+(GLOBALS_DOUBLE*y)+1)*GLOBALS_MAX_X + lives_tank_x_pos + (GLOBALS_DOUBLE*x)+1] = GLOBALS_BLACK;//draw 4 black pixels per bit
+			 }
+		}
+    }
+}
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

@@ -1,0 +1,17 @@
+<<<<<<< HEAD
+INFILE=J:\ECEN_427\Lab1\implementation\system.ncd
+OUTFILE=J:\ECEN_427\Lab1\implementation\system.bit
+FAMILY=Spartan6
+PART=xc6slx45-3csg324
+WORKINGDIR=J:\ECEN_427\Lab1\implementation
+LICENSE=ISE
+USER_INFO=174672765_1777505556_210596263_102
+=======
+INFILE=J:\ECEN_427\Lab1\implementation\system.ncd
+OUTFILE=J:\ECEN_427\Lab1\implementation\system.bit
+FAMILY=Spartan6
+PART=xc6slx45-3csg324
+WORKINGDIR=J:\ECEN_427\Lab1\implementation
+LICENSE=ISE
+USER_INFO=174672765_1777505556_210596263_102
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

@@ -1,0 +1,15 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="C:\Users\superman\Desktop\ECEN_427\Lab1_worskspace\hello_world_0\Debug\hello_world_0.elf" key="Lab1_hw_platform-microblaze_0-initElf"/>
+	<item value="C:\Users\superman\Desktop\ECEN_427\Lab1_worskspace\Lab1_hw_platform\system.bit" key="Lab1_hw_platform-bitFile"/>
+	<item value="C:\Users\superman\Desktop\ECEN_427\Lab1_worskspace\Lab1_hw_platform\system_bd.bmm" key="Lab1_hw_platform-bmmFile"/>
+</section>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="C:\Users\superman\Desktop\ECEN_427\Lab1_worskspace\hello_world_0\Debug\hello_world_0.elf" key="Lab1_hw_platform-microblaze_0-initElf"/>
+	<item value="C:\Users\superman\Desktop\ECEN_427\Lab1_worskspace\Lab1_hw_platform\system.bit" key="Lab1_hw_platform-bitFile"/>
+	<item value="C:\Users\superman\Desktop\ECEN_427\Lab1_worskspace\Lab1_hw_platform\system_bd.bmm" key="Lab1_hw_platform-bmmFile"/>
+</section>
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

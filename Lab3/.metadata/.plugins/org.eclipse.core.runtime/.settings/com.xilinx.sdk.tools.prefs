@@ -1,0 +1,31 @@
+<<<<<<< HEAD
+#Fri Sep 23 08:35:55 MDT 2016
+com.xilinx.sdk.linkgen.prefs.Lab3\:.sbss=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.rodata=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.data=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.sbss2=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:Stack-size=4096
+com.xilinx.sdk.linkgen.prefs.Lab3\:Stack=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.sdata=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.bss=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.text=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:Heap-size=1024
+eclipse.preferences.version=1
+com.xilinx.sdk.linkgen.prefs.Lab3\:Heap=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.sdata2=MCB_DDR2_S0_AXI_BASEADDR
+=======
+#Fri Sep 23 08:35:55 MDT 2016
+com.xilinx.sdk.linkgen.prefs.Lab3\:.sbss=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.rodata=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.data=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.sbss2=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:Stack-size=4096
+com.xilinx.sdk.linkgen.prefs.Lab3\:Stack=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.sdata=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.bss=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.text=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:Heap-size=1024
+eclipse.preferences.version=1
+com.xilinx.sdk.linkgen.prefs.Lab3\:Heap=MCB_DDR2_S0_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.Lab3\:.sdata2=MCB_DDR2_S0_AXI_BASEADDR
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c

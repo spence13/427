@@ -1,0 +1,39 @@
+<<<<<<< HEAD
+C:\Users\superman\Desktop\427\Lab2_newHW\implementation\system.ngc 1473887596
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/push_buttons_5bits_wrapper.ngc 1473887552
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/dip_switches_8bits_wrapper.ngc 1473887564
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/rs232_uart_1_wrapper.ngc 1473887545
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/proc_sys_reset_0_wrapper.ngc 1473887447
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/clock_generator_0_wrapper.ngc 1473887581
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_ilmb_wrapper.ngc 1473887572
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_dlmb_wrapper.ngc 1473887575
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/axi4lite_0_wrapper.ngc 1473887584
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_wrapper.ngc 1473887578
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_intc_wrapper.ngc 1473887453
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_i_bram_ctrl_wrapper.ngc 1473887462
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_d_bram_ctrl_wrapper.ngc 1473887470
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/debug_module_wrapper.ngc 1473887526
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/leds_8bits_wrapper.ngc 1473887558
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/fit_timer_0_wrapper.ngc 1473887569
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_bram_block_wrapper.ngc 1473887475
+OK
+=======
+C:\Users\superman\Desktop\427\Lab2_newHW\implementation\system.ngc 1473887596
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/push_buttons_5bits_wrapper.ngc 1473887552
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/dip_switches_8bits_wrapper.ngc 1473887564
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/rs232_uart_1_wrapper.ngc 1473887545
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/proc_sys_reset_0_wrapper.ngc 1473887447
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/clock_generator_0_wrapper.ngc 1473887581
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_ilmb_wrapper.ngc 1473887572
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_dlmb_wrapper.ngc 1473887575
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/axi4lite_0_wrapper.ngc 1473887584
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_wrapper.ngc 1473887578
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_intc_wrapper.ngc 1473887453
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_i_bram_ctrl_wrapper.ngc 1473887462
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_d_bram_ctrl_wrapper.ngc 1473887470
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/debug_module_wrapper.ngc 1473887526
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/leds_8bits_wrapper.ngc 1473887558
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/fit_timer_0_wrapper.ngc 1473887569
+C:/Users/superman/Desktop/427/Lab2_newHW/implementation/microblaze_0_bram_block_wrapper.ngc 1473887475
+OK
+>>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c
