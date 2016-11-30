@@ -6,8 +6,8 @@ xc6slx45csg324-3 -intstyle silent -i -sd .. clock_generator_0_wrapper.ngc
 ../clock_generator_0_wrapper
 
 Reading NGO file
-"C:/Users/superman/Desktop/ECEN_427/SpaceInvadersCreativeHW/implementation/clock
-_generator_0_wrapper/clock_generator_0_wrapper.ngc" ...
+"C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/implementation/clock_gene
+rator_0_wrapper/clock_generator_0_wrapper.ngc" ...
 
 Partition Implementation Status
 -------------------------------

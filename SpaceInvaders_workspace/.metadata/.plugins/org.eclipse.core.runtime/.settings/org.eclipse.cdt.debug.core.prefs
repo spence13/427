@@ -1,9 +1,7 @@
-<<<<<<< HEAD
-#Mon Oct 10 21:05:59 MDT 2016
+#Wed Nov 30 12:56:05 MST 2016
 org.eclipse.cdt.debug.core.cDebug.common_source_containers=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<sourceLookupDirector>\r\n<sourceContainers duplicates\="false"/>\r\n</sourceLookupDirector>\r\n
+>>>>>>>=46133ae2d6a022a717e89ee90e8959352f12048c
 eclipse.preferences.version=1
-=======
-#Mon Oct 10 21:05:59 MDT 2016
-org.eclipse.cdt.debug.core.cDebug.common_source_containers=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<sourceLookupDirector>\r\n<sourceContainers duplicates\="false"/>\r\n</sourceLookupDirector>\r\n
-eclipse.preferences.version=1
->>>>>>> 46133ae2d6a022a717e89ee90e8959352f12048c
+<<<<<<<=HEAD
+org.eclipse.cdt.debug.core.cDebug.default_source_containers=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<sourceLookupDirector>\r\n<sourceContainers duplicates\="false">\r\n<container memento\="AbsolutePath" typeId\="org.eclipse.cdt.debug.core.containerType.absolutePath"/>\r\n<container memento\="programRelativePath" typeId\="org.eclipse.cdt.debug.core.containerType.programRelativePath"/>\r\n<container memento\="&lt;?xml version\=&quot;1.0&quot; encoding\=&quot;UTF-8&quot; standalone\=&quot;no&quot;?&gt;&\#13;&\#10;&lt;project referencedProjects\=&quot;true&quot;/&gt;&\#13;&\#10;" typeId\="org.eclipse.cdt.debug.core.containerType.project"/>\r\n</sourceContainers>\r\n</sourceLookupDirector>\r\n
+=\=\=\=\=\=\=

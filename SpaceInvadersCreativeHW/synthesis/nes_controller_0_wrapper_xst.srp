@@ -29,7 +29,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input Format                       : MIXED
 Input File Name                    : "nes_controller_0_wrapper_xst.prj"
-Verilog Include Directory          : {"C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\pcores\" "C:\EE427\Atlys_BSB_Support_v_3_4\Atlys_AXI_BSB_Support\lib\Digilent\pcores\" "C:\Xilinx\13.4\ISE_DS\edk_user_repository\MyProcessorIPLib\pcores\" "C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
+Verilog Include Directory          : {"C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\pcores\" "C:\EE427\Atlys_BSB_Support_v_3_4\Atlys_AXI_BSB_Support\lib\Digilent\pcores\" "C:\Xilinx\13.4\ISE_DS\edk_user_repository\MyProcessorIPLib\pcores\" "C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxBFMinterface\pcores\" "C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\" }
 
 ---- Target Parameters
 Target Device                      : xc6slx45csg324-3
@@ -422,13 +422,13 @@ Parsing architecture <imp> of entity <slave_attachment>.
 Parsing VHDL file "C:/Xilinx/13.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/axi_lite_ipif.vhd" into library axi_lite_ipif_v1_01_a
 Parsing entity <axi_lite_ipif>.
 Parsing architecture <imp> of entity <axi_lite_ipif>.
-Parsing VHDL file "C:/Users/superman/Desktop/ECEN_427/SpaceInvadersCreativeHW/pcores/nes_controller_v1_00_a/hdl/vhdl/user_logic.vhd" into library nes_controller_v1_00_a
+Parsing VHDL file "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/nes_controller_v1_00_a/hdl/vhdl/user_logic.vhd" into library nes_controller_v1_00_a
 Parsing entity <user_logic>.
 Parsing architecture <IMP> of entity <user_logic>.
-Parsing VHDL file "C:/Users/superman/Desktop/ECEN_427/SpaceInvadersCreativeHW/pcores/nes_controller_v1_00_a/hdl/vhdl/nes_controller.vhd" into library nes_controller_v1_00_a
+Parsing VHDL file "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/nes_controller_v1_00_a/hdl/vhdl/nes_controller.vhd" into library nes_controller_v1_00_a
 Parsing entity <nes_controller>.
 Parsing architecture <IMP> of entity <nes_controller>.
-Parsing VHDL file "C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\hdl\nes_controller_0_wrapper.vhd" into library work
+Parsing VHDL file "C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\hdl\nes_controller_0_wrapper.vhd" into library work
 Parsing entity <nes_controller_0_wrapper>.
 Parsing architecture <STRUCTURE> of entity <nes_controller_0_wrapper>.
 
@@ -448,21 +448,21 @@ Elaborating entity <address_decoder> (architecture <IMP>) with generics from lib
 INFO:HDLCompiler:679 - "C:/Xilinx/13.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/slave_attachment.vhd" Line 412. Case statement is complete. others clause is never selected
 
 Elaborating entity <user_logic> (architecture <IMP>) with generics from library <nes_controller_v1_00_a>.
-WARNING:HDLCompiler:92 - "C:/Users/superman/Desktop/ECEN_427/SpaceInvadersCreativeHW/pcores/nes_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 245: bus2ip_resetn should be on the sensitivity list of the process
-INFO:HDLCompiler:679 - "C:/Users/superman/Desktop/ECEN_427/SpaceInvadersCreativeHW/pcores/nes_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 379. Case statement is complete. others clause is never selected
+WARNING:HDLCompiler:92 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/nes_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 245: bus2ip_resetn should be on the sensitivity list of the process
+INFO:HDLCompiler:679 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/nes_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 379. Case statement is complete. others clause is never selected
 
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Synthesizing Unit <nes_controller_0_wrapper>.
-    Related source file is "c:/users/superman/desktop/ecen_427/spaceinvaderscreativehw/hdl/nes_controller_0_wrapper.vhd".
+    Related source file is "c:/users/superman/desktop/427/spaceinvaderscreativehw/hdl/nes_controller_0_wrapper.vhd".
     Summary:
 	no macro.
 Unit <nes_controller_0_wrapper> synthesized.
 
 Synthesizing Unit <nes_controller>.
-    Related source file is "c:/users/superman/desktop/ecen_427/spaceinvaderscreativehw/pcores/nes_controller_v1_00_a/hdl/vhdl/nes_controller.vhd".
+    Related source file is "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/nes_controller_v1_00_a/hdl/vhdl/nes_controller.vhd".
 WARNING:Xst:37 - Detected unknown constraint/property "sigis". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "sigis". This constraint/property is not supported by the current software release and will be ignored.
         C_S_AXI_DATA_WIDTH = 32
@@ -481,9 +481,9 @@ WARNING:Xst:37 - Detected unknown constraint/property "sigis". This constraint/p
 WARNING:Xst:37 - Detected unknown constraint/property "sigis". This constraint/property is not supported by the current software release and will be ignored.
     Set property "MAX_FANOUT = 10000" for signal <S_AXI_ARESETN>.
 WARNING:Xst:37 - Detected unknown constraint/property "sigis". This constraint/property is not supported by the current software release and will be ignored.
-INFO:Xst:3210 - "c:/users/superman/desktop/ecen_427/spaceinvaderscreativehw/pcores/nes_controller_v1_00_a/hdl/vhdl/nes_controller.vhd" line 247: Output port <Bus2IP_Addr> of the instance <AXI_LITE_IPIF_I> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/superman/desktop/ecen_427/spaceinvaderscreativehw/pcores/nes_controller_v1_00_a/hdl/vhdl/nes_controller.vhd" line 247: Output port <Bus2IP_CS> of the instance <AXI_LITE_IPIF_I> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/superman/desktop/ecen_427/spaceinvaderscreativehw/pcores/nes_controller_v1_00_a/hdl/vhdl/nes_controller.vhd" line 247: Output port <Bus2IP_RNW> of the instance <AXI_LITE_IPIF_I> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/nes_controller_v1_00_a/hdl/vhdl/nes_controller.vhd" line 247: Output port <Bus2IP_Addr> of the instance <AXI_LITE_IPIF_I> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/nes_controller_v1_00_a/hdl/vhdl/nes_controller.vhd" line 247: Output port <Bus2IP_CS> of the instance <AXI_LITE_IPIF_I> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/nes_controller_v1_00_a/hdl/vhdl/nes_controller.vhd" line 247: Output port <Bus2IP_RNW> of the instance <AXI_LITE_IPIF_I> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
 Unit <nes_controller> synthesized.
@@ -563,7 +563,7 @@ WARNING:Xst:647 - Input <Bus_RNW> is never used. This port will be preserved and
 Unit <address_decoder> synthesized.
 
 Synthesizing Unit <user_logic>.
-    Related source file is "c:/users/superman/desktop/ecen_427/spaceinvaderscreativehw/pcores/nes_controller_v1_00_a/hdl/vhdl/user_logic.vhd".
+    Related source file is "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/nes_controller_v1_00_a/hdl/vhdl/user_logic.vhd".
 WARNING:Xst:37 - Detected unknown constraint/property "sigis". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "sigis". This constraint/property is not supported by the current software release and will be ignored.
         C_NUM_REG = 1
@@ -918,12 +918,12 @@ S_AXI_ACLK     |    5.349|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.71 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 7.05 secs
  
 --> 
 
-Total memory usage is 284180 kilobytes
+Total memory usage is 284244 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   18 (   0 filtered)

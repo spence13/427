@@ -23,7 +23,7 @@ WARNING:EDK - INFO:Security:51 - The XILINXD_LICENSE_FILE environment variable
    qualify for Xilinx software updates or new releases.
 
 
-Parse C:/Users/superman/Desktop/ECEN_427/SpaceInvadersCreativeHW/system.mhs ...
+Parse C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/system.mhs ...
 
 Read MPD definitions ...
 WARNING:EDK:3605 - Use of the repository located at
@@ -131,8 +131,7 @@ WARNING:EDK:4180 - PORT: bscan_tdo1, CONNECTOR: bscan_tdo1 - No driver found.
    _v2_1_0.mpd line 239 
 WARNING:EDK:4181 - PORT: axi4lite_0_M_AXI_ACLK_pin, CONNECTOR: axi4lite_0_M_ACLK
    - floating connection -
-   C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 39
-    
+   C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 39 
 WARNING:EDK:4181 - PORT: bscan_tdi, CONNECTOR: bscan_tdi - floating connection -
    C:\Xilinx\13.4\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\mdm_v2_00_b\data\mdm
    _v2_1_0.mpd line 232 
@@ -174,8 +173,7 @@ WARNING:EDK:4181 - PORT: s2mm_prmry_reset_out_n, CONNECTOR: S2MM_RESET_OUT_N -
    a\axi_vdma_v2_1_0.mpd line 224 
 WARNING:EDK:4181 - PORT: M_AXIS_S2MM_ACLK, CONNECTOR: M_AXIS_S2MM_ACLK_int -
    floating connection -
-   C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line
-   253 
+   C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 253 
 
 Performing Clock DRCs...
 
@@ -310,13 +308,79 @@ Creating hardware output directories ...
 Managing hardware (BBD-specified) netlist files ...
 
 Managing cache ...
+IPNAME:proc_sys_reset INSTANCE:proc_sys_reset_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 73 -
+Copying cache implementation netlist
+IPNAME:lmb_v10 INSTANCE:microblaze_0_ilmb -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 86 -
+Copying cache implementation netlist
+IPNAME:lmb_bram_if_cntlr INSTANCE:microblaze_0_i_bram_ctrl -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 93 -
+Copying cache implementation netlist
+IPNAME:lmb_v10 INSTANCE:microblaze_0_dlmb -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 102 -
+Copying cache implementation netlist
+IPNAME:lmb_bram_if_cntlr INSTANCE:microblaze_0_d_bram_ctrl -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 109 -
+Copying cache implementation netlist
+IPNAME:bram_block INSTANCE:microblaze_0_bram_block -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 118 -
+Copying cache implementation netlist
+IPNAME:microblaze INSTANCE:microblaze_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 125 -
+Copying cache implementation netlist
+IPNAME:mdm INSTANCE:debug_module -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 153 -
+Copying cache implementation netlist
+IPNAME:axi_vdma INSTANCE:axi_vdma_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 188 -
+Copying cache implementation netlist
+IPNAME:axi_gpio INSTANCE:push_buttons_5bits -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 208 -
+Copying cache implementation netlist
+IPNAME:axi_hdmi INSTANCE:axi_hdmi_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 223 -
+Copying cache implementation netlist
+IPNAME:axi_ac97 INSTANCE:axi_ac97_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 257 -
+Copying cache implementation netlist
+IPNAME:axi_interconnect INSTANCE:axi4lite_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 272 -
+Copying cache implementation netlist
+IPNAME:axi_interconnect INSTANCE:axi4_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 280 -
+Copying cache implementation netlist
+IPNAME:axi_uartlite INSTANCE:rs232_uart_1 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 287 -
+Copying cache implementation netlist
+IPNAME:axi_s6_ddrx INSTANCE:mcb_ddr2 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 302 -
+Copying cache implementation netlist
+IPNAME:d_qspi_axi INSTANCE:digilent_quadspi_cntlr -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 350 -
+Copying cache implementation netlist
+IPNAME:axi_intc INSTANCE:axi_intc_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 362 -
+Copying cache implementation netlist
+IPNAME:axi_timer INSTANCE:axi_timer_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 373 -
+Copying cache implementation netlist
+IPNAME:fit_timer INSTANCE:fit_timer_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 383 -
+Copying cache implementation netlist
+IPNAME:pit_timer INSTANCE:pit_timer_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 391 -
+Copying cache implementation netlist
+IPNAME:nes_controller INSTANCE:nes_controller_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 401 -
+Copying cache implementation netlist
 
 Elaborating instances ...
 IPNAME:bram_block INSTANCE:microblaze_0_bram_block -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 118 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 118 -
 elaborating IP
 IPNAME:clock_generator INSTANCE:clock_generator_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 166 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 166 -
 elaborating IP
 ClkGen elaborate status: PASSED
 ----------------------------------------
@@ -340,100 +404,22 @@ Running XST synthesis ...
 INFO:EDK:4211 - The following instances are synthesized with XST. The MPD option
    IMP_NETLIST=TRUE indicates that a NGC file is to be produced using XST
    synthesis. IMP_NETLIST=FALSE (default) instances are not synthesized. 
-INSTANCE:proc_sys_reset_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 73 -
-Running XST synthesis
-INSTANCE:microblaze_0_ilmb -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 86 -
-Running XST synthesis
-INSTANCE:microblaze_0_i_bram_ctrl -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 93 -
-Running XST synthesis
-INSTANCE:microblaze_0_dlmb -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 102 -
-Running XST synthesis
-INSTANCE:microblaze_0_d_bram_ctrl -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 109 -
-Running XST synthesis
-INSTANCE:microblaze_0_bram_block -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 118 -
-Running XST synthesis
-INSTANCE:microblaze_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 125 -
-Running XST synthesis
-INSTANCE:debug_module -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 153 -
-Running XST synthesis
 INSTANCE:clock_generator_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 166 -
-Running XST synthesis
-INSTANCE:axi_vdma_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 188 -
-Running XST synthesis
-INSTANCE:push_buttons_5bits -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 208 -
-Running XST synthesis
-INSTANCE:axi_hdmi_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 223 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 166 -
 Running XST synthesis
 INSTANCE:axi_ac97_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 257 -
-Running XST synthesis
-INSTANCE:axi4lite_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 272 -
-Running XST synthesis
-INSTANCE:axi4_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 280 -
-Running XST synthesis
-INSTANCE:rs232_uart_1 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 287 -
-Running XST synthesis
-INSTANCE:mcb_ddr2 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 302 -
-Running XST synthesis
-INSTANCE:digilent_quadspi_cntlr -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 350 -
-Running XST synthesis
-INSTANCE:axi_intc_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 362 -
-Running XST synthesis
-INSTANCE:axi_timer_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 373 -
-Running XST synthesis
-INSTANCE:fit_timer_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 383 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 257 -
 Running XST synthesis
 INSTANCE:pit_timer_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 391 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 391 -
 Running XST synthesis
 INSTANCE:nes_controller_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 401 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 401 -
 Running XST synthesis
 
 Running NGCBUILD ...
-IPNAME:microblaze_0_ilmb_wrapper INSTANCE:microblaze_0_ilmb -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 86 -
-Running NGCBUILD
-IPNAME:microblaze_0_dlmb_wrapper INSTANCE:microblaze_0_dlmb -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 102 -
-Running NGCBUILD
-IPNAME:microblaze_0_wrapper INSTANCE:microblaze_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 125 -
-Running NGCBUILD
 IPNAME:clock_generator_0_wrapper INSTANCE:clock_generator_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 166 -
-Running NGCBUILD
-IPNAME:axi_vdma_0_wrapper INSTANCE:axi_vdma_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 188 -
-Running NGCBUILD
-IPNAME:axi4lite_0_wrapper INSTANCE:axi4lite_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 272 -
-Running NGCBUILD
-IPNAME:axi4_0_wrapper INSTANCE:axi4_0 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 280 -
-Running NGCBUILD
-IPNAME:mcb_ddr2_wrapper INSTANCE:mcb_ddr2 -
-C:\Users\superman\Desktop\ECEN_427\SpaceInvadersCreativeHW\system.mhs line 302 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 166 -
 Running NGCBUILD
 INFO:EDK:3509 - NCF files should not be modified as they will be regenerated.
    If any constraint needs to be overridden, this should be done by modifying
@@ -441,4 +427,4 @@ INFO:EDK:3509 - NCF files should not be modified as they will be regenerated.
 
 Rebuilding cache ...
 
-Total run time: 528.00 seconds
+Total run time: 45.00 seconds
