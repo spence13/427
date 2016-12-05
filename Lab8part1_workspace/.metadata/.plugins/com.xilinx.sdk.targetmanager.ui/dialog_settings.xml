@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="C:\Users\superman\Desktop\427\Lab8part1_workspace\SpaceInvadersCreativeHW_hw_platform\system.bit" key="SpaceInvadersCreativeHW_hw_platform-bitFile"/>
+	<item value="C:\Users\superman\Desktop\427\Lab8part1_workspace\SpaceInvadersCreativeHW_hw_platform\system_bd.bmm" key="SpaceInvadersCreativeHW_hw_platform-bmmFile"/>
+	<item value="bootloop" key="SpaceInvadersCreativeHW_hw_platform-microblaze_0-initElf"/>
+</section>

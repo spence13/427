@@ -17,10 +17,9 @@ This is a Full version of ISim.
 Time resolution is 1 ps
 # onerror resume
 # wave add /
-# source sim.tcl
+# run 1000 ms
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# run 150 ms
 # source sim.tcl
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.

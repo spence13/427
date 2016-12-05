@@ -5,8 +5,8 @@ Command Line: C:\Xilinx\13.4\ISE_DS\ISE\bin\nt64\unwrapped\ngcbuild.exe -p
 xc6slx45csg324-3 -intstyle silent -i -sd .. axi4_0_wrapper.ngc ../axi4_0_wrapper
 
 Reading NGO file
-"C:/Users/superman/Desktop/ECEN_427/SpaceInvadersCreativeHW/implementation/axi4_
-0_wrapper/axi4_0_wrapper.ngc" ...
+"C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/implementation/axi4_0_wra
+pper/axi4_0_wrapper.ngc" ...
 Loading design module "../axi4_0_wrapper_fifo_generator_v8_4.ngc"...
 
 Partition Implementation Status

@@ -5,6 +5,7 @@ IntStyle: default
 Flow: ise
 ModuleSearchPath: C:/EE427/Atlys_BSB_Support_v_3_4/Atlys_AXI_BSB_Support/lib/Digilent/pcores/axi_hdmi_v1_00_a/../../../
 ModuleSearchPath: C:/EE427/Atlys_BSB_Support_v_3_4/Atlys_BSB_Support_v_3_4/Atlys_AXI_BSB_Support/lib/Digilent/pcores/axi_hdmi_v1_00_a/../../../
+ModuleSearchPath: C:/EE427/Atlys_BSB_Support_v_3_4/Atlys_BSB_Support_v_3_4/Atlys_AXI_BSB_Support/lib/Digilent/pcores/axi_hdmi_v1_00_a/../../../
 MHS File: system.mhs
 Architecture: spartan6
 Device: xc6slx45

@@ -15521,3 +15521,13 @@ Done writing filter settings to:
 	C:\Users\superman\Desktop\427\SpaceInvadersFinalHW\SpaceInvaderTestHW2\etc\system.filters
 Done writing Tab View settings to:
 	C:\Users\superman\Desktop\427\SpaceInvadersFinalHW\SpaceInvaderTestHW2\etc\system.gui
+Xilinx Platform Studio (XPS)
+Xilinx EDK 13.4 Build EDK_O.87xd
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+WARNING:EDK:2137 - Peripheral nes_controller_0 is not accessible from any processor in the system. Check Bus Interface connections and address parameters. 
+Writing filter settings....
+Done writing filter settings to:
+	C:\Users\superman\Desktop\427\SpaceInvadersFinalHW\SpaceInvaderTestHW2\etc\system.filters
+Done writing Tab View settings to:
+	C:\Users\superman\Desktop\427\SpaceInvadersFinalHW\SpaceInvaderTestHW2\etc\system.gui

@@ -65,7 +65,8 @@ entity system_stub is
     nes_controller_0_C1_DATA_pin : in std_logic;
     nes_controller_0_C2_PULSE_pin : out std_logic;
     nes_controller_0_C2_LATCH_pin : out std_logic;
-    nes_controller_0_C2_DATA_pin : in std_logic
+    nes_controller_0_C2_DATA_pin : in std_logic;
+    switches_GPIO_IO_I_pin : in std_logic_vector(7 downto 0)
   );
 end system_stub;
 
@@ -129,7 +130,8 @@ architecture STRUCTURE of system_stub is
       nes_controller_0_C1_DATA_pin : in std_logic;
       nes_controller_0_C2_PULSE_pin : out std_logic;
       nes_controller_0_C2_LATCH_pin : out std_logic;
-      nes_controller_0_C2_DATA_pin : in std_logic
+      nes_controller_0_C2_DATA_pin : in std_logic;
+      switches_GPIO_IO_I_pin : in std_logic_vector(7 downto 0)
     );
   end component;
 
@@ -196,7 +198,8 @@ begin
       nes_controller_0_C1_DATA_pin => nes_controller_0_C1_DATA_pin,
       nes_controller_0_C2_PULSE_pin => nes_controller_0_C2_PULSE_pin,
       nes_controller_0_C2_LATCH_pin => nes_controller_0_C2_LATCH_pin,
-      nes_controller_0_C2_DATA_pin => nes_controller_0_C2_DATA_pin
+      nes_controller_0_C2_DATA_pin => nes_controller_0_C2_DATA_pin,
+      switches_GPIO_IO_I_pin => switches_GPIO_IO_I_pin
     );
 
 end architecture STRUCTURE;

@@ -32,8 +32,8 @@
 </msg>
 
 <msg type="warning" file="ConstraintSystem" num="0" >TNM : globclk was distributed to a DCM but new TNM constraints were not derived. This TNM is used in the following user groups or specifications:
-&lt;TIMESPEC TS_path1 = FROM globclk TO hdmipclk 14 ns;&gt; [system.ucf(99)]
-&lt;TIMESPEC TS_path2 = FROM hdmipclk TO globclk 10 ns;&gt; [system.ucf(100)]
+&lt;TIMESPEC TS_path1 = FROM globclk TO hdmipclk 14 ns;&gt; [system.ucf(111)]
+&lt;TIMESPEC TS_path2 = FROM hdmipclk TO globclk 10 ns;&gt; [system.ucf(112)]
 </msg>
 
 <msg type="warning" file="ConstraintSystem" num="194" delta="old" >The <arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">axi4_0_reset_resync</arg>&apos;, does not directly or indirectly drive any flip-flops, latches and/or RAMs and is not actively used by any referencing constraint.
@@ -70,7 +70,7 @@
 <arg fmt="%s" index="7">CLKOUT0</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_axi_hdmi_0_axi_hdmi_0_USE_HDMI_OUT_Inst_AxiHDMITransmitter_Inst_DynClkGen_PllOut_x10 = PERIOD &quot;axi_hdmi_0_axi_hdmi_0_USE_HDMI_OUT_Inst_AxiHDMITransmitter_Inst_DynClkGen_PllOut_x10&quot; TS_a...&gt;</arg>
 </msg>
 
-<msg type="warning" file="NgdBuild" num="1012" delta="old" >The constraint <arg fmt="%s" index="1">&lt;CONFIG VCCAUX = &quot;2.5&quot;&gt;</arg> is overridden on the design object <arg fmt="%s" index="2">system</arg> by the constraint <arg fmt="%s" index="3">&lt;CONFIG VCCAUX = 3.3;&gt; [system.ucf(67)]</arg>.
+<msg type="warning" file="NgdBuild" num="1012" delta="new" >The constraint <arg fmt="%s" index="1">&lt;CONFIG VCCAUX = &quot;2.5&quot;&gt;</arg> is overridden on the design object <arg fmt="%s" index="2">system</arg> by the constraint <arg fmt="%s" index="3">&lt;CONFIG VCCAUX = 3.3;&gt; [system.ucf(79)]</arg>.
 </msg>
 
 <msg type="warning" file="NgdBuild" num="1012" delta="old" >The constraint <arg fmt="%s" index="1">&lt;NET &quot;zio&quot; IOSTANDARD = &quot;SSTL18_II&quot;&gt;</arg> is overridden on the design object <arg fmt="%s" index="2">zio</arg> by the constraint <arg fmt="%s" index="3">&lt;NET zio IOSTANDARD = &quot;LVCMOS18_JEDEC&quot;;&gt; [system.ucf(15)]</arg>.
