@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map O.87xd on Mon Dec 05 16:23:23 2016
+// Written by: Map O.87xd on Thu Dec 08 15:23:38 2016
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -12727,6 +12727,22 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         BEL
         "pit_timer_0/pit_timer_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd1"
         BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_5"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1_1"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_3_1"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3_1"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_4"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2_1"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_3"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_2"
+        BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_1"
         BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_0"
@@ -12748,10 +12764,6 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_7"
         BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3_1"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2_1"
         BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_go" BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_wr_dst_rdy"
         BEL
@@ -12769,10 +12781,6 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmdack"
         BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/DMA_Controller_Interrupt"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2"
-        BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg"
         BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/rst"
@@ -12780,6 +12788,8 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_read_error"
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_write_error"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_error"
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_in_prog"
         BEL
@@ -12876,7 +12886,15 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/cnt_i_2"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/cnt_i_3"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_0" BEL
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_0" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_1" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_2" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_3" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_4" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_5" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_6" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_7" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_0" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_1" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_2" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_3" BEL
@@ -12892,14 +12910,6 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_4_5" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_4_6" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_4_7" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_0" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_1" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_2" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_3" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_4" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_5" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_6" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_7" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_6_0" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_6_1" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_6_2" BEL
@@ -12972,7 +12982,10 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_14_5" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_14_6" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_14_7" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_0" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_rd_req" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_done"
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_0" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_1" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_2" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_3" BEL
@@ -13101,41 +13114,36 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg0_30" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg0_31" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_clr_go" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_done"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_2"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_3"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_4"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_5"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_6"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_7"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_8"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_9"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_10"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_11"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_12"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_13"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_14"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_15"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_16"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_17"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_18"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_19"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_20"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_21"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_22"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_23"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_24"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_25"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_26"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_error"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_busy"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_0" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_1" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_2" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_3" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_rd_req" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_2" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_3" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_4" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_5" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_6" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_7" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_8" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_9" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_10" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_11" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_12" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_13" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_14" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_15" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_16" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_17" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_18" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_19" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_20" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_21" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_22" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_23" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_24" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_25" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_26" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_27" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_28" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_29" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_30" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_31" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_0"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_1"
@@ -13143,6 +13151,7 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_2"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_3"
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_busy"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_2"
         BEL
@@ -13193,41 +13202,15 @@ TIMEGRP m_axi_mm2s_aclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_25"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_26"
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_0" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_1" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_2" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_3" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_0" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_1" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_2" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_3" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_4" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_5" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_6" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_7" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_8" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_9" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_10" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_11" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_12" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_13" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_14" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_15" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_16" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_17" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_18" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_19" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_20" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_21" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_22" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_23" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_24" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_25" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_26" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_27" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_28" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_29" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_30" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_31" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2"
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_mstrd_d_0"
         BEL
@@ -26179,6 +26162,22 @@ TIMEGRP s_axi_lite_aclk = PIN
         BEL
         "pit_timer_0/pit_timer_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd1"
         BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_5"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1_1"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_3_1"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3_1"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_4"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2_1"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_3"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_2"
+        BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_1"
         BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_0"
@@ -26200,10 +26199,6 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_7"
         BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3_1"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2_1"
         BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_go" BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_wr_dst_rdy"
         BEL
@@ -26221,10 +26216,6 @@ TIMEGRP s_axi_lite_aclk = PIN
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmdack"
         BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/DMA_Controller_Interrupt"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2"
-        BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg"
         BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/rst"
@@ -26232,6 +26223,8 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_read_error"
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_write_error"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_error"
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_in_prog"
         BEL
@@ -26328,7 +26321,15 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/cnt_i_2"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/cnt_i_3"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_0" BEL
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_0" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_1" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_2" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_3" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_4" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_5" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_6" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_7" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_0" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_1" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_2" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_3" BEL
@@ -26344,14 +26345,6 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_4_5" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_4_6" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_4_7" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_0" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_1" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_2" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_3" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_4" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_5" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_6" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_7" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_6_0" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_6_1" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_6_2" BEL
@@ -26424,7 +26417,10 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_14_5" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_14_6" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_14_7" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_0" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_rd_req" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_done"
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_0" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_1" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_2" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_3" BEL
@@ -26553,41 +26549,36 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg0_30" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg0_31" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_clr_go" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_done"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_2"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_3"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_4"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_5"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_6"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_7"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_8"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_9"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_10"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_11"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_12"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_13"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_14"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_15"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_16"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_17"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_18"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_19"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_20"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_21"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_22"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_23"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_24"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_25"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_26"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_error"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_busy"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_0" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_1" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_2" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_3" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_rd_req" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_2" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_3" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_4" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_5" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_6" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_7" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_8" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_9" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_10" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_11" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_12" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_13" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_14" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_15" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_16" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_17" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_18" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_19" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_20" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_21" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_22" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_23" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_24" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_25" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_26" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_27" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_28" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_29" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_30" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_31" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_0"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_1"
@@ -26595,6 +26586,7 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_2"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_3"
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_busy"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_2"
         BEL
@@ -26645,41 +26637,15 @@ TIMEGRP s_axi_lite_aclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_25"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_26"
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_0" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_1" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_2" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_3" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_0" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_1" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_2" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_3" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_4" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_5" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_6" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_7" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_8" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_9" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_10" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_11" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_12" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_13" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_14" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_15" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_16" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_17" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_18" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_19" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_20" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_21" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_22" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_23" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_24" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_25" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_26" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_27" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_28" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_29" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_30" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_31" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2"
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_mstrd_d_0"
         BEL
@@ -39632,6 +39598,22 @@ TIMEGRP globclk = PIN
         BEL
         "pit_timer_0/pit_timer_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd1"
         BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_5"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1_1"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_3_1"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3_1"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_4"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2_1"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_3"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_2"
+        BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_1"
         BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_0"
@@ -39653,10 +39635,6 @@ TIMEGRP globclk = PIN
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_7"
         BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3_1"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2_1"
         BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_go" BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_wr_dst_rdy"
         BEL
@@ -39674,10 +39652,6 @@ TIMEGRP globclk = PIN
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmdack"
         BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/DMA_Controller_Interrupt"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2"
-        BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg"
         BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/rst"
@@ -39685,6 +39659,8 @@ TIMEGRP globclk = PIN
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_read_error"
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_write_error"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_error"
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_in_prog"
         BEL
@@ -39781,7 +39757,15 @@ TIMEGRP globclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/cnt_i_2"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/cnt_i_3"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_0" BEL
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_0" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_1" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_2" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_3" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_4" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_5" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_6" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_7" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_0" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_1" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_2" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_3" BEL
@@ -39797,14 +39781,6 @@ TIMEGRP globclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_4_5" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_4_6" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_4_7" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_0" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_1" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_2" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_3" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_4" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_5" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_6" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_7" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_6_0" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_6_1" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_6_2" BEL
@@ -39877,7 +39853,10 @@ TIMEGRP globclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_14_5" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_14_6" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_14_7" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_0" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_rd_req" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_done"
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_0" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_1" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_2" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_3" BEL
@@ -40006,41 +39985,36 @@ TIMEGRP globclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg0_30" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg0_31" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_clr_go" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_done"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_2"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_3"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_4"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_5"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_6"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_7"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_8"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_9"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_10"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_11"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_12"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_13"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_14"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_15"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_16"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_17"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_18"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_19"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_20"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_21"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_22"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_23"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_24"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_25"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_26"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_error"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_busy"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_0" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_1" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_2" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_3" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_rd_req" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_2" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_3" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_4" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_5" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_6" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_7" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_8" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_9" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_10" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_11" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_12" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_13" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_14" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_15" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_16" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_17" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_18" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_19" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_20" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_21" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_22" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_23" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_24" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_25" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_26" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_27" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_28" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_29" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_30" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_31" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_0"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_1"
@@ -40048,6 +40022,7 @@ TIMEGRP globclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_2"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_3"
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_busy"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_2"
         BEL
@@ -40098,41 +40073,15 @@ TIMEGRP globclk = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_25"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_26"
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_0" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_1" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_2" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_3" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_0" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_1" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_2" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_3" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_4" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_5" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_6" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_7" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_8" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_9" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_10" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_11" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_12" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_13" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_14" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_15" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_16" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_17" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_18" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_19" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_20" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_21" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_22" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_23" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_24" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_25" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_26" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_27" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_28" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_29" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_30" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_31" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2"
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_mstrd_d_0"
         BEL
@@ -53103,6 +53052,22 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         BEL
         "pit_timer_0/pit_timer_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd1"
         BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_5"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1_1"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_3_1"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3_1"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_4"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2_1"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_3"
+        BEL
+        "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_2"
+        BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_1"
         BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_0"
@@ -53124,10 +53089,6 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_7"
         BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3_1"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2_1"
         BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_go" BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_wr_dst_rdy"
         BEL
@@ -53145,10 +53106,6 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmdack"
         BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/DMA_Controller_Interrupt"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2"
-        BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg"
         BEL
         "dma_controller_0/dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/rst"
@@ -53156,6 +53113,8 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_read_error"
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_write_error"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_error"
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_in_prog"
         BEL
@@ -53252,7 +53211,15 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/cnt_i_2"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL_FIFO_RBU_F/CNTR_INCR_DECR_ADDN_F_I/cnt_i_3"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_0" BEL
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_0" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_1" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_2" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_3" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_4" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_5" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_6" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_7" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_0" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_1" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_2" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_0_3" BEL
@@ -53268,14 +53235,6 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_4_5" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_4_6" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_4_7" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_0" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_1" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_2" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_3" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_4" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_5" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_6" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_5_7" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_6_0" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_6_1" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_6_2" BEL
@@ -53348,7 +53307,10 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_14_5" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_14_6" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_14_7" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_0" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_rd_req" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_done"
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_0" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_1" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_2" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg1_3" BEL
@@ -53477,41 +53439,36 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg0_30" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/slv_reg0_31" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_clr_go" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_wr_req" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_done"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_2"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_3"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_4"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_5"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_6"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_7"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_8"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_9"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_10"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_11"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_12"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_13"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_14"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_15"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_16"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_17"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_18"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_19"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_20"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_21"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_22"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_23"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_24"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_25"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/address_incr_26"
-        BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_set_error"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_busy"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_0" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_1" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_2" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_3" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_rd_req" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_2" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_3" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_4" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_5" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_6" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_7" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_8" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_9" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_10" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_11" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_12" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_13" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_14" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_15" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_16" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_17" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_18" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_19" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_20" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_21" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_22" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_23" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_24" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_25" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_26" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_27" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_28" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_29" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_30" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/currentIndex_31" BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_0"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_1"
@@ -53519,6 +53476,7 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_2"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_be_3"
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_busy"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_2"
         BEL
@@ -53569,41 +53527,15 @@ TIMEGRP clock_generator_0_clock_generator_0_SIG_PLL0_CLKOUT2 = PIN
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_25"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_26"
+        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_0" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_1" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_2" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_reg_1_3" BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1"
         BEL
         "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3"
-        BEL "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_0" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_1" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_2" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_3" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_4" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_5" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_6" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_7" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_8" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_9" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_10" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_11" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_12" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_13" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_14" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_15" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_16" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_17" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_18" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_19" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_20" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_21" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_22" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_23" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_24" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_25" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_26" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_27" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_28" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_29" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_30" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/bit_counter_31" BEL
-        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1"
+        BEL
+        "dma_controller_0/dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2"
         BEL
         "dma_controller_0/dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_mstrd_d_0"
         BEL

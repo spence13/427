@@ -2321,19 +2321,19 @@
 <msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/users/superman/desktop/427/spaceinvaderscreativehw/hdl/system.vhd</arg>&quot; line <arg fmt="%s" index="2">4764</arg>: Output port &lt;<arg fmt="%s" index="3">PWM0</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">axi_timer_0</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/users/superman/desktop/427/spaceinvaderscreativehw/hdl/system.vhd</arg>&quot; line <arg fmt="%s" index="2">4855</arg>: Output port &lt;<arg fmt="%s" index="3">md_error</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">dma_controller_0</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/users/superman/desktop/427/spaceinvaderscreativehw/hdl/system.vhd</arg>&quot; line <arg fmt="%s" index="2">4855</arg>: Output port &lt;<arg fmt="%s" index="3">GPIO_IO_O</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">switches</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/users/superman/desktop/427/spaceinvaderscreativehw/hdl/system.vhd</arg>&quot; line <arg fmt="%s" index="2">4901</arg>: Output port &lt;<arg fmt="%s" index="3">GPIO_IO_O</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">switches</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/users/superman/desktop/427/spaceinvaderscreativehw/hdl/system.vhd</arg>&quot; line <arg fmt="%s" index="2">4855</arg>: Output port &lt;<arg fmt="%s" index="3">GPIO_IO_T</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">switches</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/users/superman/desktop/427/spaceinvaderscreativehw/hdl/system.vhd</arg>&quot; line <arg fmt="%s" index="2">4901</arg>: Output port &lt;<arg fmt="%s" index="3">GPIO_IO_T</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">switches</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/users/superman/desktop/427/spaceinvaderscreativehw/hdl/system.vhd</arg>&quot; line <arg fmt="%s" index="2">4855</arg>: Output port &lt;<arg fmt="%s" index="3">GPIO2_IO_O</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">switches</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/users/superman/desktop/427/spaceinvaderscreativehw/hdl/system.vhd</arg>&quot; line <arg fmt="%s" index="2">4901</arg>: Output port &lt;<arg fmt="%s" index="3">GPIO2_IO_O</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">switches</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/users/superman/desktop/427/spaceinvaderscreativehw/hdl/system.vhd</arg>&quot; line <arg fmt="%s" index="2">4855</arg>: Output port &lt;<arg fmt="%s" index="3">GPIO2_IO_T</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">switches</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/users/superman/desktop/427/spaceinvaderscreativehw/hdl/system.vhd</arg>&quot; line <arg fmt="%s" index="2">4901</arg>: Output port &lt;<arg fmt="%s" index="3">GPIO2_IO_T</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">switches</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/users/superman/desktop/427/spaceinvaderscreativehw/hdl/system.vhd</arg>&quot; line <arg fmt="%s" index="2">4885</arg>: Output port &lt;<arg fmt="%s" index="3">md_error</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">dma_controller_0</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">axi4_0_S_ARID&lt;3&gt;</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
@@ -2537,10 +2537,16 @@
 <msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">axi_timer_0/AXI4_LITE_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">axi_timer_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;axi_timer_0/AXI4_LITE_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">dma_controller_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">dma_controller_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_3_1&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">dma_controller_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">5 FFs/Latches</arg> : <arg fmt="%s" index="4">&lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1&gt; &lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_2&gt; &lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_3&gt; &lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_4&gt; &lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_5&gt; </arg>
 </msg>
 
 <msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">dma_controller_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2_1&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">dma_controller_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1_1&gt; </arg>
 </msg>
 
 <msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">dma_controller_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3_1&gt; </arg>
@@ -2741,10 +2747,16 @@
 <msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">axi_timer_0/AXI4_LITE_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">axi_timer_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;axi_timer_0/AXI4_LITE_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1&gt; </arg>
 </msg>
 
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">dma_controller_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1_1&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">dma_controller_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_3_1&gt; </arg>
+</msg>
+
 <msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">dma_controller_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3_1&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">dma_controller_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">dma_controller_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">5 FFs/Latches</arg> : <arg fmt="%s" index="4">&lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1&gt; &lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_2&gt; &lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_3&gt; &lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_4&gt; &lt;dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_5&gt; </arg>
 </msg>
 
 <msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">dma_controller_0</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2_1&gt; </arg>

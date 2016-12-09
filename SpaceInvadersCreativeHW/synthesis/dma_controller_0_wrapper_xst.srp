@@ -654,12 +654,11 @@ Elaborating entity <axi_master_lite_cntlr> (architecture <implementation>) with 
 WARNING:HDLCompiler:1127 - "C:/Xilinx/13.4/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_master_lite_v1_00_a/hdl/vhdl/axi_master_lite_cntlr.vhd" Line 402: Assignment to sig_ip2bus_lock ignored, since the identifier is never used
 
 Elaborating entity <user_logic> (architecture <IMP>) with generics from library <dma_controller_v1_00_a>.
-WARNING:HDLCompiler:1127 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 378: Assignment to mst_cntl_rd_req ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 379: Assignment to mst_cntl_wr_req ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 381: Assignment to mst_cntl_burst ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 382: Assignment to mst_ip2bus_addr ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 384: Assignment to mst_xfer_length ignored, since the identifier is never used
-INFO:HDLCompiler:679 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 628. Case statement is complete. others clause is never selected
+WARNING:HDLCompiler:1127 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 382: Assignment to mst_cntl_rd_req ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 383: Assignment to mst_cntl_wr_req ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 385: Assignment to mst_cntl_burst ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 386: Assignment to mst_ip2bus_addr ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:/Users/superman/Desktop/427/SpaceInvadersCreativeHW/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" Line 388: Assignment to mst_xfer_length ignored, since the identifier is never used
 
 Elaborating entity <srl_fifo_f> (architecture <imp>) with generics from library <proc_common_v3_00_a>.
 
@@ -927,9 +926,10 @@ WARNING:Xst:37 - Detected unknown constraint/property "sigis". This constraint/p
 WARNING:Xst:37 - Detected unknown constraint/property "sigis". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:37 - Detected unknown constraint/property "sigis". This constraint/property is not supported by the current software release and will be ignored.
 WARNING:Xst:647 - Input <bus2ip_mst_rearbitrate> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-INFO:Xst:3210 - "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" line 644: Output port <Addr> of the instance <DATA_CAPTURE_FIFO_I> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" line 644: Output port <FIFO_Empty> of the instance <DATA_CAPTURE_FIFO_I> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" line 644: Output port <FIFO_Full> of the instance <DATA_CAPTURE_FIFO_I> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" line 699: Output port <Addr> of the instance <DATA_CAPTURE_FIFO_I> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" line 699: Output port <FIFO_Empty> of the instance <DATA_CAPTURE_FIFO_I> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/dma_controller_v1_00_a/hdl/vhdl/user_logic.vhd" line 699: Output port <FIFO_Full> of the instance <DATA_CAPTURE_FIFO_I> is unconnected or connected to loadless signal.
+    Register <DMA_Controller_Interrupt> equivalent to <mst_cmd_sm_set_done> has been removed
     Found 32-bit register for signal <slv_reg1>.
     Found 32-bit register for signal <slv_reg2>.
     Found 32-bit register for signal <slv_reg3>.
@@ -960,14 +960,13 @@ INFO:Xst:3210 - "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/dm
     Found 1-bit register for signal <mst_cmd_sm_set_error>.
     Found 1-bit register for signal <mst_cmd_sm_set_timeout>.
     Found 1-bit register for signal <mst_cmd_sm_busy>.
-    Found 1-bit register for signal <DMA_Controller_Interrupt>.
-    Found 32-bit register for signal <bit_counter>.
-    Found 32-bit register for signal <address_incr>.
+    Found 32-bit register for signal <currentIndex>.
     Found 32-bit register for signal <slv_reg0>.
+INFO:Xst:1799 - State cmd_wait_for_data is never reached in FSM <mst_cmd_sm_state>.
     Found finite state machine <FSM_1> for signal <mst_cmd_sm_state>.
     -----------------------------------------------------------------------
-    | States             | 5                                              |
-    | Transitions        | 12                                             |
+    | States             | 7                                              |
+    | Transitions        | 14                                             |
     | Inputs             | 4                                              |
     | Outputs            | 4                                              |
     | Clock              | Bus2IP_Clk (rising_edge)                       |
@@ -978,20 +977,16 @@ INFO:Xst:3210 - "c:/users/superman/desktop/427/spaceinvaderscreativehw/pcores/dm
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 32-bit adder for signal <slv_reg2[31]_address_incr[31]_add_70_OUT> created at line 573.
-    Found 32-bit adder for signal <slv_reg3[31]_address_incr[31]_add_80_OUT> created at line 599.
-    Found 32-bit adder for signal <address_incr[31]_GND_25_o_add_82_OUT> created at line 603.
-    Found 32-bit subtractor for signal <GND_25_o_GND_25_o_sub_82_OUT<31:0>> created at line 602.
-    Found 1-bit 4-to-1 multiplexer for signal <mst_cmd_sm_state[1]_GND_25_o_Mux_100_o> created at line 541.
-    Found 1-bit 4-to-1 multiplexer for signal <mst_cmd_sm_state[1]_GND_25_o_Mux_101_o> created at line 541.
-    Found 1-bit 4-to-1 multiplexer for signal <mst_cmd_sm_state[1]_GND_25_o_Mux_106_o> created at line 541.
-    Found 32-bit comparator greater for signal <GND_25_o_bit_counter[31]_LessThan_70_o> created at line 569
+    Found 32-bit adder for signal <slv_reg0[31]_currentIndex[31]_add_67_OUT> created at line 566.
+    Found 32-bit adder for signal <slv_reg1[31]_currentIndex[31]_add_72_OUT> created at line 593.
+    Found 32-bit adder for signal <currentIndex[31]_GND_25_o_add_78_OUT> created at line 616.
+    Found 32-bit comparator greater for signal <currentIndex[31]_slv_reg2[31]_LessThan_78_o> created at line 614
     WARNING:Xst:2404 -  FFs/Latches <mst_cmd_sm_reset<0:0>> (without init value) have a constant value of 0 in block <user_logic>.
     Summary:
-	inferred   3 Adder/Subtractor(s).
-	inferred 358 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred 325 D-type flip-flop(s).
 	inferred   1 Comparator(s).
-	inferred 203 Multiplexer(s).
+	inferred 185 Multiplexer(s).
 	inferred   1 Finite State Machine(s).
 Unit <user_logic> synthesized.
 
@@ -1064,27 +1059,25 @@ Unit <dynshreg_f> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 6
+# Adders/Subtractors                                   : 5
  32-bit adder                                          : 2
- 32-bit subtractor                                     : 1
  4-bit adder                                           : 1
  5-bit adder                                           : 2
-# Registers                                            : 97
- 1-bit register                                        : 48
+# Registers                                            : 95
+ 1-bit register                                        : 47
  2-bit register                                        : 3
- 32-bit register                                       : 27
+ 32-bit register                                       : 26
  4-bit register                                        : 3
  5-bit register                                        : 1
  8-bit register                                        : 15
 # Comparators                                          : 2
  32-bit comparator greater                             : 1
  5-bit comparator lessequal                            : 1
-# Multiplexers                                         : 219
- 1-bit 2-to-1 multiplexer                              : 161
- 1-bit 4-to-1 multiplexer                              : 3
+# Multiplexers                                         : 201
+ 1-bit 2-to-1 multiplexer                              : 157
  32-bit 16-to-1 multiplexer                            : 1
- 32-bit 2-to-1 multiplexer                             : 45
- 4-bit 2-to-1 multiplexer                              : 9
+ 32-bit 2-to-1 multiplexer                             : 41
+ 4-bit 2-to-1 multiplexer                              : 2
 # FSMs                                                 : 2
 
 =========================================================================
@@ -1103,10 +1096,6 @@ Unit <cntr_incr_decr_addn_f> synthesized (advanced).
 Synthesizing (advanced) Unit <slave_attachment>.
 The following registers are absorbed into counter <INCLUDE_DPHASE_TIMER.dpto_cnt>: 1 register on signal <INCLUDE_DPHASE_TIMER.dpto_cnt>.
 Unit <slave_attachment> synthesized (advanced).
-
-Synthesizing (advanced) Unit <user_logic>.
-The following registers are absorbed into counter <bit_counter>: 1 register on signal <bit_counter>.
-Unit <user_logic> synthesized (advanced).
 
 Synthesizing (advanced) Unit <dynshreg_f>.
 	Found 16-bit dynamic shift register for signal <Dout<31>>.
@@ -1150,23 +1139,21 @@ Macro Statistics
 # Adders/Subtractors                                   : 3
  32-bit adder                                          : 2
  5-bit adder carry in                                  : 1
-# Counters                                             : 2
- 32-bit down counter                                   : 1
+# Counters                                             : 1
  4-bit up counter                                      : 1
 # Accumulators                                         : 1
  5-bit up accumulator cin                              : 1
-# Registers                                            : 498
- Flip-Flops                                            : 498
+# Registers                                            : 497
+ Flip-Flops                                            : 497
 # Shift Registers                                      : 32
  16-bit dynamic shift register                         : 32
 # Comparators                                          : 2
  32-bit comparator greater                             : 1
  5-bit comparator lessequal                            : 1
-# Multiplexers                                         : 207
- 1-bit 2-to-1 multiplexer                              : 151
- 1-bit 4-to-1 multiplexer                              : 3
- 32-bit 2-to-1 multiplexer                             : 44
- 4-bit 2-to-1 multiplexer                              : 9
+# Multiplexers                                         : 190
+ 1-bit 2-to-1 multiplexer                              : 147
+ 32-bit 2-to-1 multiplexer                             : 41
+ 4-bit 2-to-1 multiplexer                              : 2
 # FSMs                                                 : 2
 
 =========================================================================
@@ -1204,17 +1191,19 @@ Optimizing FSM <dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/FSM_0> on si
 ----------------------
 Analyzing FSM <MFsm> for best encoding.
 Optimizing FSM <dma_controller_0/USER_LOGIC_I/FSM_1> on signal <mst_cmd_sm_state[1:3]> with user encoding.
--------------------------------
- State             | Encoding
--------------------------------
- cmd_idle          | 000
- cmd_read          | 001
- cmd_write         | 010
- cmd_wait_for_data | 011
- cmd_done          | 100
--------------------------------
-WARNING:Xst:1293 - FF/Latch <address_incr_0> has a constant value of 0 in block <user_logic>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_incr_1> has a constant value of 0 in block <user_logic>. This FF/Latch will be trimmed during the optimization process.
+-------------------------------------
+ State                   | Encoding
+-------------------------------------
+ cmd_idle                | 000
+ cmd_read                | 001
+ cmd_wait_for_read_data  | 010
+ cmd_wait_for_data       | unreached
+ cmd_write               | 100
+ cmd_wait_for_write_data | 101
+ cmd_done                | 110
+-------------------------------------
+WARNING:Xst:1293 - FF/Latch <currentIndex_0> has a constant value of 0 in block <user_logic>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <currentIndex_1> has a constant value of 0 in block <user_logic>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <dynshreg_f> ...
 
@@ -1241,7 +1230,9 @@ WARNING:Xst:2677 - Node <dma_controller_0/USER_LOGIC_I/DATA_CAPTURE_FIFO_I/I_SRL
 Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 0) on block dma_controller_0_wrapper, actual ratio is 3.
-FlipFlop dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg has been replicated 1 time(s)
+FlipFlop dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg has been replicated 5 time(s)
+FlipFlop dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_3 has been replicated 1 time(s)
+FlipFlop dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd1 has been replicated 1 time(s)
 FlipFlop dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd2 has been replicated 1 time(s)
 FlipFlop dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state_FSM_FFd3 has been replicated 1 time(s)
 
@@ -1251,8 +1242,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 519
- Flip-Flops                                            : 519
+# Registers                                            : 492
+ Flip-Flops                                            : 492
 
 =========================================================================
 
@@ -1275,24 +1266,22 @@ Top Level Output File Name         : dma_controller_0_wrapper.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 761
+# BELS                             : 552
 #      GND                         : 1
-#      INV                         : 5
+#      INV                         : 4
 #      LUT1                        : 29
-#      LUT2                        : 88
-#      LUT3                        : 81
-#      LUT4                        : 25
-#      LUT5                        : 116
-#      LUT6                        : 222
-#      MUXCY                       : 98
-#      MUXF7                       : 1
+#      LUT2                        : 63
+#      LUT3                        : 45
+#      LUT4                        : 56
+#      LUT5                        : 53
+#      LUT6                        : 160
+#      MUXCY                       : 78
 #      VCC                         : 1
-#      XORCY                       : 94
-# FlipFlops/Latches                : 519
-#      FD                          : 26
-#      FDE                         : 62
-#      FDR                         : 71
-#      FDRE                        : 356
+#      XORCY                       : 62
+# FlipFlops/Latches                : 492
+#      FD                          : 28
+#      FDR                         : 74
+#      FDRE                        : 386
 #      FDS                         : 4
 # Shift Registers                  : 32
 #      SRLC16E                     : 32
@@ -1304,17 +1293,17 @@ Selected Device : 6slx45csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             519  out of  54576     0%  
- Number of Slice LUTs:                  598  out of  27288     2%  
-    Number used as Logic:               566  out of  27288     2%  
+ Number of Slice Registers:             492  out of  54576     0%  
+ Number of Slice LUTs:                  442  out of  27288     1%  
+    Number used as Logic:               410  out of  27288     1%  
     Number used as Memory:               32  out of   6408     0%  
        Number used as SRL:               32
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    875
-   Number with an unused Flip Flop:     356  out of    875    40%  
-   Number with an unused LUT:           277  out of    875    31%  
-   Number of fully used LUT-FF pairs:   242  out of    875    27%  
+ Number of LUT Flip Flop pairs used:    737
+   Number with an unused Flip Flop:     245  out of    737    33%  
+   Number with an unused LUT:           295  out of    737    40%  
+   Number of fully used LUT-FF pairs:   197  out of    737    26%  
    Number of unique control sets:        20
 
 IO Utilization: 
@@ -1344,7 +1333,7 @@ Clock Information:
 -----------------------------------+-------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                   | Load  |
 -----------------------------------+-------------------------------------------------------------------------+-------+
-S_AXI_ACLK                         | NONE(dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd1)| 428   |
+S_AXI_ACLK                         | NONE(dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/state_FSM_FFd1)| 401   |
 m_axi_lite_aclk                    | NONE(dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_rd_req_reg)   | 123   |
 -----------------------------------+-------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
@@ -1357,9 +1346,9 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 5.969ns (Maximum Frequency: 167.520MHz)
-   Minimum input arrival time before clock: 3.324ns
-   Maximum output required time after clock: 4.161ns
+   Minimum period: 4.775ns (Maximum Frequency: 209.428MHz)
+   Minimum input arrival time before clock: 2.889ns
+   Maximum output required time after clock: 3.170ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -1368,119 +1357,112 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'S_AXI_ACLK'
-  Clock period: 5.969ns (frequency: 167.520MHz)
-  Total number of paths / destination ports: 47659 / 657
+  Clock period: 4.775ns (frequency: 209.428MHz)
+  Total number of paths / destination ports: 14557 / 598
 -------------------------------------------------------------------------
-Delay:               5.969ns (Levels of Logic = 6)
-  Source:            dma_controller_0/USER_LOGIC_I/bit_counter_25 (FF)
-  Destination:       dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_31 (FF)
+Delay:               4.775ns (Levels of Logic = 4)
+  Source:            dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1 (FF)
+  Destination:       dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_31 (FF)
   Source Clock:      S_AXI_ACLK rising
   Destination Clock: S_AXI_ACLK rising
 
-  Data Path: dma_controller_0/USER_LOGIC_I/bit_counter_25 to dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_31
+  Data Path: dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1 to dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_31
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              3   0.447   1.015  dma_controller_0/USER_LOGIC_I/bit_counter_25 (dma_controller_0/USER_LOGIC_I/bit_counter_25)
-     LUT6:I0->O            3   0.203   0.995  dma_controller_0/USER_LOGIC_I/_n0489<31>5 (dma_controller_0/USER_LOGIC_I/_n0489<31>4)
-     LUT6:I1->O           14   0.203   0.958  dma_controller_0/USER_LOGIC_I/_n0489<31>7_2 (dma_controller_0/USER_LOGIC_I/_n0489<31>7_1)
-     LUT5:I4->O            5   0.205   0.715  dma_controller_0/USER_LOGIC_I/Mmux_mst_cmd_sm_state[2]_X_25_o_wide_mux_105_OUT121 (dma_controller_0/USER_LOGIC_I/Mmux_mst_cmd_sm_state[2]_X_25_o_wide_mux_105_OUT12)
-     LUT6:I5->O            0   0.205   0.000  dma_controller_0/USER_LOGIC_I/Mmux__n0620_rs_lut<31> (dma_controller_0/USER_LOGIC_I/Mmux__n0620_rs_lut<31>)
-     XORCY:LI->O           1   0.136   0.580  dma_controller_0/USER_LOGIC_I/Mmux__n0620_rs_xor<31> (dma_controller_0/USER_LOGIC_I/_n0620<1>)
-     LUT2:I1->O            1   0.205   0.000  dma_controller_0/USER_LOGIC_I/Mmux_mst_cmd_sm_state[2]_X_25_o_wide_mux_104_OUT251 (dma_controller_0/USER_LOGIC_I/mst_cmd_sm_state[2]_X_25_o_wide_mux_104_OUT<31>)
-     FDR:D                     0.102          dma_controller_0/USER_LOGIC_I/mst_cmd_sm_ip2bus_addr_31
+     FD:C->Q               8   0.447   0.907  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1 (dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1)
+     LUT2:I0->O           21   0.203   1.342  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/rdce_out_i<0>1 (dma_controller_0/ipif_Bus2IP_RdCE<7>)
+     LUT6:I3->O            1   0.205   0.580  dma_controller_0/Mmux_ipif_IP2Bus_Data251 (dma_controller_0/Mmux_ipif_IP2Bus_Data25)
+     LUT6:I5->O            1   0.205   0.580  dma_controller_0/Mmux_ipif_IP2Bus_Data252 (dma_controller_0/Mmux_ipif_IP2Bus_Data251)
+     LUT6:I5->O            1   0.205   0.000  dma_controller_0/Mmux_ipif_IP2Bus_Data253 (dma_controller_0/ipif_IP2Bus_Data<31>)
+     FDRE:D                    0.102          dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_31
     ----------------------------------------
-    Total                      5.969ns (1.706ns logic, 4.263ns route)
+    Total                      4.775ns (1.367ns logic, 3.408ns route)
                                        (28.6% logic, 71.4% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'm_axi_lite_aclk'
-  Clock period: 4.442ns (frequency: 225.144MHz)
+  Clock period: 4.275ns (frequency: 233.896MHz)
   Total number of paths / destination ports: 367 / 234
 -------------------------------------------------------------------------
-Delay:               4.442ns (Levels of Logic = 4)
-  Source:            dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_m_axi_wvalid (FF)
-  Destination:       dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local (FF)
+Delay:               4.275ns (Levels of Logic = 1)
+  Source:            dma_controller_0/AXI_MASTER_LITE_I/I_RESET_MODULE/sig_combined_reset (FF)
+  Destination:       dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_ip2bus_addr_reg_31 (FF)
   Source Clock:      m_axi_lite_aclk rising
   Destination Clock: m_axi_lite_aclk rising
 
-  Data Path: dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_m_axi_wvalid to dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local
+  Data Path: dma_controller_0/AXI_MASTER_LITE_I/I_RESET_MODULE/sig_combined_reset to dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_ip2bus_addr_reg_31
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               3   0.447   1.015  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_m_axi_wvalid (dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_m_axi_wvalid)
-     LUT6:I0->O            1   0.203   0.827  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_cmplt_SW0 (N4)
-     LUT5:I1->O            2   0.203   0.617  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_cmplt (dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_cmplt)
-     LUT6:I5->O            2   0.205   0.617  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_rd_cmplt_sig_wr_cmplt_OR_41_o (dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_rd_cmplt_sig_wr_cmplt_OR_41_o)
-     LUT2:I1->O            1   0.205   0.000  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local_glue_set (dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local_glue_set)
-     FDR:D                     0.102          dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local
+     FD:C->Q              80   0.447   1.746  dma_controller_0/AXI_MASTER_LITE_I/I_RESET_MODULE/sig_combined_reset (dma_controller_0/AXI_MASTER_LITE_I/I_RESET_MODULE/sig_combined_reset)
+     LUT2:I1->O           43   0.205   1.448  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/axi_reset_sig_bus2ip_cmplt_local_OR_21_o1 (dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/axi_reset_sig_bus2ip_cmplt_local_OR_21_o)
+     FDRE:R                    0.430          dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_ip2bus_addr_reg_0
     ----------------------------------------
-    Total                      4.442ns (1.365ns logic, 3.077ns route)
-                                       (30.7% logic, 69.3% route)
+    Total                      4.275ns (1.082ns logic, 3.193ns route)
+                                       (25.3% logic, 74.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'S_AXI_ACLK'
-  Total number of paths / destination ports: 743 / 587
+  Total number of paths / destination ports: 739 / 560
 -------------------------------------------------------------------------
-Offset:              3.040ns (Levels of Logic = 3)
-  Source:            S_AXI_AWVALID (PAD)
-  Destination:       dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_7 (FF)
+Offset:              2.889ns (Levels of Logic = 3)
+  Source:            S_AXI_ARVALID (PAD)
+  Destination:       dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_1 (FF)
   Destination Clock: S_AXI_ACLK rising
 
-  Data Path: S_AXI_AWVALID to dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_7
+  Data Path: S_AXI_ARVALID to dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LUT5:I2->O           18   0.205   1.414  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/Mmux_start11 (dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/start)
-     LUT6:I0->O            1   0.203   0.684  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/MEM_DECODE_GEN[1].PER_CE_GEN[3].MULTIPLE_CES_THIS_CS_GEN.CE_I/Mmux_CS11 (dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_expnd_i<7>)
-     LUT4:I2->O            1   0.203   0.000  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_7_rstpot (dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_7_rstpot)
-     FD:D                      0.102          dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/ce_out_i_7
+     LUT3:I0->O            7   0.205   1.138  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/Mmux_bus2ip_addr_i91 (dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/bus2ip_addr_i<8>)
+     LUT6:I0->O            1   0.203   0.808  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/MEM_DECODE_GEN[1].GEN_FOR_MULTI_CS.MEM_SELECT_I/Mmux_CS11 (dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/pselect_hit_i<1>)
+     LUT4:I1->O            1   0.205   0.000  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_1_rstpot (dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_1_rstpot)
+     FD:D                      0.102          dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/cs_out_i_1
     ----------------------------------------
-    Total                      3.040ns (0.942ns logic, 2.098ns route)
-                                       (31.0% logic, 69.0% route)
+    Total                      2.889ns (0.944ns logic, 1.946ns route)
+                                       (32.7% logic, 67.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'm_axi_lite_aclk'
   Total number of paths / destination ports: 97 / 82
 -------------------------------------------------------------------------
-Offset:              3.324ns (Levels of Logic = 4)
-  Source:            m_axi_lite_wready (PAD)
+Offset:              2.311ns (Levels of Logic = 3)
+  Source:            m_axi_lite_awready (PAD)
   Destination:       dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local (FF)
   Destination Clock: m_axi_lite_aclk rising
 
-  Data Path: m_axi_lite_wready to dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local
+  Data Path: m_axi_lite_awready to dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LUT6:I1->O            1   0.203   0.827  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_cmplt_SW0 (N4)
-     LUT5:I1->O            2   0.203   0.617  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_cmplt (dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_cmplt)
-     LUT6:I5->O            2   0.205   0.617  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_rd_cmplt_sig_wr_cmplt_OR_41_o (dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_rd_cmplt_sig_wr_cmplt_OR_41_o)
-     LUT2:I1->O            1   0.205   0.000  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local_glue_set (dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local_glue_set)
+     LUT6:I0->O            1   0.203   0.580  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_cmplt_SW0 (N4)
+     LUT5:I4->O            3   0.205   0.651  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_cmplt (dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_wr_cmplt)
+     LUT6:I5->O            1   0.205   0.000  dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local_glue_set (dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local_glue_set)
      FDR:D                     0.102          dma_controller_0/AXI_MASTER_LITE_I/I_RD_WR_CNTLR/sig_bus2ip_cmplt_local
     ----------------------------------------
-    Total                      3.324ns (1.263ns logic, 2.061ns route)
-                                       (38.0% logic, 62.0% route)
+    Total                      2.311ns (1.080ns logic, 1.231ns route)
+                                       (46.7% logic, 53.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'S_AXI_ACLK'
   Total number of paths / destination ports: 79 / 38
 -------------------------------------------------------------------------
-Offset:              4.161ns (Levels of Logic = 3)
-  Source:            dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg (FF)
+Offset:              3.170ns (Levels of Logic = 2)
+  Source:            dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1 (FF)
   Destination:       S_AXI_WREADY (PAD)
   Source Clock:      S_AXI_ACLK rising
 
-  Data Path: dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg to S_AXI_WREADY
+  Data Path: dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1 to S_AXI_WREADY
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              39   0.447   1.392  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg (dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg)
-     LUT4:I3->O            1   0.205   0.924  dma_controller_0/USER_LOGIC_I/IP2Bus_WrAck_SW0 (N10)
-     LUT6:I1->O            4   0.203   0.788  dma_controller_0/USER_LOGIC_I/IP2Bus_WrAck (dma_controller_0/user_IP2Bus_WrAck)
-     LUT2:I0->O            0   0.203   0.000  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/wr_done1 (S_AXI_AWREADY)
+     FD:C->Q               8   0.447   0.907  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1 (dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/Bus_RNW_reg_1)
+     LUT2:I0->O           33   0.203   1.410  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/I_DECODER/wrce_out_i<5>1 (dma_controller_0/USER_LOGIC_I/mst_byte_we<4>)
+     LUT6:I4->O            2   0.203   0.000  dma_controller_0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/wr_done1 (S_AXI_AWREADY)
     ----------------------------------------
-    Total                      4.161ns (1.058ns logic, 3.103ns route)
-                                       (25.4% logic, 74.6% route)
+    Total                      3.170ns (0.853ns logic, 2.317ns route)
+                                       (26.9% logic, 73.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'm_axi_lite_aclk'
@@ -1510,8 +1492,8 @@ Clock to Setup on destination clock S_AXI_ACLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-S_AXI_ACLK     |    5.969|         |         |         |
-m_axi_lite_aclk|    6.804|         |         |         |
+S_AXI_ACLK     |    4.775|         |         |         |
+m_axi_lite_aclk|    5.296|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock m_axi_lite_aclk
@@ -1520,20 +1502,20 @@ Clock to Setup on destination clock m_axi_lite_aclk
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
 S_AXI_ACLK     |    3.225|         |         |         |
-m_axi_lite_aclk|    4.442|         |         |         |
+m_axi_lite_aclk|    4.275|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 10.81 secs
+Total CPU time to Xst completion: 10.83 secs
  
 --> 
 
-Total memory usage is 291348 kilobytes
+Total memory usage is 289408 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   59 (   0 filtered)
-Number of infos    :   13 (   0 filtered)
+Number of infos    :   14 (   0 filtered)
 

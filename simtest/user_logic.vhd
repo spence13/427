@@ -167,6 +167,9 @@ architecture IMP of user_logic is
 
   --USER signal declarations added here, as needed for user logic
 
+	--signal FIFO_Full 											: std_logic;
+  --signal FIFO_Empty 										: std_logic;
+	signal currentIndex										: std_logic_vector(31 downto 0);
   ------------------------------------------
   -- Signals for user logic slave model s/w accessible register example
   ------------------------------------------
@@ -204,7 +207,7 @@ architecture IMP of user_logic is
   signal mst_ip2bus_be                  : std_logic_vector(15 downto 0);
   signal mst_go                         : std_logic;
   -- signals for master model command interface state machine
-  type CMD_CNTL_SM_TYPE is (CMD_IDLE, CMD_READ, CMD_WRITE, CMD_WAIT_FOR_DATA, CMD_DONE);
+  type CMD_CNTL_SM_TYPE is (CMD_IDLE, CMD_READ, CMD_WAIT_FOR_READ_DATA, CMD_WAIT_FOR_DATA, CMD_WRITE, CMD_WAIT_FOR_WRITE_DATA, CMD_DONE);
   signal mst_cmd_sm_state               : CMD_CNTL_SM_TYPE;
   signal mst_cmd_sm_set_done            : std_logic;
   signal mst_cmd_sm_set_error           : std_logic;
@@ -504,8 +507,9 @@ begin
   --implement master command interface state machine
   MASTER_CMD_SM_PROC : process( Bus2IP_Clk ) is
   begin
-
+	
     if ( Bus2IP_Clk'event and Bus2IP_Clk = '1' ) then
+		
       if ( Bus2IP_Resetn = '0' ) then
 
         -- reset condition
@@ -521,6 +525,8 @@ begin
         mst_cmd_sm_set_error      <= '0';
         mst_cmd_sm_set_timeout    <= '0';
         mst_cmd_sm_busy           <= '0';
+				--currentIndex 							<= (others => '0');
+				DMA_Controller_Interrupt 								<= '0';
                 
       else
 
@@ -536,99 +542,65 @@ begin
         mst_cmd_sm_set_error      <= '0';
         mst_cmd_sm_set_timeout    <= '0';
         mst_cmd_sm_busy           <= '1';
+				DMA_Controller_Interrupt 								<= '0';
                 
-        -- state transition
+     -- state transition
         case mst_cmd_sm_state is
-
-          when CMD_IDLE =>
-						DMA_Controller_Interrupt <= '0';
+					when CMD_IDLE =>
             if ( mst_go = '1' ) then
               mst_cmd_sm_state  <= CMD_READ;
               mst_cmd_sm_clr_go <= '1';
-							bit_counter <= unsigned(slv_reg1);
-							address_incr <= (others => '0');
             else
               mst_cmd_sm_state  <= CMD_IDLE;
               mst_cmd_sm_busy   <= '0';
             end if;
-
+ 
           when CMD_READ =>
-						DMA_Controller_Interrupt <= '0';
             if ( Bus2IP_Mst_CmdAck = '1' and Bus2IP_Mst_Cmplt = '0' ) then
-              mst_cmd_sm_state <= CMD_WAIT_FOR_DATA;
-            elsif ( Bus2IP_Mst_Cmplt = '1' ) then
-              mst_cmd_sm_state <= CMD_DONE;
-              if ( Bus2IP_Mst_Cmd_Timeout = '1' ) then
-                -- AXI4LITE address phase timeout
-                mst_cmd_sm_set_error   <= '1';
-                mst_cmd_sm_set_timeout <= '1';
-              elsif ( Bus2IP_Mst_Error = '1' ) then
-                -- AXI4LITE data transfer error
-                mst_cmd_sm_set_error   <= '1';
-              end if;
-            elsif (bit_counter > 0) then  --READ from SOURCE
-              mst_cmd_sm_state       <= CMD_WRITE;
-              mst_cmd_sm_rd_req      <= '1'; --1 TO READ
-              mst_cmd_sm_wr_req      <= '0'; --1 TO WRITE
-              mst_cmd_sm_ip2bus_addr <= (unsigned(slv_reg2) + unsigned(address_incr)); --SOURCE = slv_reg2
-              mst_cmd_sm_ip2bus_be   <= mst_ip2bus_be(15 downto 16-C_MST_DWIDTH/8 );
-              mst_cmd_sm_bus_lock    <= mst_cntl_bus_lock;
-						else
-              mst_cmd_sm_state       <= CMD_DONE;
+              mst_cmd_sm_state <= CMD_READ;
+            else
+							if (bit_counter < unsigned(slv_reg1)) then
+								mst_cmd_sm_state       <= CMD_WRITE;
+								mst_cmd_sm_rd_req      <= '1';
+								mst_cmd_sm_wr_req      <= '0';
+								mst_cmd_sm_ip2bus_addr <= unsigned(slv_reg2) + address_incr;
+								mst_cmd_sm_ip2bus_be   <= mst_ip2bus_be(15 downto 16-C_MST_DWIDTH/8 );
+								mst_cmd_sm_bus_lock    <= mst_cntl_bus_lock;
+							else
+								mst_cmd_sm_state       <= CMD_DONE;
+							end if;
             end if;
-						
-					
+						 
           when CMD_WRITE =>
-						DMA_Controller_Interrupt <= '0';
             if ( Bus2IP_Mst_CmdAck = '1' and Bus2IP_Mst_Cmplt = '0' ) then
-              mst_cmd_sm_state <= CMD_WAIT_FOR_DATA;
-            elsif ( Bus2IP_Mst_Cmplt = '1' ) then
-              mst_cmd_sm_state <= CMD_DONE;
-              if ( Bus2IP_Mst_Cmd_Timeout = '1' ) then
-                -- AXI4LITE address phase timeout
-                mst_cmd_sm_set_error   <= '1';
-                mst_cmd_sm_set_timeout <= '1';
-              elsif ( Bus2IP_Mst_Error = '1' ) then
-                -- AXI4LITE data transfer error
-                mst_cmd_sm_set_error   <= '1';
-              end if;
+              mst_cmd_sm_state <= CMD_WRITE;
             else
-              mst_cmd_sm_state       <= CMD_READ;
-              mst_cmd_sm_rd_req      <= '0'; --1 TO READ
-              mst_cmd_sm_wr_req      <= '1'; --1 TO WRITE
-              mst_cmd_sm_ip2bus_addr <= (unsigned(slv_reg3) + unsigned(address_incr)); --SOURCE = slv_reg3
+              mst_cmd_sm_state       <= CMD_DONE;
+              mst_cmd_sm_rd_req      <= '0';
+              mst_cmd_sm_wr_req      <= '1';
+              mst_cmd_sm_ip2bus_addr <= unsigned(slv_reg3) + address_incr;
               mst_cmd_sm_ip2bus_be   <= mst_ip2bus_be(15 downto 16-C_MST_DWIDTH/8 );
               mst_cmd_sm_bus_lock    <= mst_cntl_bus_lock;
-							bit_counter <= bit_counter-1;
-							address_incr <= address_incr+4;
-            end if;
-						
-
-          when CMD_WAIT_FOR_DATA =>
-            if ( Bus2IP_Mst_Cmplt = '1' ) then
-              mst_cmd_sm_state <= CMD_DONE;
-              if ( Bus2IP_Mst_Cmd_Timeout = '1' ) then
-                -- AXI4LITE address phase timeout
-                mst_cmd_sm_set_error   <= '1';
-                mst_cmd_sm_set_timeout <= '1';
-              elsif ( Bus2IP_Mst_Error = '1' ) then
-                -- AXI4LITE data transfer error
-                mst_cmd_sm_set_error   <= '1';
-              end if;
-            else
-              mst_cmd_sm_state <= CMD_WAIT_FOR_DATA;
             end if;
 
           when CMD_DONE =>
-						DMA_Controller_Interrupt <= '1';
-            mst_cmd_sm_state    <= CMD_IDLE;
-            mst_cmd_sm_set_done <= '1';
-            mst_cmd_sm_busy     <= '0';
-
+						if (bit_counter < unsigned(slv_reg1)) then
+							bit_counter <= bit_counter + 1;
+							address_incr <= address_incr + 4;
+							mst_cmd_sm_state    <= CMD_READ;
+						else
+							DMA_Controller_Interrupt <= '1';
+							bit_counter <= (others => '0');
+							address_incr <= (others => '0');
+							mst_cmd_sm_state    <= CMD_IDLE;
+							mst_cmd_sm_set_done <= '1';
+							mst_cmd_sm_busy     <= '0';
+						end if;
+ 
           when others =>
             mst_cmd_sm_state    <= CMD_IDLE;
             mst_cmd_sm_busy     <= '0';
-
+ 
         end case;
 
       end if;
@@ -636,7 +608,7 @@ begin
 
   end process MASTER_CMD_SM_PROC;
 
-  -- local srl fifo for data storage
+--  -- local srl fifo for data storage
 --  mst_fifo_valid_write_xfer <= not(Bus2IP_MstRd_src_rdy_n);
 --  mst_fifo_valid_read_xfer  <= not(Bus2IP_MstWr_dst_rdy_n);
 --  Bus2IP_Reset   <= not (Bus2IP_Resetn);

@@ -367,7 +367,7 @@ BEGIN axi_intc
  PARAMETER C_HIGHADDR = 0x4120ffff
  BUS_INTERFACE S_AXI = axi4lite_0
  PORT S_AXI_ACLK = clk_100_0000MHzPLL0
- PORT Intr = axi_ac97_0_Interrupt & axi_timer_0_Interrupt & Push_Buttons_5Bits_IP2INTC_Irpt & fit_timer_0_Interrupt & pit_timer_0_USER_PIT_INTERRUPT & dma_controller_0_DMA_Controller_Interrupt & switches_IP2INTC_Irpt
+ PORT Intr = axi_ac97_0_Interrupt & axi_timer_0_Interrupt & Push_Buttons_5Bits_IP2INTC_Irpt & fit_timer_0_Interrupt & pit_timer_0_USER_PIT_INTERRUPT & switches_IP2INTC_Irpt & dma_controller_0_DMA_Controller_Interrupt
  PORT Irq = axi_intc_0_Irq
 END
 
@@ -415,18 +415,6 @@ BEGIN nes_controller
  PORT C2_DATA = nes_controller_0_C2_DATA
 END
 
-BEGIN dma_controller
- PARAMETER INSTANCE = dma_controller_0
- PARAMETER HW_VER = 1.00.a
- PARAMETER C_BASEADDR = 0x77e00000
- PARAMETER C_HIGHADDR = 0x77e0ffff
- BUS_INTERFACE M_AXI = axi4_0
- BUS_INTERFACE S_AXI = axi4lite_0
- PORT S_AXI_ACLK = clk_100_0000MHzPLL0
- PORT m_axi_lite_aclk = clk_100_0000MHzPLL0
- PORT DMA_Controller_Interrupt = dma_controller_0_DMA_Controller_Interrupt
-END
-
 BEGIN axi_gpio
  PARAMETER INSTANCE = switches
  PARAMETER HW_VER = 1.01.b
@@ -438,5 +426,17 @@ BEGIN axi_gpio
  PORT S_AXI_ACLK = clk_100_0000MHzPLL0
  PORT IP2INTC_Irpt = switches_IP2INTC_Irpt
  PORT GPIO_IO_I = net_switches_GPIO_IO_I_pin
+END
+
+BEGIN dma_controller
+ PARAMETER INSTANCE = dma_controller_0
+ PARAMETER HW_VER = 1.00.a
+ PARAMETER C_BASEADDR = 0x77e00000
+ PARAMETER C_HIGHADDR = 0x77e0ffff
+ BUS_INTERFACE M_AXI = axi4_0
+ BUS_INTERFACE S_AXI = axi4lite_0
+ PORT S_AXI_ACLK = clk_100_0000MHzPLL0
+ PORT m_axi_lite_aclk = clk_100_0000MHzPLL0
+ PORT DMA_Controller_Interrupt = dma_controller_0_DMA_Controller_Interrupt
 END
 

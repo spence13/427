@@ -348,6 +348,9 @@ Copying cache implementation netlist
 IPNAME:axi_ac97 INSTANCE:axi_ac97_0 -
 C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 258 -
 Copying cache implementation netlist
+IPNAME:axi_interconnect INSTANCE:axi4lite_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 273 -
+Copying cache implementation netlist
 IPNAME:axi_interconnect INSTANCE:axi4_0 -
 C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 281 -
 Copying cache implementation netlist
@@ -359,6 +362,9 @@ C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 303 -
 Copying cache implementation netlist
 IPNAME:d_qspi_axi INSTANCE:digilent_quadspi_cntlr -
 C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 351 -
+Copying cache implementation netlist
+IPNAME:axi_intc INSTANCE:axi_intc_0 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 363 -
 Copying cache implementation netlist
 IPNAME:axi_timer INSTANCE:axi_timer_0 -
 C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 374 -
@@ -372,7 +378,7 @@ Copying cache implementation netlist
 IPNAME:nes_controller INSTANCE:nes_controller_0 -
 C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 402 -
 Copying cache implementation netlist
-IPNAME:dma_controller INSTANCE:dma_controller_0 -
+IPNAME:axi_gpio INSTANCE:switches -
 C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 418 -
 Copying cache implementation netlist
 
@@ -389,10 +395,10 @@ ClkGen elaborate status: PASSED
 Writing HDL for elaborated instances ...
 
 Inserting wrapper level ...
-Completion time: 0.00 seconds
+Completion time: 1.00 seconds
 
 Constructing platform-level connectivity ...
-Completion time: 1.00 seconds
+Completion time: 0.00 seconds
 
 Writing (top-level) BMM ...
 
@@ -411,12 +417,6 @@ Running XST synthesis
 INSTANCE:axi_ac97_0 -
 C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 258 -
 Running XST synthesis
-INSTANCE:axi4lite_0 -
-C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 273 -
-Running XST synthesis
-INSTANCE:axi_intc_0 -
-C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 363 -
-Running XST synthesis
 INSTANCE:pit_timer_0 -
 C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 392 -
 Running XST synthesis
@@ -424,18 +424,12 @@ INSTANCE:nes_controller_0 -
 C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 402 -
 Running XST synthesis
 INSTANCE:dma_controller_0 -
-C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 418 -
-Running XST synthesis
-INSTANCE:switches -
-C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 430 -
+C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 431 -
 Running XST synthesis
 
 Running NGCBUILD ...
 IPNAME:clock_generator_0_wrapper INSTANCE:clock_generator_0 -
 C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 167 -
-Running NGCBUILD
-IPNAME:axi4lite_0_wrapper INSTANCE:axi4lite_0 -
-C:\Users\superman\Desktop\427\SpaceInvadersCreativeHW\system.mhs line 273 -
 Running NGCBUILD
 INFO:EDK:3509 - NCF files should not be modified as they will be regenerated.
    If any constraint needs to be overridden, this should be done by modifying
@@ -443,4 +437,4 @@ INFO:EDK:3509 - NCF files should not be modified as they will be regenerated.
 
 Rebuilding cache ...
 
-Total run time: 87.00 seconds
+Total run time: 53.00 seconds

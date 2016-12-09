@@ -70,7 +70,7 @@
 <arg fmt="%s" index="7">CLKOUT0</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_axi_hdmi_0_axi_hdmi_0_USE_HDMI_OUT_Inst_AxiHDMITransmitter_Inst_DynClkGen_PllOut_x10 = PERIOD &quot;axi_hdmi_0_axi_hdmi_0_USE_HDMI_OUT_Inst_AxiHDMITransmitter_Inst_DynClkGen_PllOut_x10&quot; TS_a...&gt;</arg>
 </msg>
 
-<msg type="warning" file="NgdBuild" num="1012" delta="new" >The constraint <arg fmt="%s" index="1">&lt;CONFIG VCCAUX = &quot;2.5&quot;&gt;</arg> is overridden on the design object <arg fmt="%s" index="2">system</arg> by the constraint <arg fmt="%s" index="3">&lt;CONFIG VCCAUX = 3.3;&gt; [system.ucf(79)]</arg>.
+<msg type="warning" file="NgdBuild" num="1012" delta="old" >The constraint <arg fmt="%s" index="1">&lt;CONFIG VCCAUX = &quot;2.5&quot;&gt;</arg> is overridden on the design object <arg fmt="%s" index="2">system</arg> by the constraint <arg fmt="%s" index="3">&lt;CONFIG VCCAUX = 3.3;&gt; [system.ucf(79)]</arg>.
 </msg>
 
 <msg type="warning" file="NgdBuild" num="1012" delta="old" >The constraint <arg fmt="%s" index="1">&lt;NET &quot;zio&quot; IOSTANDARD = &quot;SSTL18_II&quot;&gt;</arg> is overridden on the design object <arg fmt="%s" index="2">zio</arg> by the constraint <arg fmt="%s" index="3">&lt;NET zio IOSTANDARD = &quot;LVCMOS18_JEDEC&quot;;&gt; [system.ucf(15)]</arg>.

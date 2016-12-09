@@ -15,5 +15,5 @@ Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
 Compiled 5 VHDL Units
 Built simulation executable C:/Users/superman/Desktop/427/simtest/user_logic_isim_beh.exe
-Fuse Memory Usage: 35132 KB
+Fuse Memory Usage: 35296 KB
 Fuse CPU Usage: 421 ms

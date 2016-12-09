@@ -163,8 +163,8 @@ implementation/axi_timer_0_wrapper.ngc \
 implementation/fit_timer_0_wrapper.ngc \
 implementation/pit_timer_0_wrapper.ngc \
 implementation/nes_controller_0_wrapper.ngc \
-implementation/dma_controller_0_wrapper.ngc \
-implementation/switches_wrapper.ngc
+implementation/switches_wrapper.ngc \
+implementation/dma_controller_0_wrapper.ngc
 
 POSTSYN_NETLIST = implementation/$(SYSTEM).ngc
 

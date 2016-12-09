@@ -21,6 +21,9 @@
 #include "sounds.h"
 #include "xac97_l.h"
 #include "pit.h"
+#include "dma_controller.h"
+//#include ""
+
 
 #define DEBUG
 void print(char *str);
@@ -57,6 +60,10 @@ void print(char *str);
 #define NES_LEFT_BTN_MASK 0x2
 #define NES_RIGHT_BTN_MASK 0x1
 #define NES_BUTTONS_MASK 0x000000FF
+#define SWITCHES_MASK 0xE0
+#define SW_7_MASK 0x80
+#define SW_6_MASK 0x40
+#define SW_5_MASK 0x20
 
 XGpio gpLED;  // This is a handle for the LED GPIO block.
 XGpio gpPB;   // This is a handle for the push-button GPIO block.
@@ -95,10 +102,14 @@ uint8_t game_pause_bool = 0;//indicates whether or not you need to stop listenin
 uint8_t invader_switch = 1;//used to iterate through the 4 alien marching sounds
 int16_t master_volume = 0;//used to adjust the volume of the game
 
+uint8_t sw_7_bool = 0;
+uint8_t sw_6_bool = 0;
+
 unsigned controllerReadCounter = 0;
 
 
 unsigned int * framePointer; //Global pointing to the framePointer
+unsigned int * framePointer1; //Global pointing to the framePointer
 
 // This is invoked in response to a timer interrupt.
 void timer_interrupt_handler() {
@@ -236,23 +247,24 @@ void timer_interrupt_handler() {
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	if(controllerReadCounter >= 3)
 	{
-		unsigned readNES = Xil_In32(XPAR_NES_CONTROLLER_0_BASEADDR) & NES_BUTTONS_MASK;
-		if((readNES & NES_LEFT_BTN_MASK) && (tank_dying1_bool == 0) && (tank_dying2_bool == 0))
-		{
-			tank_shift_left(framePointer);
-		}
-		if((readNES & NES_RIGHT_BTN_MASK) && (tank_dying1_bool == 0) && (tank_dying2_bool == 0))
-		{
-			tank_shift_right(framePointer);
-		}
-		if(readNES & NES_A_BTN_MASK )
-		{
-			if(!bullet_get_is_fired() && (tank_dying1_bool == 0) && (tank_dying2_bool == 0))//only fire if bullet doesnt already exist
-			{
-				bullet_draw(framePointer);//fire_tank_bullet();
-				sound_set_sample_size(SOUND_TANK_SHOOT); //initialize the tank bullet sound
-			}
-		}
+
+//		unsigned readNES = Xil_In32(XPAR_NES_CONTROLLER_0_BASEADDR) & NES_BUTTONS_MASK;
+//		if((readNES & NES_LEFT_BTN_MASK) && (tank_dying1_bool == 0) && (tank_dying2_bool == 0))
+//		{
+//			tank_shift_left(framePointer);
+//		}
+//		if((readNES & NES_RIGHT_BTN_MASK) && (tank_dying1_bool == 0) && (tank_dying2_bool == 0))
+//		{
+//			tank_shift_right(framePointer);
+//		}
+//		if(readNES & NES_A_BTN_MASK )
+//		{
+//			if(!bullet_get_is_fired() && (tank_dying1_bool == 0) && (tank_dying2_bool == 0))//only fire if bullet doesnt already exist
+//			{
+//				bullet_draw(framePointer);//fire_tank_bullet();
+//				sound_set_sample_size(SOUND_TANK_SHOOT); //initialize the tank bullet sound
+//			}
+//		}
 		controllerReadCounter = 0;
 	}
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -346,17 +358,30 @@ void pb_interrupt_handler() {
 // but pb_interrupt_handler() is called before ack'ing the interrupt controller?
 void interrupt_handler_dispatcher(void* ptr) {
 	int intc_status = XIntc_GetIntrStatus(XPAR_INTC_0_BASEADDR);
-	 //Check the PIT interrupt first.
-	if (intc_status & XPAR_PIT_TIMER_0_USER_PIT_INTERRUPT_MASK){
-		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_PIT_TIMER_0_USER_PIT_INTERRUPT_MASK);
-		if(game_pause_bool == 0)
+
+	// Check the FIT interrupt first.
+	if (intc_status & XPAR_FIT_TIMER_0_INTERRUPT_MASK){
+		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_FIT_TIMER_0_INTERRUPT_MASK);
+		if (game_pause_bool == 0)
 			timer_interrupt_handler();
 	}
+//	 //Check the PIT interrupt first.
+//	if (intc_status & XPAR_PIT_TIMER_0_USER_PIT_INTERRUPT_MASK){
+//		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_PIT_TIMER_0_USER_PIT_INTERRUPT_MASK);
+//		if(game_pause_bool == 0){
+//			timer_interrupt_handler();
+//		}
+//		else if(!(Xil_In32(XPAR_SWITCHES_BASEADDR) & SW_5_MASK))
+//		{
+//			game_pause_bool = 0;
+//		}
+//	}
 	// Check the push buttons.
 	if (intc_status & XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK){
 		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK);
-		if(game_pause_bool == 0)
+		if(game_pause_bool == 0){
 			pb_interrupt_handler();
+		}
 	}
 
 	// Check AC97 interrupts
@@ -364,6 +389,11 @@ void interrupt_handler_dispatcher(void* ptr) {
 		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_AXI_AC97_0_INTERRUPT_MASK);
 	}
 
+	if (intc_status & XPAR_DMA_CONTROLLER_0_DMA_CONTROLLER_INTERRUPT_MASK){
+		XIntc_AckIntr(XPAR_INTC_0_BASEADDR, XPAR_DMA_CONTROLLER_0_DMA_CONTROLLER_INTERRUPT_MASK);
+		xil_printf("DMA interrupt recieved\n\r");
+
+	}
 	// Check NES controller interrupts
 //	if (intc_status & 16)
 //	{
@@ -442,11 +472,32 @@ int main()
      // The variables framePointer and framePoi8nter1 are just pointers to the base address
      // of frame 0 and frame 1.
      framePointer = (unsigned int *) FRAME_BUFFER_0_ADDR;
+     framePointer1 = ((unsigned int *) FRAME_BUFFER_0_ADDR) + 640*480;
+
      int row=0, col=0;
      for( row=0; row<GLOBALS_MAX_Y; row++)
      {
     	 for(col=0; col<GLOBALS_MAX_X; col++)
+    	 {
     		 framePointer[row*GLOBALS_MAX_X + col] = 0; //Clear screen for the first and only time
+    		 //framePointer1[row*GLOBALS_MAX_X + col] = 0; //Clear screen for the first and only time
+    	 }
+     }
+     for( row=0; row<480; row++) {
+    	 for(col=0; col<640; col++) {
+    	 if(row < 240) {
+    		 if(col<320)
+    			 framePointer1[row*640 + col] = 0x0000FF00;  // frame 1 is green here.
+    		 else
+    			 framePointer1[row*640 + col] = 0x00FF0000;  // frame 1 is red here.
+    	 }
+    	 else {
+    		 if(col<320)
+    			 framePointer1[row*640 + col] = 0x00FFFFFF;  // frame 1 is white here.
+    		 else
+    			 framePointer1[row*640 + col] = 0x000000FF;  // frame 1 is blue here.
+    	 }
+       }
      }
 
      // This tells the HDMI controller the resolution of your display (there must be a better way to do this).
@@ -487,26 +538,94 @@ int main()
 
      microblaze_register_handler(interrupt_handler_dispatcher, NULL);
      XIntc_EnableIntr(XPAR_INTC_0_BASEADDR,
-     		(XPAR_PIT_TIMER_0_USER_PIT_INTERRUPT_MASK  | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK | XPAR_AXI_AC97_0_INTERRUPT_MASK));
+     		(XPAR_FIT_TIMER_0_INTERRUPT_MASK | XPAR_PUSH_BUTTONS_5BITS_IP2INTC_IRPT_MASK | XPAR_AXI_AC97_0_INTERRUPT_MASK | XPAR_DMA_CONTROLLER_0_DMA_CONTROLLER_INTERRUPT_MASK));
+     //(XPAR_PIT_TIMER_0_USER_PIT_INTERRUPT_MASK
      XIntc_MasterEnable(XPAR_INTC_0_BASEADDR);
      microblaze_enable_interrupts();
      //microblaze_disable_interrupts();
      //////////////////////////////////////////////////////////////////////////////
      //Print out a menu on the UART for convenience
-     xil_printf("Enter number of clock cycles between interrupts: \n\r");
+     //xil_printf("Enter number of clock cycles between interrupts: \n\r");
      sound_init(); //initialize sound codec and registers
-     pit_init(); //initialize PIT
+     //pit_init(); //initialize PIT
+	 unsigned readSW;
+
+
+	int source_arr[] = {0x12345678, 0xDEADBEEF, 0x09876543, 0xBEEFB00B, 0xBEEF1234};
+	int dest_arr[] = {0x0, 0x0, 0x0, 0x0, 0x0};
+	Xil_Out32(XPAR_DMA_CONTROLLER_0_BASEADDR + 8, 20);//increment value by 4 for every word you add===============
+	Xil_Out32(XPAR_DMA_CONTROLLER_0_BASEADDR + 0, (uint32_t)&source_arr);
+	Xil_Out32(XPAR_DMA_CONTROLLER_0_BASEADDR + 4, (uint32_t)&dest_arr);
+    cleanup_platform();
+	xil_printf("before go cmd\n\r");
+	Xil_Out16(XPAR_DMA_CONTROLLER_0_BASEADDR+DMA_CONTROLLER_MST_BE_REG_OFFSET, 0xFFFF);
+	Xil_Out8(XPAR_DMA_CONTROLLER_0_BASEADDR+DMA_CONTROLLER_MST_GO_PORT_OFFSET, MST_START);
+	int i=0;
+	for (i=0; i < 5; i++)
+	{
+		xil_printf("%x\n\r", dest_arr[i]);
+	}
+
+	//init_platform();                   // Necessary for all programs.
+
+	 Xil_Out32(XPAR_DMA_CONTROLLER_0_BASEADDR + 8, 4*640*480);//increment value by 4 for every word you add===============
+	 Xil_Out32(XPAR_DMA_CONTROLLER_0_BASEADDR + 0, (uint32_t)framePointer);
+	 Xil_Out32(XPAR_DMA_CONTROLLER_0_BASEADDR + 4, (uint32_t)framePointer1);
+
      while (1) {
-    	 pit_set_delay_value();
+     	readSW = Xil_In32(XPAR_SWITCHES_BASEADDR) & SWITCHES_MASK;
+     	if ((readSW & SW_7_MASK) > 0)
+     	{
+     		if (sw_7_bool == 0)
+     		{
+         		game_pause_bool = 1;
+				sw_7_bool = 1;
+				Xil_Out16(XPAR_DMA_CONTROLLER_0_BASEADDR+DMA_CONTROLLER_MST_BE_REG_OFFSET, 0xFFFF);
+				Xil_Out8(XPAR_DMA_CONTROLLER_0_BASEADDR+DMA_CONTROLLER_MST_GO_PORT_OFFSET, MST_START);
+	     		game_pause_bool = 0;
+     		}
+     	}
+     	else
+     	{
+     		sw_7_bool = 0;
+     	}
 
-    	 //delay();
 
-// 		int x = XIo_In32(XPAR_NES_CONTROLLER_0_BASEADDR);
-//    	int x = Xil_In32(XPAR_NES_CONTROLLER_0_BASEADDR);
-// 		xil_printf("NES: %d\n\r", Xil_In32(XPAR_NES_CONTROLLER_0_BASEADDR)& 0x000000FF);
+     	if(readSW & SW_6_MASK)
+     	{
+     		if (sw_6_bool == 0)
+     		{
+     			microblaze_disable_interrupts();
+     			sw_6_bool = 1;
+				game_pause_bool = 1;
+				 int row=0, col=0;
+				 for( row=0; row<GLOBALS_MAX_Y; row++)
+				 {
+					 for(col=0; col<GLOBALS_MAX_X; col++)
+						 framePointer1[row*GLOBALS_MAX_X + col] = framePointer[row*GLOBALS_MAX_X + col];
+				 }
+				game_pause_bool = 0;
+				 xil_printf("Software capture\n\r");
+				 microblaze_enable_interrupts();
+     		}
+     	}
+     	else
+     		sw_6_bool = 0;
 
-         if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, frameIndex,  XAXIVDMA_READ))
-        	 xil_printf("vdma parking failed\n\r");
+
+     	if(readSW & SW_5_MASK)
+     	{
+     		game_pause_bool = 1;
+     		frameIndex = 1;
+     	}
+     	else
+     	{
+     		game_pause_bool = 0;
+     		frameIndex = 0;
+     	}
+
+		if (XST_FAILURE == XAxiVdma_StartParking(&videoDMAController, frameIndex,  XAXIVDMA_READ))
+			xil_printf("vdma parking failed\n\r");
      }
      cleanup_platform();
 
